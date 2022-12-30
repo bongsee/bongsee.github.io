@@ -9,8 +9,16 @@
 
 
     <url>
-        <loc>https://bongsee.github.io/2022/12/30/221230-css-bem/</loc>
-        <lastmod>2022-12-30T14:23:40.648Z</lastmod>
+        <loc>https://bongsee.github.io/2022/12/30/221229-css-width/</loc>
+        <lastmod>2022-12-30T14:58:18.836Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://bongsee.github.io/2022/12/30/221229-css-cantsee/</loc>
+        <lastmod>2022-12-30T14:42:37.984Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -18,7 +26,15 @@
 
     <url>
         <loc>https://bongsee.github.io/2022/12/30/221228-css-selector/</loc>
-        <lastmod>2022-12-30T14:12:01.669Z</lastmod>
+        <lastmod>2022-12-30T14:27:19.939Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://bongsee.github.io/2022/12/30/221230-css-bem/</loc>
+        <lastmod>2022-12-30T14:26:43.265Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
