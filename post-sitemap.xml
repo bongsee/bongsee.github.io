@@ -9,7 +9,15 @@
 
 
     <url>
-        <loc>https://bongsee.github.io/2022/12/30/css-selector/</loc>
+        <loc>https://bongsee.github.io/2022/12/30/221230-css-bem/</loc>
+        <lastmod>2022-12-30T14:23:40.648Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://bongsee.github.io/2022/12/30/221228-css-selector/</loc>
         <lastmod>2022-12-30T14:12:01.669Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
