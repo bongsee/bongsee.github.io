@@ -9,6 +9,30 @@
 
 
     <url>
+        <loc>https://bongsee.github.io/2023/01/04/wil-2301-1st/</loc>
+        <lastmod>2023-01-04T06:03:19.981Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://bongsee.github.io/2022/12/30/221229-css-width/</loc>
+        <lastmod>2023-01-04T04:02:08.570Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://bongsee.github.io/2022/12/27/wil-2212-5th/</loc>
+        <lastmod>2023-01-04T03:34:12.870Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://bongsee.github.io/2023/01/02/til-230102-js/</loc>
         <lastmod>2023-01-02T14:00:53.664Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -65,14 +89,6 @@
     </url>
 
     <url>
-        <loc>https://bongsee.github.io/2022/12/30/221229-css-width/</loc>
-        <lastmod>2022-12-30T14:58:18.836Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://bongsee.github.io/2022/12/30/221229-css-cantsee/</loc>
         <lastmod>2022-12-30T14:42:37.984Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -107,14 +123,6 @@
     <url>
         <loc>https://bongsee.github.io/2022/12/27/til-221226-css/</loc>
         <lastmod>2022-12-27T06:03:05.156Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://bongsee.github.io/2022/12/27/wil-2212-5th/</loc>
-        <lastmod>2022-12-27T05:26:00.447Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
