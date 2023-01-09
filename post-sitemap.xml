@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://bongsee.github.io/2023/01/05/230105-js-intersection-observer-api/</loc>
+        <lastmod>2023-01-09T13:41:37.602Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://bongsee.github.io/2023/01/08/230108-bundler-parcel/</loc>
+        <lastmod>2023-01-07T15:51:40.711Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://bongsee.github.io/2023/01/07/230107-js-regexp/</loc>
         <lastmod>2023-01-07T12:18:53.240Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -19,14 +35,6 @@
     <url>
         <loc>https://bongsee.github.io/2023/01/07/230107-css-scss/</loc>
         <lastmod>2023-01-07T08:34:39.328Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://bongsee.github.io/2023/01/05/230105-js-intersection-observer-api/</loc>
-        <lastmod>2023-01-05T08:51:52.827Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
