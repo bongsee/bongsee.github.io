@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://bongsee.github.io/2023/01/10/230110-js-builtin-methods/</loc>
+        <lastmod>2023-01-10T12:57:30.996Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://bongsee.github.io/2023/01/10/etc/</loc>
+        <lastmod>2023-01-10T06:53:49.732Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://bongsee.github.io/2023/01/05/230105-js-intersection-observer-api/</loc>
         <lastmod>2023-01-09T13:41:37.602Z</lastmod>
         <changefreq>weekly</changefreq>
