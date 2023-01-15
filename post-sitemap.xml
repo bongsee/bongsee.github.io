@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://bongsee.github.io/2023/01/13/230113-js-promise/</loc>
+        <lastmod>2023-01-15T08:23:34.002Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://bongsee.github.io/2023/01/10/230110-js-builtin-methods/</loc>
         <lastmod>2023-01-12T15:25:45.472Z</lastmod>
         <changefreq>weekly</changefreq>
