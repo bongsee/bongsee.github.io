@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://bongsee.github.io/2023/01/13/230113-js-promise/</loc>
+        <lastmod>2023-01-18T06:01:40.761Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://bongsee.github.io/2023/01/10/230110-js-builtin-methods/</loc>
         <lastmod>2023-01-15T12:01:57.023Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -19,14 +27,6 @@
     <url>
         <loc>https://bongsee.github.io/2023/01/15/230114-js-error%EC%B2%98%EB%A6%AC/</loc>
         <lastmod>2023-01-15T09:04:32.508Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://bongsee.github.io/2023/01/13/230113-js-promise/</loc>
-        <lastmod>2023-01-15T08:29:49.481Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

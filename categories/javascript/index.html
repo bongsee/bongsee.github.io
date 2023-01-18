@@ -78,7 +78,7 @@
 </ul>
 </li>
 </ul>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-01-12T16:08:52.581Z" title="2023. 1. 13. 오전 1:08:52">2023-01-13</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-01-15T08:29:49.481Z" title="2023. 1. 15. 오후 5:29:49">2023-01-15</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/javascript/">javascript</a></span><span class="level-item">11분안에 읽기 (약 1669 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/01/13/230113-js-promise/">비동기 pattern (Callback, Promise Async/Await)</a></h1><div class="content"><h2 id="Callback-Pattern"><a href="#Callback-Pattern" class="headerlink" title="Callback Pattern"></a>Callback Pattern</h2><ol>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-01-12T16:08:52.581Z" title="2023. 1. 13. 오전 1:08:52">2023-01-13</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-01-18T06:01:40.761Z" title="2023. 1. 18. 오후 3:01:40">2023-01-18</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/javascript/">javascript</a></span><span class="level-item">11분안에 읽기 (약 1702 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/01/13/230113-js-promise/">비동기 pattern (Callback, Promise Async/Await)</a></h1><div class="content"><h2 id="Callback-Pattern"><a href="#Callback-Pattern" class="headerlink" title="Callback Pattern"></a>Callback Pattern</h2><ol>
 <li><p>비동기 처리 결과의 후속처리를 위한 노력 - <code>Callback Function</code></p>
 <ul>
 <li>비동기 처리 결과를 외부로 반환하거나, 상위 스코프의 변수에 할당해도 기대한대로 동작하지 않는다.</li>
@@ -216,6 +216,7 @@
 <ul>
 <li>await 키워드는 반드시 async 함수 내에서 사용해야한다.</li>
 <li>async 함수는 언제나 프로미스를 반환한다.</li>
+<li>async 함수 내에서 await 키워드를 만나면 이후의 코드는 마이크로태스크큐로 넘어간다.</li>
 </ul>
 </li>
 <li><p>await 키워드</p>
