@@ -446,7 +446,7 @@ Object.defineProperty(user, &quot;fullName&quot;, &#123;
 <li><code>JSON.stringify()</code></li>
 <li><code>JSON.parse()</code></li>
 </ul>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-01-07T12:09:10.238Z" title="2023. 1. 7. 오후 9:09:10">2023-01-07</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-01-07T12:18:53.240Z" title="2023. 1. 7. 오후 9:18:53">2023-01-07</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/javascript/">javascript</a></span><span class="level-item">4분안에 읽기 (약 596 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/01/07/230107-js-regexp/">Javascript 정규표현식 적응하기 (++꾸준히 업데이트)</a></h1><div class="content"><h1 id="정규-표현식"><a href="#정규-표현식" class="headerlink" title="정규 표현식"></a>정규 표현식</h1><ul>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-01-07T12:09:10.238Z" title="2023. 1. 7. 오후 9:09:10">2023-01-07</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-01-24T07:49:41.971Z" title="2023. 1. 24. 오후 4:49:41">2023-01-24</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/javascript/">javascript</a></span><span class="level-item">8분안에 읽기 (약 1257 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/01/07/230107-js-regexp/">Javascript 정규표현식 적응하기 (++꾸준히 업데이트)</a></h1><div class="content"><h1 id="정규-표현식"><a href="#정규-표현식" class="headerlink" title="정규 표현식"></a>정규 표현식</h1><ul>
 <li>지난 알고리즘 스터디 영찬님 발표 때 정규표현식을 처음 접했고, 이후 문제풀이에서 문자열 탐색 문제에 적용해보고자 간단하게 공부한 내용을 정리해봅니다.<br><a target="_blank" rel="noopener" href="https://heropy.blog/2018/10/28/regexp/">Heropy님 블로그에 너무 정리가 잘되어있다.</a></li>
 </ul>
 <h2 id="개요"><a href="#개요" class="headerlink" title="개요"></a>개요</h2><ul>
@@ -489,8 +489,51 @@ Object.defineProperty(user, &quot;fullName&quot;, &#123;
 <td>정규식.test(문자열)</td>
 <td>일치 여부(Boolean) 반환</td>
 </tr>
+<tr>
+<td>search</td>
+<td>문자열.search(정규식)</td>
+<td>일치하는 문자열의 인덱스(Number) 반환</td>
+</tr>
+<tr>
+<td>replace</td>
+<td>문자열.replace(정규식, 바꿀 문자)</td>
+<td>일치하는 문자열을 지정 문자열로 교체하고 교체된 문자열 반환</td>
+</tr>
+<tr>
+<td>match</td>
+<td>문자열.match(정규식)</td>
+<td>일치하는 문자열의 배열 반환</td>
+</tr>
+<tr>
+<td>split</td>
+<td>문자열.split(정규식)</td>
+<td>일치하는 문자열을 분할하여 배열(Array)로 반환</td>
+</tr>
 </tbody></table>
-<h2 id="플래그"><a href="#플래그" class="headerlink" title="플래그"></a>플래그</h2><h2 id="패턴"><a href="#패턴" class="headerlink" title="패턴"></a>패턴</h2><table>
+<ul>
+<li>단순히 true or false 값을 원한다면 test, search 메소드를 이용하자.</li>
+</ul>
+<h2 id="플래그"><a href="#플래그" class="headerlink" title="플래그"></a>플래그</h2><table>
+<thead>
+<tr>
+<th>플래그</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>g</code>(global)</td>
+<td>모든 문자와 여러 줄 일치(global)</td>
+</tr>
+<tr>
+<td><code>i</code>(ignore)</td>
+<td>영어 대소문자를 구분 않고 일치</td>
+</tr>
+<tr>
+<td><code>m</code>(multiLine)</td>
+<td>여러 줄 일치</td>
+</tr>
+</tbody></table>
+<h2 id="패턴"><a href="#패턴" class="headerlink" title="패턴"></a>패턴</h2><table>
 <thead>
 <tr>
 <th>정규식 패턴</th>
@@ -505,7 +548,121 @@ Object.defineProperty(user, &quot;fullName&quot;, &#123;
 <td><code>[A-Z]</code></td>
 <td>A부터 Z 사이의 문자 구간에 일치(영어 대문자)</td>
 </tr>
+<tr>
+<td><code>^</code></td>
+<td>줄의 시작에서 일치 <code>/^abc/</code></td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>줄의 끝에서 일치 <code>/xyz$/</code></td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>임의의 한 문자와 일치</td>
+</tr>
+<tr>
+<td><code>a&amp;verbar;b</code></td>
+<td>a 또는 b와 일치 <code>/h..p/</code></td>
+</tr>
+<tr>
+<td><code>ab?</code></td>
+<td>b가 없거나 b와 일치 <code>https?</code></td>
+</tr>
+<tr>
+<td><code>&#123;3&#125;</code></td>
+<td>3개 연속 일치</td>
+</tr>
+<tr>
+<td><code>&#123;3,&#125;</code></td>
+<td>3개 이상 연속 일치</td>
+</tr>
+<tr>
+<td><code>&#123;3,5&#125;</code></td>
+<td>3~5개 연속 일치</td>
+</tr>
+<tr>
+<td><code>[abc]</code></td>
+<td>a 또는 b 또는 c와 일치</td>
+</tr>
+<tr>
+<td><code>[a-z]</code></td>
+<td>a부터 z 사이의 문자 구간에 일치(영어 소문자)</td>
+</tr>
+<tr>
+<td><code>[A-Z]</code></td>
+<td>A부터 Z 사이의 문자 구간에 일치(영어 대문자)</td>
+</tr>
+<tr>
+<td><code>[0-9]</code></td>
+<td>0부터 9 사이의 문자 구간에 일치(숫자)</td>
+</tr>
+<tr>
+<td><code>[가-힣]</code></td>
+<td>가부터 힣 사이의 문자 구간에 일치(한글)</td>
+</tr>
+<tr>
+<td><code>[^abc]</code></td>
+<td>a 또는 b 또는 c가 아닌 나머지 문자에 일치(부정)</td>
+</tr>
+<tr>
+<td><code>\</code></td>
+<td>이스케이프 문자, <code>/\.\?\/\$\^/</code></td>
+</tr>
+<tr>
+<td><code>\w</code>(word)</td>
+<td>63개 문자(영문 대소문자 52개 + 숫자 10개 + _(underscore))에 일치</td>
+</tr>
+<tr>
+<td><code>\b</code>(boundary)</td>
+<td>63개 문자(영문 대소문자 52개 + 숫자 10개 + _(underscore))가 아닌 나머지 문자에 일치하는 경계(boundary)</td>
+</tr>
+<tr>
+<td><code>\d</code>(digit)</td>
+<td>숫자에 일치</td>
+</tr>
+<tr>
+<td><code>\s</code>(space)</td>
+<td>공백(Space, Tab, 줄바꿈 등)에 일치</td>
+</tr>
+<tr>
+<td><code>(?=)</code></td>
+<td>앞쪽 일치(Lookahead)</td>
+</tr>
+<tr>
+<td><code>(?&lt;=)</code></td>
+<td>뒤쪽 일치(Lookbehind)</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>0회 이상 연속으로 반복되는 문자와 가능한 많이 일치, <code>&#123;0,&#125;</code>와 동일</td>
+</tr>
+<tr>
+<td><code>*?</code></td>
+<td>0회 이상 연속으로 반복되는 문자와 가능한 적게 일치(lazy), <code>&#123;0&#125;</code>와 동일</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>1회 이상 연속으로 반복되는 문자에 가능한 많이 일치, <code>&#123;1,&#125;</code>와 동일</td>
+</tr>
+<tr>
+<td><code>+?</code></td>
+<td>1회 이상 연속으로 반복되는 문자에 가능한 적게 일치(lazy), <code>&#123;1&#125;</code>와 동일</td>
+</tr>
+<tr>
+<td><code>()</code></td>
+<td>그룹화</td>
+</tr>
 </tbody></table>
+<ul>
+<li>주의) 줄 끝이라 함은 기본적으로 문자열의 가장 끝을 의미. (end quote의 바로 앞) 이 때, 줄 바꿈을 반영하려면 <code>m</code>flag를 사용</li>
+</ul>
+<h2 id="정규-표현식-예시"><a href="#정규-표현식-예시" class="headerlink" title="정규 표현식 예시"></a>정규 표현식 예시</h2><ul>
+<li><code>/\bf\w&#123;1,&#125;\b/g</code> : f로 시작하는 모든 영단어 검색</li>
+<li><code>/.&#123;1,&#125;(?=@)/g</code> : @ 앞쪽의 연속되는 모든 문자 (주로 이메일 처리할 때)</li>
+<li><code>/(?&lt;=@).&#123;1,&#125;/g</code> : @ 뒤쪽의 연속되는 모든 문자 (주로 이메일 처리할 때)</li>
+<li><code>문자열.replace(/\s/g, &quot;&quot;)</code> : 공백 처리할 때</li>
+<li><code>str.match(/\((.*)\)/)[1]</code> : 괄호 사이 값 추출</li>
+</ul>
 </div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-01-05T08:47:28.032Z" title="2023. 1. 5. 오후 5:47:28">2023-01-05</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-01-09T13:41:37.602Z" title="2023. 1. 9. 오후 10:41:37">2023-01-09</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/javascript/">javascript</a></span><span class="level-item">9분안에 읽기 (약 1343 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/01/05/230105-js-intersection-observer-api/">Intersection Observer API</a></h1><div class="content"><h1 id="Intersection-Observer-API"><a href="#Intersection-Observer-API" class="headerlink" title="Intersection Observer API"></a>Intersection Observer API</h1><p>Javascrip 1차과제에서 무한 스크롤을 구현하기 위해 공부한 내용을 정리.<br><a target="_blank" rel="noopener" href="https://heropy.blog/2019/10/27/intersection-observer/">Heropy님의 블로그를 참조합니다.</a></p>
 <h2 id="개요"><a href="#개요" class="headerlink" title="개요"></a>개요</h2><p>기준이 되는 root요소와 관찰 대상인 target의 가시성(교차) 정보를 이용해서 비동기적으로 로직을 구현할 수 있다.</p>
 <h2 id="장점"><a href="#장점" class="headerlink" title="장점"></a>장점</h2><ol>

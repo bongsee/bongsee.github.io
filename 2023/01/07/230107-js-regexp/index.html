@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="배운게 있다면 나만의 언어로 정리하라"><meta name="keywords" content="HTML, CSS, Javascript, frontend, git, TIL"><meta name="author" content="BS K"><title>Javascript 정규표현식 적응하기 (++꾸준히 업데이트) - Bonglog</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#3273dc"><meta name="application-name" content="Bonglog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="msapplication-TileColor" content="#3273dc"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Bonglog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="정규 표현식 지난 알고리즘 스터디 영찬님 발표 때 정규표현식을 처음 접했고, 이후 문제풀이에서 문자열 탐색 문제에 적용해보고자 간단하게 공부한 내용을 정리해봅니다.Heropy님 블로그에 너무 정리가 잘되어있다.  개요 정규표현식은 기본적으로 문자열을 탐색하기 위한 방법의 하나로, 문자열 메서드와 조합하여 많이 사용한다고 한다.  패턴과 플래그를 이용하여 생"><meta property="og:type" content="blog"><meta property="og:title" content="Javascript 정규표현식 적응하기 (++꾸준히 업데이트)"><meta property="og:url" content="https://bongsee.github.io/2023/01/07/230107-js-regexp/"><meta property="og:site_name" content="Bonglog"><meta property="og:description" content="정규 표현식 지난 알고리즘 스터디 영찬님 발표 때 정규표현식을 처음 접했고, 이후 문제풀이에서 문자열 탐색 문제에 적용해보고자 간단하게 공부한 내용을 정리해봅니다.Heropy님 블로그에 너무 정리가 잘되어있다.  개요 정규표현식은 기본적으로 문자열을 탐색하기 위한 방법의 하나로, 문자열 메서드와 조합하여 많이 사용한다고 한다.  패턴과 플래그를 이용하여 생"><meta property="og:locale" content="ko_KR"><meta property="og:image" content="https://bongsee.github.io/img/og_image.png"><meta property="article:published_time" content="2023-01-07T12:09:10.238Z"><meta property="article:modified_time" content="2023-01-07T12:18:53.240Z"><meta property="article:author" content="BS K"><meta property="article:tag" content="패스트캠퍼스"><meta property="article:tag" content="국비지원교육"><meta property="article:tag" content="메가바이트스쿨"><meta property="article:tag" content="MegabyteSchool"><meta property="article:tag" content="개발자취업부트캠프"><meta property="article:tag" content="내일배움카드"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://bongsee.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://bongsee.github.io/2023/01/07/230107-js-regexp/"},"headline":"기록의 공간","image":["https://bongsee.github.io/img/og_image.png"],"datePublished":"2023-01-07T12:09:10.238Z","dateModified":"2023-01-07T12:18:53.240Z","author":{"@type":"Person","name":"BS K"},"publisher":{"@type":"Organization","name":"Bonglog","logo":{"@type":"ImageObject"}},"description":"정규 표현식 지난 알고리즘 스터디 영찬님 발표 때 정규표현식을 처음 접했고, 이후 문제풀이에서 문자열 탐색 문제에 적용해보고자 간단하게 공부한 내용을 정리해봅니다.Heropy님 블로그에 너무 정리가 잘되어있다.  개요 정규표현식은 기본적으로 문자열을 탐색하기 위한 방법의 하나로, 문자열 메서드와 조합하여 많이 사용한다고 한다.  패턴과 플래그를 이용하여 생"}</script><link rel="canonical" href="https://bongsee.github.io/2023/01/07/230107-js-regexp/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="배운게 있다면 나만의 언어로 정리하라"><meta name="keywords" content="HTML, CSS, Javascript, frontend, git, TIL"><meta name="author" content="BS K"><title>Javascript 정규표현식 적응하기 (++꾸준히 업데이트) - Bonglog</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#3273dc"><meta name="application-name" content="Bonglog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="msapplication-TileColor" content="#3273dc"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Bonglog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="정규 표현식 지난 알고리즘 스터디 영찬님 발표 때 정규표현식을 처음 접했고, 이후 문제풀이에서 문자열 탐색 문제에 적용해보고자 간단하게 공부한 내용을 정리해봅니다.Heropy님 블로그에 너무 정리가 잘되어있다.  개요 정규표현식은 기본적으로 문자열을 탐색하기 위한 방법의 하나로, 문자열 메서드와 조합하여 많이 사용한다고 한다.  패턴과 플래그를 이용하여 생"><meta property="og:type" content="blog"><meta property="og:title" content="Javascript 정규표현식 적응하기 (++꾸준히 업데이트)"><meta property="og:url" content="https://bongsee.github.io/2023/01/07/230107-js-regexp/"><meta property="og:site_name" content="Bonglog"><meta property="og:description" content="정규 표현식 지난 알고리즘 스터디 영찬님 발표 때 정규표현식을 처음 접했고, 이후 문제풀이에서 문자열 탐색 문제에 적용해보고자 간단하게 공부한 내용을 정리해봅니다.Heropy님 블로그에 너무 정리가 잘되어있다.  개요 정규표현식은 기본적으로 문자열을 탐색하기 위한 방법의 하나로, 문자열 메서드와 조합하여 많이 사용한다고 한다.  패턴과 플래그를 이용하여 생"><meta property="og:locale" content="ko_KR"><meta property="og:image" content="https://bongsee.github.io/img/og_image.png"><meta property="article:published_time" content="2023-01-07T12:09:10.238Z"><meta property="article:modified_time" content="2023-01-24T07:49:41.971Z"><meta property="article:author" content="BS K"><meta property="article:tag" content="패스트캠퍼스"><meta property="article:tag" content="국비지원교육"><meta property="article:tag" content="메가바이트스쿨"><meta property="article:tag" content="MegabyteSchool"><meta property="article:tag" content="개발자취업부트캠프"><meta property="article:tag" content="내일배움카드"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://bongsee.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://bongsee.github.io/2023/01/07/230107-js-regexp/"},"headline":"기록의 공간","image":["https://bongsee.github.io/img/og_image.png"],"datePublished":"2023-01-07T12:09:10.238Z","dateModified":"2023-01-24T07:49:41.971Z","author":{"@type":"Person","name":"BS K"},"publisher":{"@type":"Organization","name":"Bonglog","logo":{"@type":"ImageObject"}},"description":"정규 표현식 지난 알고리즘 스터디 영찬님 발표 때 정규표현식을 처음 접했고, 이후 문제풀이에서 문자열 탐색 문제에 적용해보고자 간단하게 공부한 내용을 정리해봅니다.Heropy님 블로그에 너무 정리가 잘되어있다.  개요 정규표현식은 기본적으로 문자열을 탐색하기 위한 방법의 하나로, 문자열 메서드와 조합하여 많이 사용한다고 한다.  패턴과 플래그를 이용하여 생"}</script><link rel="canonical" href="https://bongsee.github.io/2023/01/07/230107-js-regexp/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
   (function () {
       function switchTab() {
           if (!location.hash) {
@@ -29,7 +29,7 @@
       switchTab();
       window.addEventListener('hashchange', switchTab, false);
   })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">Bonglog</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-01-07T12:09:10.238Z" title="2023. 1. 7. 오후 9:09:10">2023-01-07</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-01-07T12:18:53.240Z" title="2023. 1. 7. 오후 9:18:53">2023-01-07</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/javascript/">javascript</a></span><span class="level-item">4분안에 읽기 (약 596 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile">Javascript 정규표현식 적응하기 (++꾸준히 업데이트)</h1><div class="content"><h1 id="정규-표현식"><a href="#정규-표현식" class="headerlink" title="정규 표현식"></a>정규 표현식</h1><ul>
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">Bonglog</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-01-07T12:09:10.238Z" title="2023. 1. 7. 오후 9:09:10">2023-01-07</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-01-24T07:49:41.971Z" title="2023. 1. 24. 오후 4:49:41">2023-01-24</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/javascript/">javascript</a></span><span class="level-item">8분안에 읽기 (약 1257 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile">Javascript 정규표현식 적응하기 (++꾸준히 업데이트)</h1><div class="content"><h1 id="정규-표현식"><a href="#정규-표현식" class="headerlink" title="정규 표현식"></a>정규 표현식</h1><ul>
 <li>지난 알고리즘 스터디 영찬님 발표 때 정규표현식을 처음 접했고, 이후 문제풀이에서 문자열 탐색 문제에 적용해보고자 간단하게 공부한 내용을 정리해봅니다.<br><a target="_blank" rel="noopener" href="https://heropy.blog/2018/10/28/regexp/">Heropy님 블로그에 너무 정리가 잘되어있다.</a></li>
 </ul>
 <h2 id="개요"><a href="#개요" class="headerlink" title="개요"></a>개요</h2><ul>
@@ -72,8 +72,51 @@
 <td>정규식.test(문자열)</td>
 <td>일치 여부(Boolean) 반환</td>
 </tr>
+<tr>
+<td>search</td>
+<td>문자열.search(정규식)</td>
+<td>일치하는 문자열의 인덱스(Number) 반환</td>
+</tr>
+<tr>
+<td>replace</td>
+<td>문자열.replace(정규식, 바꿀 문자)</td>
+<td>일치하는 문자열을 지정 문자열로 교체하고 교체된 문자열 반환</td>
+</tr>
+<tr>
+<td>match</td>
+<td>문자열.match(정규식)</td>
+<td>일치하는 문자열의 배열 반환</td>
+</tr>
+<tr>
+<td>split</td>
+<td>문자열.split(정규식)</td>
+<td>일치하는 문자열을 분할하여 배열(Array)로 반환</td>
+</tr>
 </tbody></table>
-<h2 id="플래그"><a href="#플래그" class="headerlink" title="플래그"></a>플래그</h2><h2 id="패턴"><a href="#패턴" class="headerlink" title="패턴"></a>패턴</h2><table>
+<ul>
+<li>단순히 true or false 값을 원한다면 test, search 메소드를 이용하자.</li>
+</ul>
+<h2 id="플래그"><a href="#플래그" class="headerlink" title="플래그"></a>플래그</h2><table>
+<thead>
+<tr>
+<th>플래그</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>g</code>(global)</td>
+<td>모든 문자와 여러 줄 일치(global)</td>
+</tr>
+<tr>
+<td><code>i</code>(ignore)</td>
+<td>영어 대소문자를 구분 않고 일치</td>
+</tr>
+<tr>
+<td><code>m</code>(multiLine)</td>
+<td>여러 줄 일치</td>
+</tr>
+</tbody></table>
+<h2 id="패턴"><a href="#패턴" class="headerlink" title="패턴"></a>패턴</h2><table>
 <thead>
 <tr>
 <th>정규식 패턴</th>
@@ -88,8 +131,122 @@
 <td><code>[A-Z]</code></td>
 <td>A부터 Z 사이의 문자 구간에 일치(영어 대문자)</td>
 </tr>
+<tr>
+<td><code>^</code></td>
+<td>줄의 시작에서 일치 <code>/^abc/</code></td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>줄의 끝에서 일치 <code>/xyz$/</code></td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>임의의 한 문자와 일치</td>
+</tr>
+<tr>
+<td><code>a&amp;verbar;b</code></td>
+<td>a 또는 b와 일치 <code>/h..p/</code></td>
+</tr>
+<tr>
+<td><code>ab?</code></td>
+<td>b가 없거나 b와 일치 <code>https?</code></td>
+</tr>
+<tr>
+<td><code>&#123;3&#125;</code></td>
+<td>3개 연속 일치</td>
+</tr>
+<tr>
+<td><code>&#123;3,&#125;</code></td>
+<td>3개 이상 연속 일치</td>
+</tr>
+<tr>
+<td><code>&#123;3,5&#125;</code></td>
+<td>3~5개 연속 일치</td>
+</tr>
+<tr>
+<td><code>[abc]</code></td>
+<td>a 또는 b 또는 c와 일치</td>
+</tr>
+<tr>
+<td><code>[a-z]</code></td>
+<td>a부터 z 사이의 문자 구간에 일치(영어 소문자)</td>
+</tr>
+<tr>
+<td><code>[A-Z]</code></td>
+<td>A부터 Z 사이의 문자 구간에 일치(영어 대문자)</td>
+</tr>
+<tr>
+<td><code>[0-9]</code></td>
+<td>0부터 9 사이의 문자 구간에 일치(숫자)</td>
+</tr>
+<tr>
+<td><code>[가-힣]</code></td>
+<td>가부터 힣 사이의 문자 구간에 일치(한글)</td>
+</tr>
+<tr>
+<td><code>[^abc]</code></td>
+<td>a 또는 b 또는 c가 아닌 나머지 문자에 일치(부정)</td>
+</tr>
+<tr>
+<td><code>\</code></td>
+<td>이스케이프 문자, <code>/\.\?\/\$\^/</code></td>
+</tr>
+<tr>
+<td><code>\w</code>(word)</td>
+<td>63개 문자(영문 대소문자 52개 + 숫자 10개 + _(underscore))에 일치</td>
+</tr>
+<tr>
+<td><code>\b</code>(boundary)</td>
+<td>63개 문자(영문 대소문자 52개 + 숫자 10개 + _(underscore))가 아닌 나머지 문자에 일치하는 경계(boundary)</td>
+</tr>
+<tr>
+<td><code>\d</code>(digit)</td>
+<td>숫자에 일치</td>
+</tr>
+<tr>
+<td><code>\s</code>(space)</td>
+<td>공백(Space, Tab, 줄바꿈 등)에 일치</td>
+</tr>
+<tr>
+<td><code>(?=)</code></td>
+<td>앞쪽 일치(Lookahead)</td>
+</tr>
+<tr>
+<td><code>(?&lt;=)</code></td>
+<td>뒤쪽 일치(Lookbehind)</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>0회 이상 연속으로 반복되는 문자와 가능한 많이 일치, <code>&#123;0,&#125;</code>와 동일</td>
+</tr>
+<tr>
+<td><code>*?</code></td>
+<td>0회 이상 연속으로 반복되는 문자와 가능한 적게 일치(lazy), <code>&#123;0&#125;</code>와 동일</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>1회 이상 연속으로 반복되는 문자에 가능한 많이 일치, <code>&#123;1,&#125;</code>와 동일</td>
+</tr>
+<tr>
+<td><code>+?</code></td>
+<td>1회 이상 연속으로 반복되는 문자에 가능한 적게 일치(lazy), <code>&#123;1&#125;</code>와 동일</td>
+</tr>
+<tr>
+<td><code>()</code></td>
+<td>그룹화</td>
+</tr>
 </tbody></table>
-</div><div class="article-licensing box"><div class="licensing-title"><p>Javascript 정규표현식 적응하기 (++꾸준히 업데이트)</p><p><a href="https://bongsee.github.io/2023/01/07/230107-js-regexp/">https://bongsee.github.io/2023/01/07/230107-js-regexp/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>BS K</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2023-01-07</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2023-01-07</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/%ED%8C%A8%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4/">패스트캠퍼스</a><a class="link-muted mr-2" rel="tag" href="/tags/%EA%B5%AD%EB%B9%84%EC%A7%80%EC%9B%90%EA%B5%90%EC%9C%A1/">국비지원교육</a><a class="link-muted mr-2" rel="tag" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/">메가바이트스쿨</a><a class="link-muted mr-2" rel="tag" href="/tags/MegabyteSchool/">MegabyteSchool</a><a class="link-muted mr-2" rel="tag" href="/tags/%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%B7%A8%EC%97%85%EB%B6%80%ED%8A%B8%EC%BA%A0%ED%94%84/">개발자취업부트캠프</a><a class="link-muted mr-2" rel="tag" href="/tags/%EB%82%B4%EC%9D%BC%EB%B0%B0%EC%9B%80%EC%B9%B4%EB%93%9C/">내일배움카드</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2023/01/08/230108-bundler-parcel/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Parcel 개요</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2023/01/07/230107-css-scss/"><span class="level-item">SCSS 기초</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">댓글</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+<ul>
+<li>주의) 줄 끝이라 함은 기본적으로 문자열의 가장 끝을 의미. (end quote의 바로 앞) 이 때, 줄 바꿈을 반영하려면 <code>m</code>flag를 사용</li>
+</ul>
+<h2 id="정규-표현식-예시"><a href="#정규-표현식-예시" class="headerlink" title="정규 표현식 예시"></a>정규 표현식 예시</h2><ul>
+<li><code>/\bf\w&#123;1,&#125;\b/g</code> : f로 시작하는 모든 영단어 검색</li>
+<li><code>/.&#123;1,&#125;(?=@)/g</code> : @ 앞쪽의 연속되는 모든 문자 (주로 이메일 처리할 때)</li>
+<li><code>/(?&lt;=@).&#123;1,&#125;/g</code> : @ 뒤쪽의 연속되는 모든 문자 (주로 이메일 처리할 때)</li>
+<li><code>문자열.replace(/\s/g, &quot;&quot;)</code> : 공백 처리할 때</li>
+<li><code>str.match(/\((.*)\)/)[1]</code> : 괄호 사이 값 추출</li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Javascript 정규표현식 적응하기 (++꾸준히 업데이트)</p><p><a href="https://bongsee.github.io/2023/01/07/230107-js-regexp/">https://bongsee.github.io/2023/01/07/230107-js-regexp/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>BS K</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2023-01-07</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2023-01-24</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/%ED%8C%A8%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4/">패스트캠퍼스</a><a class="link-muted mr-2" rel="tag" href="/tags/%EA%B5%AD%EB%B9%84%EC%A7%80%EC%9B%90%EA%B5%90%EC%9C%A1/">국비지원교육</a><a class="link-muted mr-2" rel="tag" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/">메가바이트스쿨</a><a class="link-muted mr-2" rel="tag" href="/tags/MegabyteSchool/">MegabyteSchool</a><a class="link-muted mr-2" rel="tag" href="/tags/%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%B7%A8%EC%97%85%EB%B6%80%ED%8A%B8%EC%BA%A0%ED%94%84/">개발자취업부트캠프</a><a class="link-muted mr-2" rel="tag" href="/tags/%EB%82%B4%EC%9D%BC%EB%B0%B0%EC%9B%80%EC%B9%B4%EB%93%9C/">내일배움카드</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2023/01/08/230108-bundler-parcel/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Parcel 개요</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2023/01/07/230107-css-scss/"><span class="level-item">SCSS 기초</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">댓글</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
             this.page.url = 'https://bongsee.github.io/2023/01/07/230107-js-regexp/';
             this.page.identifier = '2023/01/07/230107-js-regexp/';
         };

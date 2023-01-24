@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://bongsee.github.io/2023/01/07/230107-js-regexp/</loc>
+        <lastmod>2023-01-24T07:49:41.971Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://bongsee.github.io/2023/01/13/230113-js-promise/</loc>
         <lastmod>2023-01-18T06:01:40.761Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -67,14 +75,6 @@
     <url>
         <loc>https://bongsee.github.io/2023/01/08/230108-bundler-parcel/</loc>
         <lastmod>2023-01-07T15:51:40.711Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://bongsee.github.io/2023/01/07/230107-js-regexp/</loc>
-        <lastmod>2023-01-07T12:18:53.240Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
