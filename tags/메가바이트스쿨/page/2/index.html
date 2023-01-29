@@ -29,7 +29,366 @@
       switchTab();
       window.addEventListener('hashchange', switchTab, false);
   })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">Bonglog</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/tags">태그</a></li><li class="is-active"><a href="#" aria-current="page">메가바이트스쿨</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-01-05T08:47:28.032Z" title="2023. 1. 5. 오후 5:47:28">2023-01-05</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-01-09T13:41:37.602Z" title="2023. 1. 9. 오후 10:41:37">2023-01-09</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/javascript/">javascript</a></span><span class="level-item">9분안에 읽기 (약 1343 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/01/05/230105-js-intersection-observer-api/">Intersection Observer API</a></h1><div class="content"><h1 id="Intersection-Observer-API"><a href="#Intersection-Observer-API" class="headerlink" title="Intersection Observer API"></a>Intersection Observer API</h1><p>Javascrip 1차과제에서 무한 스크롤을 구현하기 위해 공부한 내용을 정리.<br><a target="_blank" rel="noopener" href="https://heropy.blog/2019/10/27/intersection-observer/">Heropy님의 블로그를 참조합니다.</a></p>
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">Bonglog</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/tags">태그</a></li><li class="is-active"><a href="#" aria-current="page">메가바이트스쿨</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-01-07T12:09:10.238Z" title="2023. 1. 7. 오후 9:09:10">2023-01-07</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-01-25T08:10:21.460Z" title="2023. 1. 25. 오후 5:10:21">2023-01-25</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/javascript/">javascript</a></span><span class="level-item">8분안에 읽기 (약 1186 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/01/07/230107-js-regexp/">Javascript 정규표현식 적응하기 (++꾸준히 업데이트)</a></h1><div class="content"><h1 id="정규-표현식"><a href="#정규-표현식" class="headerlink" title="정규 표현식"></a>정규 표현식</h1><ul>
+<li>지난 알고리즘 스터디 영찬님 발표 때 정규표현식을 처음 접했고, 이후 문제풀이에서 문자열 탐색 문제에 적용해보고자 간단하게 공부한 내용을 정리해봅니다.<br><a target="_blank" rel="noopener" href="https://heropy.blog/2018/10/28/regexp/">Heropy님 블로그에 너무 정리가 잘되어있다.</a></li>
+</ul>
+<h2 id="개요"><a href="#개요" class="headerlink" title="개요"></a>개요</h2><ul>
+<li><p>정규표현식은 기본적으로 문자열을 탐색하기 위한 방법의 하나로, 문자열 메서드와 조합하여 많이 사용한다고 한다.</p>
+</li>
+<li><p><code>패턴과 플래그를 이용하여 생성한 정규표현식</code>을 이용하여 <code>대상 문자열</code>을 탐색하여 <code>결과</code>를 얻어낸다! 로 요약이 가능하겠다.</p>
+</li>
+<li><p><code>패턴</code>을 문제 상황의 요구 조건에 맞게 얼마나 잘 표현을 하느냐가 중요해보인다.</p>
+</li>
+<li><p><code>패턴</code>을 작성하는데 사용되는 여러 클래스들이 존재한다.</p>
+</li>
+<li><p>정규표현식 생성에는 리터럴 방식(<code>/pattern/flag</code>)과 RegExp 생성자 함수를 이용한 객체 생성 두 가지가 있다.</p>
+<ul>
+<li>전자는 코드를 작성하고 있는 시점에 정확한 패턴을 알고있을 때 사용. 보통 사용하게 될 방식.</li>
+<li>후자는 상황에 따라 정규표현식을 동적으로 생성해야할 때 사용. 생성자 함수의 인자로 패턴과 플래그를 넘겨준다 (상황에 따라!).</li>
+</ul>
+</li>
+<li><p>정규표현식은 많이 알아두면 알아둘 수록 문자열 탐색에 있어서 아주 편리할 것 같다.</p>
+</li>
+<li><p>근데 그 표현식이 너무 많아보이는구나하ㅏ함….</p>
+</li>
+</ul>
+<h2 id="정규표현식-메소드"><a href="#정규표현식-메소드" class="headerlink" title="정규표현식 메소드"></a>정규표현식 메소드</h2><table>
+<thead>
+<tr>
+<th>메소드</th>
+<th>문법</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>exec</td>
+<td>정규식.exec(문자열)</td>
+<td>일치하는 하나의 정보(Array) 반환</td>
+</tr>
+<tr>
+<td>test</td>
+<td>정규식.test(문자열)</td>
+<td>일치 여부(Boolean) 반환</td>
+</tr>
+<tr>
+<td>search</td>
+<td>문자열.search(정규식)</td>
+<td>일치하는 문자열의 인덱스(Number) 반환</td>
+</tr>
+<tr>
+<td>replace</td>
+<td>문자열.replace(정규식, 바꿀 문자)</td>
+<td>일치하는 문자열을 지정 문자열로 교체하고 교체된 문자열 반환</td>
+</tr>
+<tr>
+<td>match</td>
+<td>문자열.match(정규식)</td>
+<td>일치하는 문자열의 배열 반환</td>
+</tr>
+<tr>
+<td>split</td>
+<td>문자열.split(정규식)</td>
+<td>일치하는 문자열을 분할하여 배열(Array)로 반환</td>
+</tr>
+</tbody></table>
+<ul>
+<li>단순히 true or false 값을 원한다면 test, search 메소드를 이용하자.</li>
+</ul>
+<h2 id="플래그"><a href="#플래그" class="headerlink" title="플래그"></a>플래그</h2><table>
+<thead>
+<tr>
+<th>플래그</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>g</code>(global)</td>
+<td>모든 문자와 여러 줄 일치(global)</td>
+</tr>
+<tr>
+<td><code>i</code>(ignore)</td>
+<td>영어 대소문자를 구분 않고 일치</td>
+</tr>
+<tr>
+<td><code>m</code>(multiLine)</td>
+<td>여러 줄 일치</td>
+</tr>
+</tbody></table>
+<h2 id="패턴"><a href="#패턴" class="headerlink" title="패턴"></a>패턴</h2><table>
+<thead>
+<tr>
+<th>정규식 패턴</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[a-z]</code></td>
+<td>a부터 z 사이의 문자 구간에 일치(영어 소문자)</td>
+</tr>
+<tr>
+<td><code>[A-Z]</code></td>
+<td>A부터 Z 사이의 문자 구간에 일치(영어 대문자)</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>줄의 시작에서 일치 <code>/^abc/</code></td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>줄의 끝에서 일치 <code>/xyz$/</code></td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>임의의 한 문자와 일치</td>
+</tr>
+<tr>
+<td><code>a&amp;verbar;b</code></td>
+<td>a 또는 b와 일치 <code>/h..p/</code></td>
+</tr>
+<tr>
+<td><code>ab?</code></td>
+<td>b가 없거나 b와 일치 <code>https?</code></td>
+</tr>
+<tr>
+<td><code>&#123;3&#125;</code></td>
+<td>3개 연속 일치</td>
+</tr>
+<tr>
+<td><code>&#123;3,&#125;</code></td>
+<td>3개 이상 연속 일치</td>
+</tr>
+<tr>
+<td><code>&#123;3,5&#125;</code></td>
+<td>3~5개 연속 일치</td>
+</tr>
+<tr>
+<td><code>[abc]</code></td>
+<td>a 또는 b 또는 c와 일치</td>
+</tr>
+<tr>
+<td><code>[a-z]</code></td>
+<td>a부터 z 사이의 문자 구간에 일치(영어 소문자)</td>
+</tr>
+<tr>
+<td><code>[A-Z]</code></td>
+<td>A부터 Z 사이의 문자 구간에 일치(영어 대문자)</td>
+</tr>
+<tr>
+<td><code>[0-9]</code></td>
+<td>0부터 9 사이의 문자 구간에 일치(숫자)</td>
+</tr>
+<tr>
+<td><code>[가-힣]</code></td>
+<td>가부터 힣 사이의 문자 구간에 일치(한글)</td>
+</tr>
+<tr>
+<td><code>[^abc]</code></td>
+<td>a 또는 b 또는 c가 아닌 나머지 문자에 일치(부정)</td>
+</tr>
+<tr>
+<td><code>\</code></td>
+<td>이스케이프 문자, <code>/\.\?\/\$\^/</code></td>
+</tr>
+<tr>
+<td><code>\w</code>(word)</td>
+<td>63개 문자(영문 대소문자 52개 + 숫자 10개 + _(underscore))에 일치</td>
+</tr>
+<tr>
+<td><code>\b</code>(boundary)</td>
+<td>63개 문자(영문 대소문자 52개 + 숫자 10개 + _(underscore))가 아닌 나머지 문자에 일치하는 경계(boundary)</td>
+</tr>
+<tr>
+<td><code>\d</code>(digit)</td>
+<td>숫자에 일치</td>
+</tr>
+<tr>
+<td><code>\s</code>(space)</td>
+<td>공백(Space, Tab, 줄바꿈 등)에 일치</td>
+</tr>
+<tr>
+<td><code>(?=)</code></td>
+<td>앞쪽 일치(Lookahead)</td>
+</tr>
+<tr>
+<td><code>(?&lt;=)</code></td>
+<td>뒤쪽 일치(Lookbehind)</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>0회 이상 연속으로 반복되는 문자와 가능한 많이 일치, <code>&#123;0,&#125;</code>와 동일</td>
+</tr>
+<tr>
+<td><code>*?</code></td>
+<td>0회 이상 연속으로 반복되는 문자와 가능한 적게 일치(lazy), <code>&#123;0&#125;</code>와 동일</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>1회 이상 연속으로 반복되는 문자에 가능한 많이 일치, <code>&#123;1,&#125;</code>와 동일</td>
+</tr>
+<tr>
+<td><code>+?</code></td>
+<td>1회 이상 연속으로 반복되는 문자에 가능한 적게 일치(lazy), <code>&#123;1&#125;</code>와 동일</td>
+</tr>
+<tr>
+<td><code>()</code></td>
+<td>그룹화</td>
+</tr>
+</tbody></table>
+<ul>
+<li>주의) 줄 끝이라 함은 기본적으로 문자열의 가장 끝을 의미. (end quote의 바로 앞) 이 때, 줄 바꿈을 반영하려면 <code>m</code>flag를 사용</li>
+</ul>
+<h2 id="정규-표현식-예시"><a href="#정규-표현식-예시" class="headerlink" title="정규 표현식 예시"></a>정규 표현식 예시</h2><ul>
+<li><code>/\bf\w&#123;1,&#125;\b/g</code> : f로 시작하는 모든 영단어 검색</li>
+<li><code>/.&#123;1,&#125;(?=@)/g</code> : @ 앞쪽의 연속되는 모든 문자 (주로 이메일 처리할 때)</li>
+<li><code>/(?&lt;=@).&#123;1,&#125;/g</code> : @ 뒤쪽의 연속되는 모든 문자 (주로 이메일 처리할 때)</li>
+<li><code>문자열.replace(/\s/g, &quot;&quot;)</code> : 공백 처리할 때</li>
+<li><code>str.match(/\((.*)\)/)[1]</code> : 괄호 사이 값 추출</li>
+</ul>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-01-07T08:27:50.260Z" title="2023. 1. 7. 오후 5:27:50">2023-01-07</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-01-07T08:34:39.328Z" title="2023. 1. 7. 오후 5:34:39">2023-01-07</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/html-css/">html/css</a></span><span class="level-item">13분안에 읽기 (약 1953 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/01/07/230107-css-scss/">SCSS 기초</a></h1><div class="content"><h1 id="SCSS"><a href="#SCSS" class="headerlink" title="SCSS"></a>SCSS</h1><ul>
+<li>Vanilla CSS만으론 효율이 떨어지고 코드가 너무 늘어지는 단점이 보여 SCSS를 적용하고자 하여 배운 내용을 간략하게 정리해본다.</li>
+<li>세세하게 다루진 않고 핵심을 중심으로 정보들을 나열하며, 어떤 기능들이 가능한지 정도만 기록하고자 한다.</li>
+<li>여기서 다루는 내용은 fast campus의 스타트업 프론트엔드 4기 필수 수강 강의(박영웅 강사님)의 내용에 의존합니다.</li>
+</ul>
+<h2 id="중첩-Nesting"><a href="#중첩-Nesting" class="headerlink" title="중첩 (Nesting)"></a>중첩 (Nesting)</h2><ul>
+<li>CSS 문법으로 원하는 요소를 선택자로 선택할 때, 내가 원하는 요소를 정확히 끌어내기 위해(중복되는 이름이 있으면 내가 원하지 않은 엉뚱한 요소에도 적용이 될 우려가 있기 때문에) 조상 요소 선택자부터 시작해서 선택자들이 늘어지는 단점이 있었다.</li>
+<li>또한, 새로운 요소를 선택하고자 하면 또 다시 조상요소부터 거슬러 내려와 늘어지게 써야했었다.</li>
+<li>SCSS에선 중첩 문법을 지원하여 위와 같은 단점을 파훼하고 효율적인 코드 작성을 이루어냈다.</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> <span class="selector-class">.navbar</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.container</span> <span class="selector-class">.navbar</span> <span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.container</span> <span class="selector-class">.navbar</span> <span class="selector-class">.item</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="selector-class">.navbar</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line"></span><br><span class="line">    <span class="selector-class">.item</span> &#123;</span><br><span class="line">      <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">      <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line"></span><br><span class="line">      <span class="selector-tag">img</span> &#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="amp-상위-선택자-참조"><a href="#amp-상위-선택자-참조" class="headerlink" title="&amp; 상위 선택자 참조"></a><code>&amp;</code> 상위 선택자 참조</h2><ul>
+<li>상위 선택자를 &amp; 으로 그대로 가져와 네이밍에 이어서 쓸 수 있다. (&amp;기호가 상위 선택자와 치환된다고 보면 편하다.)</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.container__item</span> &#123;</span><br><span class="line">  <span class="attribute">flex-grow</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  &amp;__item &#123;</span><br><span class="line">    <span class="attribute">flex-grow</span>: <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>이 기능은 요즘 내가 연습하고 있는 BEM 네이밍 컨벤션을 적용했을 때 더욱 효과적일 것으로 보인다.</li>
+</ul>
+<h2 id="중첩된-속성-네임스페이스-개념"><a href="#중첩된-속성-네임스페이스-개념" class="headerlink" title="중첩된 속성 (네임스페이스 개념)"></a>중첩된 속성 (네임스페이스 개념)</h2><ul>
+<li>네임스페이스란 이름을 통해 구분 가능한 범위를 만들어내는 것으로, 일종의 유효범위를 지정하는 방법을 말한다.</li>
+<li>아예 단축 속성을 사용하거나, 단축 속성이 없는 속성들의 경우 SCSS에서 제공하는 중첩된 속성을 사용해도 효과적일 것으로 보인다.</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">font-weight</span>: <span class="number">500</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">12px</span>;</span><br><span class="line">  <span class="attribute">font-family</span>: sans-ser;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">font</span>: &#123;</span><br><span class="line">    weight: <span class="number">500</span>;</span><br><span class="line">    size: <span class="number">12px</span>;</span><br><span class="line">    family: sans-serif;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>속성의 category를 묶어버리니 자연스럽게 css속성들끼리 섞이지도 않고 한눈에 파악하기도 좋아보여 가능하면 많이 사용하는게 좋을 것 같다.</li>
+</ul>
+<h2 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a>Variables</h2><ul>
+<li>자주 사용되는 수치나, 페이지 내에서 중용되는 main theme 속성들의 경우 변수를 선언해서 재사용하면 편리하다.</li>
+<li>CSS에서도 사용할 수 있으며 SCSS에서 사용되는 문법을 정리한다.</li>
+<li>잊어버리기 쉬운, 그러나 중요한 개념 : 식별자는 scope(유효 범위)를 가지며, 식별자가 선언된 위치에 의해 결정된다.</li>
+<li>CSS에서 모든 변수들을 전역에서 선언하고 사용하는 경우가 많은데, 가능하다면 해당 변수가 어디에서 어디까지 필요하고, 그에 따라 스코프를 줄여보는 건 어떨까 ?</li>
+<li>변수의 선언에 사용되는 기호 : <code>$</code>, 세미 콜론<code>;</code>으로 마무리 짓기.</li>
+</ul>
+<h2 id="산술-연산"><a href="#산술-연산" class="headerlink" title="산술 연산"></a>산술 연산</h2><ul>
+<li>기본적인 산술이 가능함.</li>
+<li>다만, 나누기 <code>/</code>의 경우 단축 속성 구분자로서 동작이 가능하기 때문에 단독으로 그냥 쓰면 동작하지 않는다.<ol>
+<li>소괄호로 묶거나</li>
+<li>변수와 함께 쓰거나</li>
+<li>다른 연산자와 함께 쓰면</li>
+</ol>
+<ul>
+<li>아 이 <code>/</code>기호는 나눗셈을 위한 것이구나, 라고 엔진이 인식할 수 있기 때문에 위와 같이 사용하자.</li>
+</ul>
+</li>
+<li>근데 그냥 calc()를 쓸 것 같다.</li>
+</ul>
+<h2 id="Mixins-재활용"><a href="#Mixins-재활용" class="headerlink" title="Mixins (재활용)"></a>Mixins (재활용)</h2><ul>
+<li>CSS에서 자주 사용되는 조합의 경우 함께 묶어놓고 필요할 때 가져다 사용하면 매우 편리하지 않을까 ?</li>
+<li>예를 들어, flex item들을 가운데 정렬하기 위해 flex container에 선언하는 다음과 같은 속성들 말이다.</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.flex-container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>즉, Mixins은 자주 사용되는 CSS 코드들을 묶어서 재활용하기 위해 태어났다. 마치 변수나 함수를 이용하는 것처럼 말이다.</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> f-center &#123;</span><br><span class="line">  <span class="comment">// f-center라는 mixin 식별자를 규정하고, 아래와 같이 재사용할 코드들을 나열한다.</span></span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="keyword">@include</span> f-center // 원하는 mixin 식별자를 <span class="keyword">@include</span> 키워드와 함께 불러온다.</span><br><span class="line">    // 나머지 CSS속성들은 이어서 쓰면 된다.</span><br><span class="line">;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 위의 scss <span class="selector-tag">code</span>를 css로 compile 했을 때</span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>SCSS는 한 단계 더 나아가 Mixin을 조금 더 유동적으로 사용하고자 한다.<ol>
+<li>Mixins은 매개변수를 지정하여 원하는 인수를 받아 내부의 CSS 속성에 적용할 수 있다.</li>
+<li>만일 매개변수에 주어지는 인수가 없는 경우를 위해 기본값을 지정할 수 있다. <code>:</code> 콜론을 사용한다.</li>
+<li>Mixin이 여러 매개변수를 사용할 때엔 매개변수의 순서에 맞게 인수를 넣어줘야 하는데, 다른 매개변수를 건드리지 않고 특정 인수만 전달하고 싶을 땐 <code>키워드 인수</code>를 활용하도록 하자. 매개변수 기본값을 설정할 때 처럼 <code>:</code> 사용.</li>
+</ol>
+</li>
+</ul>
+<h2 id="반복문"><a href="#반복문" class="headerlink" title="반복문"></a>반복문</h2><ul>
+<li>값을 처리하는 부분은 그대로 변수를 사용, 값을 처리하지 않는 부분에서 사용 시엔 <code>보간</code>을 사용함. 사용되는 기호 : <code>#&#123;&#125;</code> (SCSS에서 변수를 선언할 때 $가 사용되기 때문에 #을 차용한 것이라 이해하자.)</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@for</span> <span class="variable">$i</span> from <span class="number">1</span> through <span class="number">3</span> &#123;</span><br><span class="line">  <span class="selector-class">.container</span><span class="selector-pseudo">:nth-child</span>(#&#123;$i&#125;) &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span> * <span class="variable">$i</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span><span class="selector-pseudo">:nth-child</span>(<span class="number">1</span>) &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.container</span><span class="selector-pseudo">:nth-child</span>(<span class="number">2</span>) &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.container</span><span class="selector-pseudo">:nth-child</span>(<span class="number">3</span>) &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="함수"><a href="#함수" class="headerlink" title="함수"></a>함수</h2><ul>
+<li>Mixin과의 차이점이라고 한다면, 함수 내에서 연산한 결과값을 return 받아 사용할 수 있다는 점..?</li>
+<li>화면 비율에 따라 width를 조정해서 쓰는 경우 등등.. 많이 쓰일 것 같진 않아보인다.</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@function</span> ratio(<span class="variable">$size</span>, <span class="variable">$ratio</span>) &#123;</span><br><span class="line">  <span class="keyword">@return</span> <span class="variable">$size</span> * <span class="variable">$ratio</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="variable">$width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="variable">$width</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="built_in">ratio</span>(<span class="variable">$width</span>, <span class="number">1</span>/<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="색상-내장-함수"><a href="#색상-내장-함수" class="headerlink" title="색상 내장 함수"></a>색상 내장 함수</h2><ol>
+<li><code>mix($color1, $color2)</code> : 두 개의 색상을 섞은 색을 반환</li>
+<li><code>lighten($color, 10%)</code> : 색상을 10% 더 밝게</li>
+<li><code>darken($color, 10%)</code> : 색상을 10% 더 어둡게<ul>
+<li>2,3번은 mouse hover효과를 줄 때 자주 사용될 것으로 보인다.</li>
+</ul>
+</li>
+<li><code>saturate($color, 10%)</code> : 색상의 채도를 10% 상승</li>
+<li><code>desaturate($color, 10%)</code> : 색상의 채도를 10% 하강</li>
+<li><code>grayscale($color)</code> : 색상을 회색으로 변환</li>
+<li><code>invert($color)</code> : 색상 반전</li>
+<li><code>rgba($color, 0.3)</code> : 색상의 불투명도를 조절</li>
+</ol>
+<h2 id="모듈-참조"><a href="#모듈-참조" class="headerlink" title="모듈 참조"></a>모듈 참조</h2><ul>
+<li>CSS와의 차이점<ol>
+<li>url함수 사용 X</li>
+<li>확장자 필요없음</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> url(<span class="string">&quot;./variables.css&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;./variables&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>여기서부턴 상대적으로 중요도가 떨어지므로 참고용</p>
+<h2 id="데이터-종류"><a href="#데이터-종류" class="headerlink" title="데이터 종류"></a>데이터 종류</h2><ul>
+<li>숫자, 문자, 색상, boolean, list, map</li>
+</ul>
+<h2 id="반복문-each"><a href="#반복문-each" class="headerlink" title="반복문(@each)"></a>반복문(@each)</h2><ol>
+<li>list 데이터 활용</li>
+</ol>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$color</span>: orange, tomato, royalblue;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@each</span> <span class="variable">$c</span> in <span class="variable">$color</span> &#123;</span><br><span class="line">  <span class="selector-class">.box</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="variable">$c</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: orange;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: tomato;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: royalblue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>map 데이터 활용</li>
+</ol>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$colormap</span>: (</span><br><span class="line">  o: orange,</span><br><span class="line">  t: tomato,</span><br><span class="line">  rb: royalblue,</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">@each</span> <span class="variable">$k</span>, <span class="variable">$v</span> in <span class="variable">$colormap</span> &#123;</span><br><span class="line">  <span class="selector-class">.box-</span>#&#123;<span class="variable">$k</span>&#125; &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="variable">$v</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box-o</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: orange;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box-t</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: tomato;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box-rb</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: royalblue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="재활용-content"><a href="#재활용-content" class="headerlink" title="재활용(@content)"></a>재활용(@content)</h2><ul>
+<li>기존의 Mixin에 CSS속성을 추가적으로 넣고 싶을 때 사용</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> center &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">  <span class="keyword">@content</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="keyword">@include</span> center &#123;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">100px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">100px</span>; // <span class="keyword">@include</span> 구문 옆의 중괄호 안의 내용이 content에 담기고, mixin내부에서 content를 불러오는 느낌.</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>그런데 이렇게 하지 않고 @include 이후에 css를 계속 작성할 수 있는데 content를 쓰는 경우가 있을까 싶다.</li>
+</ul>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-01-05T08:47:28.032Z" title="2023. 1. 5. 오후 5:47:28">2023-01-05</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-01-09T13:41:37.602Z" title="2023. 1. 9. 오후 10:41:37">2023-01-09</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/javascript/">javascript</a></span><span class="level-item">9분안에 읽기 (약 1343 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/01/05/230105-js-intersection-observer-api/">Intersection Observer API</a></h1><div class="content"><h1 id="Intersection-Observer-API"><a href="#Intersection-Observer-API" class="headerlink" title="Intersection Observer API"></a>Intersection Observer API</h1><p>Javascrip 1차과제에서 무한 스크롤을 구현하기 위해 공부한 내용을 정리.<br><a target="_blank" rel="noopener" href="https://heropy.blog/2019/10/27/intersection-observer/">Heropy님의 블로그를 참조합니다.</a></p>
 <h2 id="개요"><a href="#개요" class="headerlink" title="개요"></a>개요</h2><p>기준이 되는 root요소와 관찰 대상인 target의 가시성(교차) 정보를 이용해서 비동기적으로 로직을 구현할 수 있다.</p>
 <h2 id="장점"><a href="#장점" class="headerlink" title="장점"></a>장점</h2><ol>
 <li>scroll 이벤트가 가지는 한계를 극복. scroll 이벤트와 같이 짧은 시간안에 매우 많은 횟수로 발생될 수 있는 경우 브라우저 렌더링 성능이나 이벤트 연속 호출과 같은 문제가 발생한다.</li>
@@ -424,98 +783,7 @@
 </ol>
 </li>
 </ul>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-01-02T02:51:55.029Z" title="2023. 1. 2. 오전 11:51:55">2023-01-02</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-01-02T03:03:59.064Z" title="2023. 1. 2. 오후 12:03:59">2023-01-02</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/TIL/">TIL</a></span><span class="level-item">2분안에 읽기 (약 275 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/01/02/til-230101-css/">TIL 230101 (CSS)</a></h1><div class="content"><h1 id="230101-오늘의-학습"><a href="#230101-오늘의-학습" class="headerlink" title="230101 오늘의 학습"></a>230101 오늘의 학습</h1><h2 id="position"><a href="#position" class="headerlink" title="position"></a>position</h2><ol>
-<li>position은 <code>배치</code>다.</li>
-<li><code>position : absolute</code> 또는 <code>postion : fixed</code> 적용 시 해당 요소는 <code>display : block</code> 이 자동으로 적용됨.</li>
-<li>쌓임 맥락<ol>
-<li>요소에 position 속성이 지정되어 있나 ? (static 제외)</li>
-<li>1번 만족, z-index 속성의 값이 클 수록 위에 쌓임.</li>
-<li>1,2번 조건이 모두 동일할 시, HTML구조 상 나중의 것이 위에 쌓임.</li>
-<li>z-index의 기본값은 <code>auto</code>이다. (부모의 것을 상속받음.)</li>
-</ol>
-</li>
-</ol>
-<h2 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h2><ol>
-<li>flex container는 block으로 동작. (<code>display : inline-flex</code>으로 다르게 동작시킬 수 있다.)</li>
-<li>(flex-direction : row일 경우) flex item들은 기본적으로 width를 콘텐츠 영역만큼(즉, 최소한으로)만 가져감. 정렬은 콘텐츠들과 남는 공간(여백)을 가지고 다룰 수 있기 때문에, 반대로 생각해서 여백없이 width를 최대한으로 가져가버리면 정렬이란걸 할 수 없게 된다.</li>
-<li><code>align-items : stretch</code>, <code>align-content : stretch</code> 기본값이 최대한 늘어나는 것이라 height에 따로 지정한 값이 없다면(즉, height : auto) height는 쭉쭉 늘어남.</li>
-</ol>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-01-01T11:02:40.247Z" title="2023. 1. 1. 오후 8:02:40">2023-01-01</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-01-01T12:16:02.389Z" title="2023. 1. 1. 오후 9:16:02">2023-01-01</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/html-css/">html/css</a></span><span class="level-item">6분안에 읽기 (약 955 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/01/01/221231-css-background/">CSS 배경과 이미지에 관하여</a></h1><div class="content"><h1 id="CSS에서-배경과-이미지에-관하여-정리"><a href="#CSS에서-배경과-이미지에-관하여-정리" class="headerlink" title="CSS에서 배경과 이미지에 관하여 정리"></a>CSS에서 배경과 이미지에 관하여 정리</h1><h2 id="배경-background"><a href="#배경-background" class="headerlink" title="배경 (background)"></a><code>배경 (background)</code></h2><h3 id="background-속성들"><a href="#background-속성들" class="headerlink" title="background 속성들"></a>background 속성들</h3><ol>
-<li>background-color</li>
-</ol>
-<ul>
-<li>요소의 배경색을 입힘.</li>
-<li>기본값 : transparent</li>
-</ul>
-<ol start="2">
-<li>background-image : 요소의 배경에 이미지를 렌더링</li>
-</ol>
-<ul>
-<li>입히고자 하는 이미지의 경로를 <code>url() 함수</code>의 인자로 넣어준다.</li>
-<li>아무런 설정값 없이 이미지를 넣게 되면 요소 안에 이미지 파일이 가지는 실제 크기가 렌더링 됨.</li>
-</ul>
-<ol start="3">
-<li>background-repeat</li>
-</ol>
-<ul>
-<li>이미지가 요소 안에서 반복적으로 출력되게 할 것인지를 지정.</li>
-<li>기본값 : repeat , 이미지가 최대한 담길 수 있는 한도 내에서 반복적으로 출력됨.</li>
-<li>repeat-x &#x2F; repeat-y &#x2F; no-repeat의 값으로도 설정할 수 있고, 보통은 no-repeat을 자주 사용하게 될 것 같다.</li>
-</ul>
-<ol start="4">
-<li>background-position</li>
-</ol>
-<ul>
-<li>기본값 : 0% 0%</li>
-<li>단위 지정 (축 평행 이동)<ul>
-<li>%지정과 px지정의 작동 방식이 약간 다름. 음수%가 양수px처럼 동작. (결론은 두 단위모두 초기 상태에서 x축, y축으로 얼마만큼 평행이동하여 위치시킬지 지정.)</li>
-</ul>
-</li>
-<li>기준 구역 지정 : top, bottom, left, right, center<ul>
-<li>정방형 9구역 중 어느 영역을 기준으로 이미지를 위치시킬지 지정(지정된 구역을 기준으로 <code>핀 고정</code>한 게 가장 정확한 듯.)</li>
-</ul>
-</li>
-</ul>
-<ol start="5">
-<li>background-size</li>
-</ol>
-<ul>
-<li>기본값 : auto (이미지의 실제 크기로 브라우저가 알아서 렌더링)</li>
-<li>단위 지정 : 가로 세로 지정해서 넣는데 보통 가로 하나만 넣으면 브라우저가 알아서 원본 비율을 유지하여 세로너비를 지정.</li>
-<li>cover : 배경이미지가 잘리더라도 요소의 배경에 빈 곳 없이 꽉 차도록 한다. (요소의 긴 너비을 기준으로 비율을 유지)</li>
-<li>contain : 요소의 배경에 빈 곳이 생기더라도 이미지가 모두 출력되도록 한다. (요소의 짧은 너비을 기준으로 비율을 유지)</li>
-</ul>
-<ol start="6">
-<li>background-attachment</li>
-</ol>
-<ul>
-<li>요소의 배경 이미지 스크롤 특성을 지정한다.</li>
-<li>기본값 : scroll (이미지가 html 요소를 따라서 스크롤 됨. 우리가 허구헌날 보는 방식이 요거라 생각하면 됨.)</li>
-<li>fixed : 이미지가 뷰포트 (화면 렌더링 영역) 에 고정됨. 마치 스크롤 하는데 컨텐츠는 스크롤링되어 딸려올라가거나 내려오는데 배경 이미지는 화면에 그대로 고정되어 있는 느낌.</li>
-</ul>
-<h3 id="기타"><a href="#기타" class="headerlink" title="기타"></a>기타</h3><ul>
-<li>background-color와 background-image의 쌓임 맥락 : 배경색 위에 이미지가 쌓인다고 보면 됨.</li>
-</ul>
-<hr>
-<h2 id="그렇다면-background-image와-lt-img-src-quot-quot-alt-quot-quot-gt-를-언제-어떻게-선택하여-사용할까"><a href="#그렇다면-background-image와-lt-img-src-quot-quot-alt-quot-quot-gt-를-언제-어떻게-선택하여-사용할까" class="headerlink" title="그렇다면 background-image와 &lt;img src=&quot;&quot; alt=&quot;&quot;/&gt;를 언제 어떻게 선택하여 사용할까 ?"></a><code>그렇다면 background-image와 &lt;img src=&quot;&quot; alt=&quot;&quot;/&gt;를 언제 어떻게 선택하여 사용할까 ?</code></h2><p>(배경으로서의 사진을 이용하는 경우가 아니라 단순 사진을 삽입하는 경우에 따져보기)</p>
-<ol>
-<li>업데이트 주기</li>
-</ol>
-<ul>
-<li>업데이트가 짧다 ? img 태그 쓰기.<ul>
-<li>이유는 간단하다. 둘의 차이는 html의 src 속성으로 경로를 지정하느냐, css의 속성값으로 url 함수의 인자로 경로를 지정하느냐.</li>
-<li>백단에서 css의 속성값에 접근하여 바꿀 방법이 없다고 한다. 그러니 업데이트를 자주할 것 같은 이미지는 img태그의 src 속성을 통하여 지정해주도록 하자.</li>
-</ul>
-</li>
-<li>그럼 업데이트가 자주있는 경우엔 무조건 background-size나 background-position 같은 유용한 속성을 포기해야하느냐?<ul>
-<li>방법이 있긴하다. 바로 html에서 style 전역속성을 사용하여 인라인 스타일로 background 속성을 주는 것. 이렇게 되면 백단에서 경로값을 가져와서 수정할 수 있다.</li>
-</ul>
-</li>
-</ul>
-<ol start="2">
-<li>object-fit, object-position으로 background-size, background-position을 대체할 수 있다.</li>
-</ol>
-</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/">이전</a></div><div class="pagination-next"><a href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/page/3/">다음</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/">1</a></li><li><a class="pagination-link is-current" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/page/2/">2</a></li><li><a class="pagination-link" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/page/3/">3</a></li><li><a class="pagination-link" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/page/4/">4</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/profile.jpg" alt="Bongsee"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Bongsee</p><p class="is-size-6 is-block">Record TIL &amp; Error</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Seoul, Republic of Korea</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">포스트</p><a href="/archives"><p class="title">39</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">카테고리</p><a href="/categories"><p class="title">9</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">태그</p><a href="/tags"><p class="title">20</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/bongsee" target="_blank" rel="noopener">팔로우</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/bongsee"><i class="fab fa-github"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">카테고리</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/TIL/"><span class="level-start"><span class="level-item">TIL</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/categories/Weekly-Recap/"><span class="level-start"><span class="level-item">Weekly Recap</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/algorithm/"><span class="level-start"><span class="level-item">algorithm</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/categories/bundler/"><span class="level-start"><span class="level-item">bundler</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/error/"><span class="level-start"><span class="level-item">error</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/html-css/"><span class="level-start"><span class="level-item">html/css</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/javascript/"><span class="level-start"><span class="level-item">javascript</span></span><span class="level-end"><span class="level-item tag">8</span></span></a><ul><li><a class="level is-mobile" href="/categories/javascript/algorithm/"><span class="level-start"><span class="level-item">algorithm</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/wil/"><span class="level-start"><span class="level-item">wil</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">최근 글</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-01-25T08:11:37.075Z">2023-01-25</time></p><p class="title"><a href="/2023/01/25/wil-2301-4th/">23년 1월 4주차 주간회고</a></p><p class="categories"><a href="/categories/Weekly-Recap/">Weekly Recap</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-01-15T08:40:42.423Z">2023-01-15</time></p><p class="title"><a href="/2023/01/15/230114-js-error%EC%B2%98%EB%A6%AC/">에러 처리</a></p><p class="categories"><a href="/categories/javascript/">javascript</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-01-12T16:08:52.581Z">2023-01-13</time></p><p class="title"><a href="/2023/01/13/230113-js-promise/">비동기 pattern (Callback, Promise Async/Await)</a></p><p class="categories"><a href="/categories/javascript/">javascript</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-01-12T11:19:05.712Z">2023-01-12</time></p><p class="title"><a href="/2023/01/12/til-230112-js/">TIL 230112 javascript</a></p><p class="categories"><a href="/categories/TIL/">TIL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-01-11T02:51:36.932Z">2023-01-11</time></p><p class="title"><a href="/2023/01/11/wil-2301-2nd/">23년 1월 2주차 주간회고</a></p><p class="categories"><a href="/categories/Weekly-Recap/">Weekly Recap</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">아카이브</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/01/"><span class="level-start"><span class="level-item">1월 2023</span></span><span class="level-end"><span class="level-item tag">20</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/12/"><span class="level-start"><span class="level-item">12월 2022</span></span><span class="level-end"><span class="level-item tag">19</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">태그</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/API/"><span class="tag">API</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CSS/"><span class="tag">CSS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MegabyteSchool/"><span class="tag">MegabyteSchool</span><span class="tag">39</span></a></div><div class="control"><a class="tags has-addons" href="/tags/TIL/"><span class="tag">TIL</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/algorithm/"><span class="tag">algorithm</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/clone/"><span class="tag">clone</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/css/"><span class="tag">css</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/error/"><span class="tag">error</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/etc/"><span class="tag">etc</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/html/"><span class="tag">html</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/javascript/"><span class="tag">javascript</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/markdown/"><span class="tag">markdown</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/parcel/"><span class="tag">parcel</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/scss/"><span class="tag">scss</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%B7%A8%EC%97%85%EB%B6%80%ED%8A%B8%EC%BA%A0%ED%94%84/"><span class="tag">개발자취업부트캠프</span><span class="tag">39</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EA%B5%AD%EB%B9%84%EC%A7%80%EC%9B%90%EA%B5%90%EC%9C%A1/"><span class="tag">국비지원교육</span><span class="tag">39</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%82%B4%EC%9D%BC%EB%B0%B0%EC%9B%80%EC%B9%B4%EB%93%9C/"><span class="tag">내일배움카드</span><span class="tag">39</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/"><span class="tag">메가바이트스쿨</span><span class="tag">39</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%8C%A8%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4/"><span class="tag">패스트캠퍼스</span><span class="tag">39</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">Bonglog</a><p class="is-size-7"><span>&copy; 2023 BS K</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("ko");</script><script>var IcarusThemeSettings = {
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/">이전</a></div><div class="pagination-next"><a href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/page/3/">다음</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/">1</a></li><li><a class="pagination-link is-current" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/page/2/">2</a></li><li><a class="pagination-link" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/page/3/">3</a></li><li><a class="pagination-link" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/page/4/">4</a></li><li><a class="pagination-link" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/page/5/">5</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/profile.jpg" alt="Bongsee"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Bongsee</p><p class="is-size-6 is-block">Record TIL &amp; Error</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Seoul, Republic of Korea</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">포스트</p><a href="/archives"><p class="title">41</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">카테고리</p><a href="/categories"><p class="title">9</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">태그</p><a href="/tags"><p class="title">20</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/bongsee" target="_blank" rel="noopener">팔로우</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/bongsee"><i class="fab fa-github"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">카테고리</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/TIL/"><span class="level-start"><span class="level-item">TIL</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="/categories/Weekly-Recap/"><span class="level-start"><span class="level-item">Weekly Recap</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/algorithm/"><span class="level-start"><span class="level-item">algorithm</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/categories/bundler/"><span class="level-start"><span class="level-item">bundler</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/error/"><span class="level-start"><span class="level-item">error</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/html-css/"><span class="level-start"><span class="level-item">html/css</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/javascript/"><span class="level-start"><span class="level-item">javascript</span></span><span class="level-end"><span class="level-item tag">9</span></span></a><ul><li><a class="level is-mobile" href="/categories/javascript/algorithm/"><span class="level-start"><span class="level-item">algorithm</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/wil/"><span class="level-start"><span class="level-item">wil</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">최근 글</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-01-29T09:42:08.384Z">2023-01-29</time></p><p class="title"><a href="/2023/01/29/230129-js-storage/">브라우저 저장소 종류 4가지</a></p><p class="categories"><a href="/categories/TIL/">TIL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-01-28T09:10:07.617Z">2023-01-28</time></p><p class="title"><a href="/2023/01/28/230128-spa-routing/">SPA와 Routing</a></p><p class="categories"><a href="/categories/javascript/">javascript</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-01-25T08:11:37.075Z">2023-01-25</time></p><p class="title"><a href="/2023/01/25/wil-2301-4th/">23년 1월 4주차 주간회고</a></p><p class="categories"><a href="/categories/Weekly-Recap/">Weekly Recap</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-01-15T08:40:42.423Z">2023-01-15</time></p><p class="title"><a href="/2023/01/15/230114-js-error%EC%B2%98%EB%A6%AC/">에러 처리</a></p><p class="categories"><a href="/categories/javascript/">javascript</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-01-12T16:08:52.581Z">2023-01-13</time></p><p class="title"><a href="/2023/01/13/230113-js-promise/">비동기 pattern (Callback, Promise Async/Await)</a></p><p class="categories"><a href="/categories/javascript/">javascript</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">아카이브</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/01/"><span class="level-start"><span class="level-item">1월 2023</span></span><span class="level-end"><span class="level-item tag">22</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/12/"><span class="level-start"><span class="level-item">12월 2022</span></span><span class="level-end"><span class="level-item tag">19</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">태그</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/API/"><span class="tag">API</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CSS/"><span class="tag">CSS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MegabyteSchool/"><span class="tag">MegabyteSchool</span><span class="tag">41</span></a></div><div class="control"><a class="tags has-addons" href="/tags/TIL/"><span class="tag">TIL</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/algorithm/"><span class="tag">algorithm</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/clone/"><span class="tag">clone</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/css/"><span class="tag">css</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/error/"><span class="tag">error</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/etc/"><span class="tag">etc</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/html/"><span class="tag">html</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/javascript/"><span class="tag">javascript</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/markdown/"><span class="tag">markdown</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/parcel/"><span class="tag">parcel</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/scss/"><span class="tag">scss</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%B7%A8%EC%97%85%EB%B6%80%ED%8A%B8%EC%BA%A0%ED%94%84/"><span class="tag">개발자취업부트캠프</span><span class="tag">41</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EA%B5%AD%EB%B9%84%EC%A7%80%EC%9B%90%EA%B5%90%EC%9C%A1/"><span class="tag">국비지원교육</span><span class="tag">41</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%82%B4%EC%9D%BC%EB%B0%B0%EC%9B%80%EC%B9%B4%EB%93%9C/"><span class="tag">내일배움카드</span><span class="tag">41</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/"><span class="tag">메가바이트스쿨</span><span class="tag">41</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%8C%A8%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4/"><span class="tag">패스트캠퍼스</span><span class="tag">41</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">Bonglog</a><p class="is-size-7"><span>&copy; 2023 BS K</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("ko");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,
