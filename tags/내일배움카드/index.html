@@ -29,7 +29,301 @@
       switchTab();
       window.addEventListener('hashchange', switchTab, false);
   })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">Bonglog</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/tags">태그</a></li><li class="is-active"><a href="#" aria-current="page">내일배움카드</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-02-01T16:03:09.243Z" title="2023. 2. 2. 오전 1:03:09">2023-02-02</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-02-01T16:22:50.881Z" title="2023. 2. 2. 오전 1:22:50">2023-02-02</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/TIL/">TIL</a></span><span class="level-item">4분안에 읽기 (약 637 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/02/02/til-230131-js/">TIL 230131 javascript</a></h1><div class="content"><h2 id="Closure"><a href="#Closure" class="headerlink" title="Closure"></a>Closure</h2><ul>
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">Bonglog</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/tags">태그</a></li><li class="is-active"><a href="#" aria-current="page">내일배움카드</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-02-07T10:10:45.259Z" title="2023. 2. 7. 오후 7:10:45">2023-02-07</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-02-07T12:57:46.266Z" title="2023. 2. 7. 오후 9:57:46">2023-02-07</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/TIL/">TIL</a></span><span class="level-item">10분안에 읽기 (약 1463 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/02/07/til-230207-js/">[object Object]</a></h1><div class="content"><h2 id="이벤트"><a href="#이벤트" class="headerlink" title="이벤트"></a>이벤트</h2><h3 id="이벤트-위임-Delegation"><a href="#이벤트-위임-Delegation" class="headerlink" title="이벤트 위임 (Delegation)"></a>이벤트 위임 (Delegation)</h3><ul>
+<li>비슷한 패턴의 여러 요소에서 이벤트를 핸들링해야 하는 경우, 단일 조상 요소에서 제어하는 이벤트 위임 패턴을 사용할 수 있음.</li>
+<li>대부분의 경우 이벤트 위임을 통한 성능 개선은 개수가 엄청 많을 때 !</li>
+<li></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;parent&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;child&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;child&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;child&quot;</span>&gt;</span>3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;child&quot;</span>&gt;</span>4<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> parentEl = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.parent&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> childEls = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&quot;.child&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 모든 대상 요소에 이벤트 등록!</span></span><br><span class="line">childEls.<span class="title function_">forEach</span>(<span class="function">(<span class="params">el</span>) =&gt;</span> &#123;</span><br><span class="line">  el.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(event.<span class="property">target</span>.<span class="property">textContent</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 조상 요소에 이벤트 위임!</span></span><br><span class="line">parentEl.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// closest : 자신을 포함한 조상 요소 중 선택자와 일치하는 가장 가까운 요소 반환</span></span><br><span class="line">  <span class="keyword">const</span> childEl = event.<span class="property">target</span>.<span class="title function_">closest</span>(<span class="string">&quot;.child&quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> (childEl) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(childEl.<span class="property">textContent</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="커스텀-이벤트"><a href="#커스텀-이벤트" class="headerlink" title="커스텀 이벤트"></a>커스텀 이벤트</h3><ul>
+<li><code>대상.dispatchEvent(이벤트)</code></li>
+<li>이벤트를 강제로 발생시킬 수 있음!!</li>
+<li>기본적으로 존재하는 이벤트 외에 사용자 정의 이벤트를 만들어 강제로 발생시키면 동작시킬 수 있다.</li>
+<li>이벤트를 발생시키면서 동시에 data를 전달할 수 있다.</li>
+<li>프레임워크에서 부모 컴포넌트와 자식 컴포넌트 사이에 data를 주고 받을 때 내부적으로 동작할 떄 사용된다.</li>
+<li>바닐라JS로 프로젝트를 진행할 때 컴포넌트끼리 data를 주고 받을 때 유용해보임.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> child1 = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.child:nth-child(1)&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> child2 = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.child:nth-child(2)&quot;</span>);</span><br><span class="line"></span><br><span class="line">child1.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 강제로 이벤트 발생!</span></span><br><span class="line">  child2.<span class="title function_">dispatchEvent</span>(<span class="keyword">new</span> <span class="title class_">Event</span>(<span class="string">&quot;click&quot;</span>));</span><br><span class="line">  child2.<span class="title function_">dispatchEvent</span>(<span class="keyword">new</span> <span class="title class_">Event</span>(<span class="string">&quot;wheel&quot;</span>));</span><br><span class="line">  child2.<span class="title function_">dispatchEvent</span>(<span class="keyword">new</span> <span class="title class_">Event</span>(<span class="string">&quot;keydown&quot;</span>));</span><br><span class="line">  <span class="comment">// 사용자 정의 이벤트 !</span></span><br><span class="line">  child2.<span class="title function_">dispatchEvent</span>(<span class="keyword">new</span> <span class="title class_">Event</span>(<span class="string">&quot;bongbong&quot;</span>));</span><br><span class="line">&#125;);</span><br><span class="line">child2.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Child2 Click!&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line">child2.<span class="title function_">addEventListener</span>(<span class="string">&quot;wheel&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Child2 Wheel!&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line">child2.<span class="title function_">addEventListener</span>(<span class="string">&quot;keydown&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Child2 Keydown!&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line">child2.<span class="title function_">addEventListener</span>(<span class="string">&quot;bongbong&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Child2 bongbong !&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> child1 = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.child:nth-child(1)&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> child2 = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.child:nth-child(2)&quot;</span>);</span><br><span class="line"></span><br><span class="line">child1.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 일반 이벤트 생성자 !</span></span><br><span class="line">  child2.<span class="title function_">dispatchEvent</span>(<span class="keyword">new</span> <span class="title class_">Event</span>(<span class="string">&quot;bongbong&quot;</span>), &#123;</span><br><span class="line">    <span class="attr">detail</span>: <span class="number">123</span>, <span class="comment">// undefined</span></span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="comment">// 커스텀 이벤트 생성자 !</span></span><br><span class="line">  <span class="comment">// 이벤트를 강제로 발생시키고 data를 전달하고 싶을 때</span></span><br><span class="line">  child2.<span class="title function_">dispatchEvent</span>(<span class="keyword">new</span> <span class="title class_">CustomEvent</span>(<span class="string">&quot;bongbong&quot;</span>), &#123;</span><br><span class="line">    <span class="attr">detail</span>: <span class="number">123</span>, <span class="comment">// 123</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">child2.<span class="title function_">addEventListener</span>(<span class="string">&quot;bongbong&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;커스텀 이벤트 발생 !&quot;</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(event.<span class="property">detail</span>); <span class="comment">// CustomEvent 생성자 함수로 만들어낸 이벤트는 event.detail 프로퍼티를 통해 원하는 data를 전달할 수 있다.</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Web-APIs"><a href="#Web-APIs" class="headerlink" title="Web APIs"></a>Web APIs</h2><h3 id="Console"><a href="#Console" class="headerlink" title="Console"></a>Console</h3><ul>
+<li><p><code>.log()</code>, <code>.warn()</code>, <code>.error()</code>, <code>.dir()</code></p>
+</li>
+<li><p>콘솔에 메시지나 객체를 출력.</p>
+</li>
+<li><p><code>.count()</code>, <code>countReset()</code></p>
+</li>
+<li><p>콘솔에 메소드 호출의 누적 횟수를 출력하거나 초기화.</p>
+</li>
+<li><p><code>.time()</code>, <code>.timeEnd()</code></p>
+</li>
+<li><p>타이머가 시작해서 종료되기까지의 시간(ms)을 콘솔에 출력.</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">time</span>(<span class="string">&quot;이름&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">timeEnd</span>(<span class="string">&quot;이름&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">time</span>(<span class="string">&quot;반복문&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10000</span>; i += <span class="number">1</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">timeEnd</span>(<span class="string">&quot;반복문&quot;</span>); <span class="comment">// &#x27;반복문: 170.137...ms&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>.trace()</code></li>
+<li>메소드 호출 스택(Call Stack)을 추적해 출력.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">a</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">b</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">c</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Log!&quot;</span>);</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">trace</span>(<span class="string">&quot;Trace!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">c</span>();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">b</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">a</span>();</span><br><span class="line"><span class="comment">// Log!</span></span><br><span class="line"><span class="comment">// Trace!</span></span><br><span class="line"><span class="comment">// c</span></span><br><span class="line"><span class="comment">// b</span></span><br><span class="line"><span class="comment">// a</span></span><br><span class="line"><span class="comment">// (anonymous)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><ul>
+<li><p>개요</p>
+<ul>
+<li>도메인 단위로 저장</li>
+<li>모든 웹 요청에 포함돼 서버로 전송(때문에 민감한 정보는 다루지 않는다)</li>
+<li>표준안 기준, 사이트당 최대 20개 및 4KB로 제한</li>
+<li>영구 저장 불가능</li>
+</ul>
+</li>
+<li><p>옵션</p>
+<ul>
+<li>domain: 유효 도메인 설정 - domain&#x3D;localhost;</li>
+<li>path: 유효 경로 설정 - path&#x3D;&#x2F;;</li>
+<li>expires: 만료 날짜(UTC Date) 설정</li>
+<li>max-age: 만료 타이머(s) 설정</li>
+<li>secure: HTTPS 보안 프로토콜만 전송 - secure;</li>
+<li>samesite: 크로스 사이트 요청 처리 여부(none, lax, strict) - samesite&#x3D;none</li>
+</ul>
+</li>
+<li><p>예제</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">document</span>.<span class="property">cookie</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Set</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span> = <span class="string">&quot;a=1; max-age=2;&quot;</span>; <span class="comment">// 초(second)!</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span> = <span class="string">`b=2; expires=<span class="subst">$&#123;<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2022</span>, <span class="number">0</span>, <span class="number">1</span>).toUTCString()&#125;</span>;`</span>; <span class="comment">// 국제 표준 시간!</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span> = <span class="string">&quot;c=3;&quot;</span>;</span><br><span class="line"><span class="comment">// document.cookie = &#x27;a=4;&#x27; // 새로운 값으로 덮어쓰기!</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Get</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getCookie</span>(<span class="string">&quot;a&quot;</span>)); <span class="comment">// &#x27;1&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getCookie</span>(<span class="string">&quot;b&quot;</span>)); <span class="comment">// null</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getCookie</span>(<span class="string">&quot;c&quot;</span>)); <span class="comment">// &#x27;3&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getCookie</span>(<span class="string">&quot;a&quot;</span>)); <span class="comment">// null</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getCookie</span>(<span class="string">&quot;b&quot;</span>)); <span class="comment">// null</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getCookie</span>(<span class="string">&quot;c&quot;</span>)); <span class="comment">// &#x27;3&#x27;</span></span><br><span class="line">&#125;, <span class="number">2000</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getCookie</span>(<span class="params">name</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> cookie = <span class="variable language_">document</span>.<span class="property">cookie</span>.<span class="title function_">split</span>(<span class="string">&quot;; &quot;</span>).<span class="title function_">find</span>(<span class="function">(<span class="params">cookie</span>) =&gt;</span> cookie.<span class="title function_">startsWith</span>(name));</span><br><span class="line">  <span class="comment">// .find(cookie =&gt; cookie.split(&#x27;=&#x27;)[0] === name)</span></span><br><span class="line">  <span class="keyword">return</span> cookie ? cookie.<span class="title function_">split</span>(<span class="string">&quot;=&quot;</span>)[<span class="number">1</span>] : <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>쿠키에 저장되어 있는 데이터를 get해오면 통 문자열로 넘어오기 때문에 문자열을 가공하는 함수를 이용하여 get한다.</li>
+<li>모달창 띄우는 동작을 제어할 때 사용해보기</li>
+</ul>
+<h3 id="Storage"><a href="#Storage" class="headerlink" title="Storage"></a>Storage</h3><ul>
+<li><p>개요</p>
+<ul>
+<li>도메인 단위로 저장</li>
+<li>서버로 전송되지 않음</li>
+<li>5MB 제한</li>
+<li>세션 혹은 영구 저장 가능</li>
+</ul>
+</li>
+<li><p>종류</p>
+<ul>
+<li><code>sessionStorage</code> : 브라우저 세션이 유지되는 동안에만 데이터 저장 (브라우저 끄면 날라감)<ul>
+<li>브라우저 끌 때 날라가야만하는 구조일 때 사용하자.</li>
+</ul>
+</li>
+<li><code>localStorage</code> : 따로 제거하지 않으면 영구적으로 데이터 저장(코드)<ul>
+<li>로그인 세션에 활용</li>
+</ul>
+</li>
+<li><code>indexedDB</code><ul>
+<li><code>localStorage</code>보다 용량이 크다는 장점이 필요할 때 사용하자.</li>
+<li>로컬에서 대규모 용량을 쓸 때.. (그럴 경우가 ..?)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>메소드</p>
+<ul>
+<li><code>.getItem()</code> : 데이터 조회</li>
+<li><code>.setItem()</code> : 데이터 추가</li>
+<li><code>.removeItem()</code> : 데이터 제거</li>
+<li><code>.clear()</code> : 스토리지 초기화</li>
+</ul>
+</li>
+<li><p>예제</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 항상 JSON.stringify()를 통해 JSON 문자로 변환해 저장 !</span></span><br><span class="line"><span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">&quot;a&quot;</span>, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(<span class="string">&quot;Hello world!&quot;</span>));</span><br><span class="line"><span class="comment">// localStorage.setItem(&#x27;a&#x27;, &#x27;Hello world!&#x27;) // ...</span></span><br><span class="line"><span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">&quot;b&quot;</span>, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123; <span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span> &#125;));</span><br><span class="line"><span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">&quot;c&quot;</span>, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(<span class="number">123</span>));</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&quot;a&quot;</span>)); <span class="comment">// &#x27;Hello world!&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&quot;b&quot;</span>)); <span class="comment">// &#x27;&#123;&quot;x&quot;:1,&quot;y&quot;:2&#125;&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&quot;c&quot;</span>)); <span class="comment">// &#x27;123&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&quot;a&quot;</span>))); <span class="comment">// &#x27;Hello world!&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&quot;b&quot;</span>))); <span class="comment">// &#123; x: 1, y: 2 &#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&quot;c&quot;</span>))); <span class="comment">// 123</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 개별 아이템 삭제!</span></span><br><span class="line"><span class="variable language_">localStorage</span>.<span class="title function_">removeItem</span>(<span class="string">&quot;a&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&quot;a&quot;</span>))); <span class="comment">// null</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 스토리지 초기화!</span></span><br><span class="line"><span class="variable language_">localStorage</span>.<span class="title function_">clear</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&quot;a&quot;</span>))); <span class="comment">// null</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&quot;b&quot;</span>))); <span class="comment">// null</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&quot;c&quot;</span>))); <span class="comment">// null</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Location"><a href="#Location" class="headerlink" title="Location"></a>Location</h3><ul>
+<li><p>현재 페이지 정보를 반환하거나 제어.</p>
+</li>
+<li><p>속성</p>
+<ul>
+<li>.href: 전체 URL 주소</li>
+<li>.protocol: 프로토콜 - ‘http:’ or ‘https:’</li>
+<li>.hostname: 도메인 이름 - ‘google.com’</li>
+<li>.pathname: 도메인 이후 경로 - ‘&#x2F;a&#x2F;b&#x2F;c’</li>
+<li>.host: 포트 번호를 포함한 도메인 이름 - ‘google.com:5500’</li>
+<li>.port: 포트 번호 - ‘5500’</li>
+<li>.hash: 해시 정보(페이지의 ID) - ‘’ or ‘#abc’</li>
+</ul>
+</li>
+<li><p>메소드</p>
+<ul>
+<li>페이지가 항상 새로고침됩니다.</li>
+<li>.assign(주소): 해당 ‘주소’로 페이지 이동</li>
+<li>.replace(주소): 해당 ‘주소’로 페이지 이동, 현재 페이지 히스토리를 제거</li>
+<li>.reload(강력): 페이지 새로고침, true 인수는 ‘강력’ 새로고침</li>
+</ul>
+</li>
+</ul>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-02-06T10:19:13.337Z" title="2023. 2. 6. 오후 7:19:13">2023-02-06</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-02-07T12:52:52.241Z" title="2023. 2. 7. 오후 9:52:52">2023-02-07</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/TIL/">TIL</a></span><span class="level-item">7분안에 읽기 (약 1047 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/02/06/til-230206-js/">TIL 230206 javascript</a></h1><div class="content"><h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><h3 id="Element-style"><a href="#Element-style" class="headerlink" title="Element.style"></a>Element.style</h3><ul>
+<li>요소의 style 속성(<code>인라인</code> 스타일)의 CSS 속성 값을 얻거나(<code>get</code>) 지정(<code>set</code>)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> el = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.child&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 개별 지정 !</span></span><br><span class="line">el.<span class="property">style</span>.<span class="property">width</span> = <span class="string">&quot;100px&quot;</span>;</span><br><span class="line">el.<span class="property">style</span>.<span class="property">fontSize</span> = <span class="string">&quot;20px&quot;</span>;</span><br><span class="line">el.<span class="property">style</span>.<span class="property">backgroundColor</span> = <span class="string">&quot;green&quot;</span>;</span><br><span class="line">el.<span class="property">style</span>.<span class="property">position</span> = <span class="string">&quot;absolute&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 한 번에 지정 !</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">assign</span>(el.<span class="property">style</span>, &#123;</span><br><span class="line">  <span class="attr">width</span>: <span class="string">&quot;100px&quot;</span>,</span><br><span class="line">  <span class="attr">fontSize</span>: <span class="string">&quot;20px&quot;</span>,</span><br><span class="line">  <span class="attr">backgroundColor</span>: <span class="string">&quot;green&quot;</span>,</span><br><span class="line">  <span class="attr">position</span>: <span class="string">&quot;absolute&quot;</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="window-getComputedStyle"><a href="#window-getComputedStyle" class="headerlink" title="window.getComputedStyle()"></a>window.getComputedStyle()</h3><ul>
+<li>요소에 적용된(계산되어) 스타일 객체를 반환.</li>
+<li>바로 위의 <code>Element.style</code>은 인라인 스타일로 적용된 속성만 얻을 수 있는 문제를 해결.</li>
+</ul>
+<hr>
+<h2 id="크기와-좌표"><a href="#크기와-좌표" class="headerlink" title="크기와 좌표"></a>크기와 좌표</h2><h3 id="예제-이해를-위한-기본-HTML-x2F-CSS-구조"><a href="#예제-이해를-위한-기본-HTML-x2F-CSS-구조" class="headerlink" title="예제 이해를 위한 기본 HTML&#x2F;CSS 구조"></a>예제 이해를 위한 기본 HTML&#x2F;CSS 구조</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;parent&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;child&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;child&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">1000px</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">500px</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">1000px</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: auto;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">10px</span> solid;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">10px</span> solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="window-innerWidth-x2F-window-innerHeight"><a href="#window-innerWidth-x2F-window-innerHeight" class="headerlink" title="window.innerWidth &#x2F; window.innerHeight"></a>window.innerWidth &#x2F; window.innerHeight</h3><ul>
+<li>현재 화면(Viewport)의 크기를 Get !.</li>
+</ul>
+<h3 id="window-scrollX-x2F-window-scrollY"><a href="#window-scrollX-x2F-window-scrollY" class="headerlink" title="window.scrollX &#x2F; window.scrollY"></a>window.scrollX &#x2F; window.scrollY</h3><ul>
+<li>페이지의 좌상단 기준, 현재 화면(Viewport)의 수평 혹은 수직 스크롤 위치를 Get !</li>
+<li>페이지 좌상단 기준, 스크롤을 얼마나 했니 ?</li>
+<li>windows의 경우 디스플레이 해상도도 영향을 받을 수 있다.</li>
+</ul>
+<h3 id="window-scrollTo-x2F-Element-scrollTo"><a href="#window-scrollTo-x2F-Element-scrollTo" class="headerlink" title="window.scrollTo() &#x2F; Element.scrollTo()"></a>window.scrollTo() &#x2F; Element.scrollTo()</h3><ul>
+<li>지정된 좌표로 대상(화면, 스크롤 요소)을 스크롤.</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="title function_">scrollTo</span>(&#123;</span><br><span class="line">    <span class="attr">left</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">top</span>: <span class="number">500</span>,</span><br><span class="line">    <span class="attr">behavior</span>: <span class="string">&quot;smooth&quot;</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Element-clientWidth-x2F-Element-clientHeight"><a href="#Element-clientWidth-x2F-Element-clientHeight" class="headerlink" title="Element.clientWidth &#x2F; Element.clientHeight"></a>Element.clientWidth &#x2F; Element.clientHeight</h3><ul>
+<li>테두리 선(border)을 제외한 요소의 크기를 Get !</li>
+<li>border 제외 &#x3D;&#x3D;&#x3D; padding box ! (content-box + padding 값 !)</li>
+<li>혼동하지말 것 : padding-box라는 css 속성은 없다 (개념적으로 받아들이기)</li>
+</ul>
+<h3 id="Element-offsetWidth-x2F-Element-offsetHeight"><a href="#Element-offsetWidth-x2F-Element-offsetHeight" class="headerlink" title="Element.offsetWidth &#x2F; Element.offsetHeight"></a>Element.offsetWidth &#x2F; Element.offsetHeight</h3><ul>
+<li>테두리 선(border)을 포함한 요소의 크기를 Get !</li>
+<li>css의 border-box 와 동일 !</li>
+</ul>
+<h3 id="Element-scrollWidth-x2F-Element-scrollHeight"><a href="#Element-scrollWidth-x2F-Element-scrollHeight" class="headerlink" title="Element.scrollWidth &#x2F; Element.scrollHeight"></a>Element.scrollWidth &#x2F; Element.scrollHeight</h3><ul>
+<li>요소의 테두리 선(border)을 제외한 스크롤 영역까지의 크기를 Get !</li>
+</ul>
+<h3 id="Element-scrollLeft-x2F-Element-scrollTop"><a href="#Element-scrollLeft-x2F-Element-scrollTop" class="headerlink" title="Element.scrollLeft &#x2F; Element.scrollTop"></a>Element.scrollLeft &#x2F; Element.scrollTop</h3><ul>
+<li>스크롤 요소의 좌상단 기준, 현재 스크롤 요소의 수평 혹은 수직 스크롤 위치를 Get !</li>
+</ul>
+<h3 id="Element-offsetLeft-x2F-Element-offsetTop"><a href="#Element-offsetLeft-x2F-Element-offsetTop" class="headerlink" title="Element.offsetLeft &#x2F; Element.offsetTop"></a>Element.offsetLeft &#x2F; Element.offsetTop</h3><ul>
+<li>페이지의 최좌상단 기준, 요소의 위치를 Get !</li>
+<li>scrollTo 메서드와 함께 사용하면 해시 링크(페이지 내 링크)와 동일하게 동작하도록 구현할 수 있을 것 같다.</li>
+</ul>
+<h3 id="Element-getBoundingClientRect"><a href="#Element-getBoundingClientRect" class="headerlink" title="Element.getBoundingClientRect()"></a>Element.getBoundingClientRect()</h3><ul>
+<li>테두리 선(border)을 포함한 요소의 크기와 화면에서의 상대 위치 정보를 Get !</li>
+<li>메서드가 호출되는 그 순간의 정보를 받아옴.</li>
+</ul>
+<hr>
+<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><h3 id="removeEventListenr"><a href="#removeEventListenr" class="headerlink" title=".removeEventListenr()"></a>.removeEventListenr()</h3><ul>
+<li>대상에 등록했던 이벤트 청취(Listen)를 제거.</li>
+<li>메모리 관리를 위해 등록한 이벤트를 제거하는 과정이 필요할 수 있다.</li>
+<li>이벤트 등록시 캡처(Capture) 옵션이 추가된 경우, 청취를 제거할 때도 캡처 옵션을 추가해야함.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> parentEl = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.parent&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> childEl = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.child&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 등록할 때 썼던 함수를 remove 시 가져와야 하므로 변수에 담아 쓴다.</span></span><br><span class="line"><span class="comment"> * 함수는 객체이고, 객체는 참조형이므로 !</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">handler</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Parent!&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">parentEl.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, handler, &#123;</span><br><span class="line">  <span class="attr">capture</span>: <span class="literal">true</span>,</span><br><span class="line">&#125;);</span><br><span class="line">childEl.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  parentEl.<span class="title function_">removeEventListener</span>(<span class="string">&quot;click&quot;</span>, handler, &#123;</span><br><span class="line">    <span class="attr">capture</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="이벤트-객체"><a href="#이벤트-객체" class="headerlink" title="이벤트 객체"></a>이벤트 객체</h3><ul>
+<li>이벤트 객체는 대상에서 발생한 이벤트 정보를 담고 있음.</li>
+<li>이벤트가 발생한 위치(event.x, event.y)</li>
+</ul>
+<h3 id="이벤트-제어"><a href="#이벤트-제어" class="headerlink" title="이벤트 제어"></a>이벤트 제어</h3><ul>
+<li>이벤트 전파 : 캡쳐링 -&gt; target Phase -&gt; 버블링</li>
+<li>이벤트 전파(버블) 정지</li>
+<li>후손 -&gt; 조상</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> parentEl = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.parent&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> childEl = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.child&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> anchorEl = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;a&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Window!&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Body!&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line">parentEl.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Parent!&quot;</span>);</span><br><span class="line">  event.<span class="title function_">stopPropagation</span>(); <span class="comment">// 버블링 정지!</span></span><br><span class="line">&#125;);</span><br><span class="line">childEl.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Child!&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line">anchorEl.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Anchor!&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="이벤트-캡처"><a href="#이벤트-캡처" class="headerlink" title="이벤트 캡처"></a>이벤트 캡처</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> parentEl = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.parent&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> childEl = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.child&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> anchorEl = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;a&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Window!&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">addEventListener</span>(</span><br><span class="line">  <span class="string">&quot;click&quot;</span>,</span><br><span class="line">  <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Body!&quot;</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123; <span class="attr">capture</span>: <span class="literal">true</span> &#125;</span><br><span class="line">);</span><br><span class="line">parentEl.<span class="title function_">addEventListener</span>(</span><br><span class="line">  <span class="string">&quot;click&quot;</span>,</span><br><span class="line">  <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Parent!&quot;</span>);</span><br><span class="line">    event.<span class="title function_">stopPropagation</span>(); <span class="comment">// 전파(버블링, 캡처링) 정지!</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123; <span class="attr">capture</span>: <span class="literal">true</span> &#125;</span><br><span class="line">);</span><br><span class="line">childEl.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Child!&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line">anchorEl.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Anchor!&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="핸들러-한-번만-실행"><a href="#핸들러-한-번만-실행" class="headerlink" title="핸들러 한 번만 실행"></a>핸들러 한 번만 실행</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> parentEl = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.parent&quot;</span>);</span><br><span class="line"></span><br><span class="line">parentEl.<span class="title function_">addEventListener</span>(</span><br><span class="line">  <span class="string">&quot;click&quot;</span>,</span><br><span class="line">  <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Parent!&quot;</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">once</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h3 id="기본-동작과-핸들러-실행-분리"><a href="#기본-동작과-핸들러-실행-분리" class="headerlink" title="기본 동작과 핸들러 실행 분리"></a>기본 동작과 핸들러 실행 분리</h3><ul>
+<li>특히 scroll, mouse wheel 이벤트 (특히 모바일에서 유용함)</li>
+<li>사용성 증가, 성능 향상 (UX)</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> parentEl = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.parent&quot;</span>);</span><br><span class="line"></span><br><span class="line">parentEl.<span class="title function_">addEventListener</span>(</span><br><span class="line">  <span class="string">&quot;wheel&quot;</span>,</span><br><span class="line">  <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 처리할 로직이 많고 복잡한 경우 -&gt; 이 예제의 경우 스크롤링이 버벅댄다.</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10000</span>; i += <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 기본동작 (여기에선 mouse wheel event)</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">passive</span>: <span class="literal">true</span>, <span class="comment">// 화면을 움직이는 동작(기본동작)과 이벤트 콜백 함수 내 로직을 분리</span></span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-02-02T11:35:30.852Z" title="2023. 2. 2. 오후 8:35:30">2023-02-02</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-02-06T10:31:10.091Z" title="2023. 2. 6. 오후 7:31:10">2023-02-06</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/TIL/">TIL</a></span><span class="level-item">4분안에 읽기 (약 646 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/02/02/til-230202-js/">TIL 230202 javascript</a></h1><div class="content"><h2 id="브라우저-렌더링-과정"><a href="#브라우저-렌더링-과정" class="headerlink" title="브라우저 렌더링 과정"></a>브라우저 렌더링 과정</h2><ol>
+<li>HTML 파싱</li>
+<li>DOM 트리 생성(<code>DOMContentLoaded</code> 이벤트)</li>
+<li>CSS 파싱</li>
+<li>CSSOM 트리 생성</li>
+<li>DOM-CSSOM 결합</li>
+<li>Render 트리 생성</li>
+<li>레이아웃 계산</li>
+<li>Rendering(<code>load</code> 이벤트)</li>
+</ol>
+<h2 id="requestAnimationFrame-callback"><a href="#requestAnimationFrame-callback" class="headerlink" title="requestAnimationFrame(callback)"></a>requestAnimationFrame(callback)</h2><ul>
+<li>브라우저의 리페인트 주기에 맞게 콜백을 실행</li>
+<li>브라우저마다, 실행환경마다 각각 리페인트(렌더링) 주기가 설정되어 있다.</li>
+<li>통상 10ms 내외라고 알려져 있음.</li>
+</ul>
+<h2 id="throttle-x2F-debounce-Lodash"><a href="#throttle-x2F-debounce-Lodash" class="headerlink" title="throttle &#x2F; debounce (Lodash)"></a>throttle &#x2F; debounce (Lodash)</h2><ul>
+<li><code>throttle</code> : 일정 시간 간격으로 함수를 실행 (실행 횟수를 조절)</li>
+<li><code>debounce</code> : 일정 시간 동안 함수가 실행되지 않으면 함수를 실행<ul>
+<li>debounce 예시 ) 추천검색어 노출</li>
+<li>사용자가 입력중인데 모든 keydown 이벤트를 리스닝할 필요는 없는 것임을 이용. UX에 기반하여 적절하게 시간을 두어 직전 이벤트를 취소시키는 것</li>
+</ul>
+</li>
+</ul>
+<h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><ul>
+<li><p><code>Node</code>와 <code>Element</code>를 구분하는 것이 중요 Node라는 개념 안에 Element가 속해있음.</p>
+</li>
+<li><p>왜 구분해야할까 ? 각각이 쓸 수 있는 프로토타입 메서드 혹은 정적 메서드가 다르기 때문임.</p>
+</li>
+<li><p>실상 우리는 Element를 주로 다루기 때문에 메서드도 Element 관련 메서드를 자주 사용하게 될 것.</p>
+</li>
+<li><p>새로 배운 메서드들</p>
+</li>
+<li><p><code>Element.closest(&#39;css selector&#39;)</code></p>
+<ul>
+<li><code>자신을 포함하여</code> 지정한 CSS 선택자와 일치하는 가장 가까운 조상 요소를 반환. 요소를 찾지 못하면, null을 반환.</li>
+</ul>
+</li>
+<li><p><code>Element.children(&#39;css selector&#39;)</code></p>
+<ul>
+<li>요소의 모든 자식 요소를 반환.</li>
+<li>반환값 : <code>HTMLCollection[]</code></li>
+</ul>
+</li>
+<li><p><code>document.createElement()</code></p>
+<ul>
+<li>메모리에만 존재하는 새로운 HTML 요소를 생성해 반환.</li>
+</ul>
+</li>
+<li><p><code>Element.remove()</code></p>
+<ul>
+<li>요소를 제거.</li>
+</ul>
+</li>
+<li><p><code>Element.dataset</code></p>
+<ul>
+<li>자바스크립트의 데이터를 html요소에 저장할 때 활용 (전역 속성) (게시글의 조회수 등등)</li>
+<li>html의 dash-case &#x3D;&gt; js에서 camelCase로 사용</li>
+<li>json 데이터나 객체 데이터 등등을 html에 저장할 때는 html entity를 사용하자.(근데 사실상 js 코드에서 동적으로 부여하는 것이기에 html 파일에 직접 넣는 건 흔하지 않다고 함.)</li>
+<li>예시</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span></span></span><br><span class="line"><span class="tag">  <span class="attr">class</span>=<span class="string">&quot;child&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">data-hello-world</span>=<span class="string">&quot;Hello world!&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">data-object</span>=<span class="string">&#x27;&#123;&quot;a&quot;:1,&quot;b&quot;:2&#125;&#x27;</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br><span class="line">  1</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-hello-world</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-hello-world</span>=<span class="string">&quot;&#123;&quot;</span><span class="attr">a</span>&quot;<span class="attr">:123</span>&#125;&quot;&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> -&gt; html entity를 써야함</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">el.<span class="property">dataset</span>.<span class="property">helloWorld</span>; <span class="comment">// &quot;Hello world&quot;</span></span><br><span class="line">el.<span class="property">dataset</span>.<span class="property">helloWorld</span>; <span class="comment">// &quot;&#123;&quot;a&quot;:123&#125;&quot; -&gt; JSON.parse() 메서드를 활용하여 사용한다.</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>.className</code>(getter)</p>
+<ul>
+<li>여러개 있으면 공백하나로 구분된 문자열이 넘어오므로 사용할 거면 split해서 써야.</li>
+<li>class를 관리하는 용도라면 .classList를 쓰는게 훨씬 편하겠다.</li>
+</ul>
+</li>
+<li><p><code>.classList</code>(getter) –&gt; getter,setter 익숙해지고자 굳이 쓰는..</p>
+<ul>
+<li><code>.add()</code></li>
+<li><code>.remove()</code></li>
+<li><code>.toggle()</code></li>
+<li><code>.contains()</code></li>
+</ul>
+</li>
+</ul>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-02-01T16:03:09.243Z" title="2023. 2. 2. 오전 1:03:09">2023-02-02</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-02-01T16:22:50.881Z" title="2023. 2. 2. 오전 1:22:50">2023-02-02</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/TIL/">TIL</a></span><span class="level-item">4분안에 읽기 (약 637 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/02/02/til-230131-js/">TIL 230131 javascript</a></h1><div class="content"><h2 id="Closure"><a href="#Closure" class="headerlink" title="Closure"></a>Closure</h2><ul>
 <li>클로저를 활용한 flag변수 은닉화</li>
 </ul>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello world!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>Hello world!<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -603,300 +897,7 @@
 </ul>
 </li>
 </ul>
-</div></article></div><div class="card"><div class="card-image"><a class="image is-7by3" href="/2023/01/11/wil-2301-2nd/"><img class="fill" src="https://mblogthumb-phinf.pstatic.net/20141230_10/cuf1105_1419916588464sU2BV_JPEG/shutterstock_com_20141230_094644.jpg?type=w2" alt="23년 1월 2주차 주간회고"></a></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-01-11T02:51:36.932Z" title="2023. 1. 11. 오전 11:51:36">2023-01-11</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-01-11T03:28:37.045Z" title="2023. 1. 11. 오후 12:28:37">2023-01-11</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/Weekly-Recap/">Weekly Recap</a></span><span class="level-item">6분안에 읽기 (약 863 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/01/11/wil-2301-2nd/">23년 1월 2주차 주간회고</a></h1><div class="content"><h1 id="주간-회고-22-01-05-23-01-10"><a href="#주간-회고-22-01-05-23-01-10" class="headerlink" title="주간 회고 (22.01.05 ~ 23.01.10)"></a>주간 회고 (22.01.05 ~ 23.01.10)</h1><ul>
-<li>한 주간 <code>배운점</code>, <code>느낀점</code>, <code>보완해야할 점</code>을 keyword 중심으로 나열합니다.</li>
-</ul>
-<h2 id="배운점"><a href="#배운점" class="headerlink" title="배운점"></a>배운점</h2><hr>
-<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><ol>
-<li>Intersection Observer API</li>
-</ol>
-<ul>
-<li>Intersection Observer의 생성(callback, option)</li>
-<li>target, root요소</li>
-<li>기타 주의 사항</li>
-<li><a href="https://bongsee.github.io/2023/01/05/230105-js-intersection-observer-api/">관련 포스팅 보러가기</a></li>
-</ul>
-<ol start="2">
-<li>정규표현식</li>
-</ol>
-<ul>
-<li>배워야하는 이유</li>
-<li>생성, 패턴, 플래그, 조합 메서드</li>
-<li><a href="https://bongsee.github.io/2023/01/07/230107-js-regexp/">관련 포스팅 보러가기</a></li>
-</ul>
-<ol start="3">
-<li>parcel 번들러 도입</li>
-</ol>
-<ul>
-<li>왜 번들러가 탄생할 수 밖에 없었는가 ?</li>
-<li>번들러 개요 (code split, minify, compile, HMR …)</li>
-<li>다중 entry point (Multi Page)</li>
-<li><a href="https://bongsee.github.io/2023/01/08/230108-bundler-parcel/">관련 포스팅 보러가기</a></li>
-</ul>
-<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><ol>
-<li>CSS Preprocessor인 SCSS를 도입</li>
-</ol>
-<ul>
-<li>Nesting, Mixin, loop, function, color builtin function …</li>
-<li>compiler (vscode의 Live Sass Compiler 혹은 다른 태스크 러너, 번들러)</li>
-<li><a href="https://bongsee.github.io/2023/01/07/230107-css-scss/">관련 포스팅 보러가기</a></li>
-</ul>
-<h2 id="느낀점"><a href="#느낀점" class="headerlink" title="느낀점"></a>느낀점</h2><hr>
-<ul>
-<li><p>이번 주는 JS 1차과제를 하는데 대부분 시간을 보냈다.<br>이번 주를 요약하자면 다음 두 가지로 정리할 수 있겠다.</p>
-<ol>
-<li>알고리즘의 비중을 낮추고 (스스로) 구현을 해보는데에 더욱 집중할 것. 그 과정은 필히 <code>선 로직 후 코딩</code>이 되어야 한다.</li>
-<li>SCSS에 더욱 친숙해질 것, layout을 짜는 연습을 할 것.</li>
-</ol>
-</li>
-<li><p>이번 JS 과제는 영화 검색 API를 만드는 것이었다. 당연히 Vanilla JS의 연습에 목적을 둔 과제였다. 페이지의 디자인은 자율형식이었다. html과 css가 너무 부족하다보니 첫 시작이 너무 오래걸렸다. 아직은 layout을 다루는 것과 css 네이밍, css 속성들에 대해 익숙치 않다보니 js과제임에도 html&#x2F;css를 짜는데 더욱 시간을 많이 쏟은 것 같다. 한가지 다행스러운 점은 html&#x2F;css는 하면 할 수록 숙련도가 높아질 수 밖에 없겠다라는 느낌을 받은 것이었고, 앞으로 남은 기간동안에도 꾸준히 클론 코딩을 통해 감을 잃지 않도록 꾸준히 연습하리라 다짐했다.</p>
-</li>
-<li><p>그렇다고 js부분은 쉬웠나 ? 그것도 아니었다. intersection observer api 사용법을 익히는데에 절반을 보낸 것 같고, 내가 짠 함수들도 로직이 뒤죽박죽 느낌이 많이 들었다. 그 과정 중에 들었던 생각 두 가지가 있다. 첫 번째는 위에서 설명했듯 로직을 먼저 짜고 들어가자, 두 번째는 만들고 끝내지말고 반드시 refactoring을 해보자는 것이다. 처음 코딩할 떄와, 두 번째 볼 때, 세 번째 볼 때 느낌이 매번 다르고, 고쳐야할 부분이 보이면서 다음 프로젝트 때 이 경험을 바탕으로 조금 더 나은 코드를 짤 수 있으리라 생각이 들었다.</p>
-</li>
-</ul>
-<h2 id="보완해야할-점"><a href="#보완해야할-점" class="headerlink" title="보완해야할 점"></a>보완해야할 점</h2><hr>
-<ul>
-<li>로직은 내가 관리하게 될 변수와, 변수의 스코프를 항상 염두에 두고 짜자.</li>
-<li>함수는 그 기능을 보다 명확하고 간결하게 짜도록 노력하자.</li>
-<li>프로젝트를 단순히 기능만 구현한 상태로 끝내지말고 리팩토링과 기능 추가를 더해보자</li>
-<li>생각한대로 기능이 작동하지 않는다면, debugging을 통해 변수의 상태와 스코프, 스택을 눈으로 직접 확인하는 과정을 거치자.</li>
-</ul>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-01-10T11:50:00.995Z" title="2023. 1. 10. 오후 8:50:00">2023-01-10</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-01-15T12:01:57.023Z" title="2023. 1. 15. 오후 9:01:57">2023-01-15</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/javascript/">javascript</a></span><span class="level-item">13분안에 읽기 (약 1885 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/01/10/230110-js-builtin-methods/">Javasript 표준 내장 객체 Method (지속 업데이트 필요)</a></h1><div class="content"><h1 id="Javascript-표준-내장-객체"><a href="#Javascript-표준-내장-객체" class="headerlink" title="Javascript 표준 내장 객체"></a>Javascript 표준 내장 객체</h1><ul>
-<li>본 포스팅은 패스트캠퍼스 박영웅 강사님의 강의를 기반으로 합니다.</li>
-<li>본 포스팅의 메서드 구분 방법<ul>
-<li>프로토타입 메서드 : <code>.</code>으로 시작합니다.</li>
-<li>정적 메서드 : 클래스부터 시작합니다.</li>
-</ul>
-</li>
-</ul>
-<h2 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h2><ul>
-<li><p><code>.forEach()</code></p>
-<ul>
-<li>forEach메서드는 해당 메서드의 폴리필에서 볼 수 있듯이, 내가 원한다고해서 중간에 순회를 중단할 수 없다.<ul>
-<li>for 반복문에서는 break 키워드를 통해 가능하다는 점이 차이. 배열의 요소 수가 굉장히 많은게 아니라면 가독성이 상대적으로 더 좋은 forEach를 사용하자.</li>
-</ul>
-</li>
-<li>forEach내부의 콜백으로 async function을 제공하면 의도대로 작동하지 않는다.<ul>
-<li>foreach 는 배열 요소를 순차적으로 돌면서 callback을 실행할 뿐, callback이 끝날때 까지 기다렸다가 다음 callback을 실행하는 것이 아니라고 한다. 즉, foreach 자신이 실행하는 코드가 비동기를 하든 안하든 관심이 없이 넘어간다는 것이다. (병렬 처리 느낌 script 로드할 때 async 속성 부여한 느낌)</li>
-<li>위의 경우 대신 for 반복문 사용하기</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><code>.map()</code></p>
-<ul>
-<li><p>각 요소를 순회하며 각각을 콜백 함수가 반환하는 값으로 대체하여 새로운 <code>배열</code>을 반환.</p>
-</li>
-<li><p>원본 배열과 length가 동일.</p>
-</li>
-<li><p>배열에 요소를 추가나 삭제할 필요 없이, 데이터를 공통적으로 가공할 때 유용해보인다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> users = [</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;Neo&quot;</span>, <span class="attr">age</span>: <span class="number">85</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;Amy&quot;</span>, <span class="attr">age</span>: <span class="number">22</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;Lewis&quot;</span>, <span class="attr">age</span>: <span class="number">11</span> &#125;,</span><br><span class="line">];</span><br><span class="line"><span class="keyword">const</span> newUsers = users.<span class="title function_">map</span>(<span class="function">(<span class="params">user</span>) =&gt;</span> (&#123;</span><br><span class="line">  <span class="comment">// 3. 객체로 반환한다. 객체 리터럴을 반환하므로 소괄호로 묶어줌 (중괄호 구분)</span></span><br><span class="line">  ...user, <span class="comment">// 1. 요소의 기존 내용물을 열거하고,</span></span><br><span class="line">  <span class="attr">isValid</span>: <span class="literal">true</span>, <span class="comment">// 2. 새로운 내용을 더해서</span></span><br><span class="line">  <span class="attr">email</span>: <span class="literal">null</span>, <span class="comment">// 2. 새로운 내용을 더해서</span></span><br><span class="line">&#125;));</span><br><span class="line"><span class="keyword">const</span> userNames = users.<span class="title function_">map</span>(<span class="function">(<span class="params">user</span>) =&gt;</span> user.<span class="property">name</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(newUsers); <span class="comment">// [&#123; name: &#x27;Neo&#x27;, age: 85, isValid: true, email: null &#125;, ...]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(userNames); <span class="comment">// [&#x27;Neo&#x27;, &#x27;Amy&#x27;, &#x27;Lewis&#x27;]</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><code>.includes()</code></p>
-<ul>
-<li>배열 내에 지정된 요소가 있는지 여부를 Boolean 값으로 반환</li>
-<li>주의) <code>참조형</code> 데이터(객체)를 인자로 넘겨줄 땐 리터럴로 넘겨주면 안된다. 탐색 대상에 존재하는 참조형 데이터 자체를 변수에 담아서 사용하기.<ul>
-<li>선행 개념 : <code>데이터의 가변성과 불변성</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><code>.every()</code></p>
-<ul>
-<li>대상 배열의 모든 요소가 콜백 테스트를 통과 (Truthy) 하는지 여부를 Boolean 값으로 반환</li>
-<li>최초로 테스트가 실패하면 이후 테스트를 더 이상 진행하지 않고 false를 반환.</li>
-</ul>
-</li>
-<li><p><code>.some()</code></p>
-<ul>
-<li>대상 배열 중 일부가 콜백 테스트를 통과하는지 여부를 Boolean 값으로 반환.</li>
-<li>마찬가지로 첫 통과가 나오면 이후 콜백을 실행하지 않는다.</li>
-</ul>
-</li>
-<li><p><code>.filter()</code></p>
-<ul>
-<li>대상 배열에서 콜백 테스트를 통과하는 요소들만으로 이루어진 새로운 배열을 반환.</li>
-<li>모든 요소가 콜백 테스트를 통과하지 못하면 <code>빈 배열</code>을 반환</li>
-</ul>
-</li>
-<li><p><code>.find()</code></p>
-<ul>
-<li>대상 배열에서 콜백 테스트를 통과하는 첫 번째 <code>요소</code>를 반환</li>
-<li>최초로 테스트가 통과되면 이후 콜백은 실행하지 않는다.</li>
-<li>모든 테스트 실패 시 <code>undefined</code> 반환</li>
-<li>객체를 다룰 때 find 메서드의 반환값을 truthy, falsy로 활용할 수 있겠다.</li>
-</ul>
-</li>
-<li><p><code>.findIndex()</code></p>
-<ul>
-<li><code>.find()</code>메서드와 동일, 찾은 요소의 인덱스를 반환</li>
-<li>없으면 <code>-1</code> 반환.</li>
-</ul>
-</li>
-<li><p><code>.at()</code></p>
-<ul>
-<li>대상 배열을 인덱싱</li>
-<li>음수값을 사용하면 뒤에서부터 인덱싱. –&gt; 이 때 유용해보인다.</li>
-</ul>
-</li>
-<li><p><code>.concat()</code></p>
-<ul>
-<li>배열을 병합.</li>
-<li>스프레드 연산자로 대체가 가능하다.</li>
-</ul>
-</li>
-<li><p><code>.reverse()</code></p>
-<ul>
-<li>대상 배열의 순서를 반전.</li>
-<li>원본 배열을 직접 바꾼다. (부수 효과 O)</li>
-</ul>
-</li>
-<li><p><code>.join()</code></p>
-<ul>
-<li>대상 배열의 모든 요소를 구분자로 연결한 <code>문자</code>를 반환</li>
-</ul>
-</li>
-<li><p><code>.sort()</code></p>
-<ul>
-<li><p>원본 배열을 직접 바꾼다. (부수 효과 O)</p>
-</li>
-<li><p>대상 배열을 콜백의 반환 값에 따라 정렬</p>
-<ul>
-<li>음수 : a를 낮은 순서로 정렬</li>
-<li>0 : 순서 변경 없음</li>
-<li>양수 : b를 낮은 순서로 정렬</li>
-</ul>
-</li>
-<li><p>콜백의 반환값 부호에 집중하는 것이니 내부의 로직을 조금 더 복잡하게 가져가면 단순 숫자 정렬이 아닌, 객체 데이터를 다루는 데에도 용이해보인다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> users = [</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;Neo&quot;</span>, <span class="attr">age</span>: <span class="number">85</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;Amy&quot;</span>, <span class="attr">age</span>: <span class="number">22</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;Lewis&quot;</span>, <span class="attr">age</span>: <span class="number">11</span> &#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">users.<span class="title function_">sort</span>(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a.<span class="property">age</span> - b.<span class="property">age</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(users); <span class="comment">// [ Lewis객체, Amy객체, Neo객체 ]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// users.sort((a, b) =&gt; b.age - a.age)</span></span><br><span class="line"><span class="comment">// console.log(users) // [ Neo객체, Amy객체, Lewis객체 ]</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>콜백을 제공하지 않으면, 요소를 문자열로 변환하고 유니코드 코드 포인트 순서로 정렬.</p>
-</li>
-</ul>
-</li>
-<li><p><code>.flat()</code></p>
-<ul>
-<li>대상 배열의 모든 하위 배열을 지정한 깊이(depth)까지 이어붙인 새로운 배열을 반환.</li>
-<li>깊이의 기본값 : 1</li>
-</ul>
-</li>
-</ul>
-<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><ul>
-<li><p><code>Object.assign()</code></p>
-<ul>
-<li>하나 이상의 출처 객체로부터 대상 객체로 속성을 복사하고 대상 객체를 반환.</li>
-<li>첫 번째 인수가 대상 객체가 되고, 두 번째 인수 이후부터 모두 출처 객체가 된다.</li>
-<li>객체 내 각 프로퍼티는 고유하다. 고로 프로퍼티가 중복되면 나중에 복사되어 들어오는 프로퍼티가 이전 것을 덮어쓴다.</li>
-<li>대상 객체(원본)가 수정된다. 고로 원본을 유지해야한다면, 대상객체에 빈 객체(<code>&#123;&#125;</code>)를 제공하자.</li>
-</ul>
-</li>
-<li><p><code>Object.entries()</code></p>
-<ul>
-<li>주어진 객체의 각 속성과 값으로 하나의 배열을 만들어 요소로 추가한 2차원 배열을 반환<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Heropy&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">85</span>,</span><br><span class="line">  <span class="attr">isValid</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">email</span>: <span class="string">&quot;thesecon@gmail.com&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> <span class="title class_">Object</span>.<span class="title function_">entries</span>(user)) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(key, value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// name Heropy</span></span><br><span class="line"><span class="comment">// age 85</span></span><br><span class="line"><span class="comment">// isValid true</span></span><br><span class="line"><span class="comment">// email thesecon@gmail.com</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><code>Object.freeze(), Object.isfrozen()</code></p>
-<ul>
-<li>주어진 객체를 변경할 수 없도록 동결하거나, 동결 여부를 확인</li>
-</ul>
-</li>
-<li><p><code>Object.seal(), Object.isSealed()</code></p>
-<ul>
-<li>동결과 다른 점은 밀봉 후에도 이미 존재하는 속성의 값은 변경 가능. 동결과 마찬가지로 여전히 추가&#x2F;삭제 불가</li>
-</ul>
-</li>
-<li><p><code>Object.defineProperty(객체, 프로퍼티, 옵션 객체)</code></p>
-<ul>
-<li><p>주어진 객체에 속성을 추가하거나, 특성을 변경</p>
-</li>
-<li><p>옵션들</p>
-<ol>
-<li>enumerable : false</li>
-<li>configurable : false</li>
-<li>writable : false</li>
-<li>value : undefined</li>
-<li>get : undefined</li>
-<li>set : undefined</li>
-</ol>
-</li>
-<li><p>일반적인 객체는 1<del>3번 모두 true. 본 메서드로 프로퍼티 생성 시 해당 프로퍼티는 1</del>3번 모두 false</p>
-</li>
-<li><p>중요 : <code>getter</code>, <code>setter</code></p>
-</li>
-<li><p>getter는 프로퍼티에 접근(get)할 때 실행되는 get() 함수.</p>
-</li>
-<li><p>setter는 프로퍼티의 값으로 무언갈 할당(set)할 때 실행되는 set() 함수.</p>
-</li>
-<li><p>값을 얻으려고 할 때, 혹은 값을 할당하려 할 때, <code>추가적인 로직을 부여할 수 있음</code></p>
-</li>
-<li><p>즉, 데이터를 감시할 수 있게 된다는 점이 아주 중요하다.</p>
-</li>
-<li><p>getter와 setter는 함수지만, 흔히 알고있는 함수의 호출 형태로 실행되는 것이 아님!</p>
-</li>
-<li><p>참고) 객체의 속성 제거엔 <code>delete</code> 키워드</p>
-</li>
-<li><p>참고) 식별자 앞의 underscore(_)는 해당 식별자는 숨기겠다는 개발자의 의도가 담겨있음. (실제로 숨김처리가 되는 건 아님.)</p>
-<ul>
-<li><pre><code class="javascript">const user = &#123;
-  firstName: &quot;bongbong&quot;,
-  lastName: &quot;Ko&quot;,
-&#125;;
-
-Object.defineProperty(user, &quot;fullName&quot;, &#123;
-  get() &#123;
-    return `Full Name is $&#123;this.lastName&#125; $&#123;this.firstName&#125;`;
-  &#125;,
-
-  set(str) &#123;
-    const nameArr = str.split(&quot; &quot;);
-    this.lastName = nameArr[0];
-    this.firstName = nameArr[1];
-  &#125;,
-&#125;);
-</code></pre>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><ul>
-<li>통신용 데이터 포맷 (즉, 기본적으로 서버와의 통신은 JSON이다.)</li>
-<li>문자, 숫자, Boolean, null, 객체, 배열만 지원.</li>
-<li>후행 쉼표 허용 X</li>
-<li>큰 따옴표만 허용</li>
-<li><code>JSON.stringify()</code></li>
-<li><code>JSON.parse()</code></li>
-</ul>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-01-10T06:38:42.367Z" title="2023. 1. 10. 오후 3:38:42">2023-01-10</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-01-11T10:56:04.563Z" title="2023. 1. 11. 오후 7:56:04">2023-01-11</time>&nbsp;업데이트 됨</span><span class="level-item">3분안에 읽기 (약 501 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/01/10/etc/">분류되지 않은 내용들 임시 저장소 입니다.</a></h1><div class="content"><h2 id="전위-x2F-후위-증감-연산자"><a href="#전위-x2F-후위-증감-연산자" class="headerlink" title="전위&#x2F;후위 증감 연산자"></a>전위&#x2F;후위 증감 연산자</h2><ul>
-<li>전위 증감 연산자 : <code>연산 후 할당</code></li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x = (y = <span class="number">3</span>);</span><br><span class="line">y = ++x;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(x, y); <span class="comment">// 4, 4</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>후위 증감 연산자 : <code>할당 후 연산</code></li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x = (y = <span class="number">3</span>);</span><br><span class="line">y = x++;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(x, y); <span class="comment">// 4, 3</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="디바운스와-스로틀-프로그래밍-기법"><a href="#디바운스와-스로틀-프로그래밍-기법" class="headerlink" title="디바운스와 스로틀 프로그래밍 기법"></a>디바운스와 스로틀 프로그래밍 기법</h2><ul>
-<li>scroll, input, resize, mousemove와 같이 짧은 시간 안에 다량의 이벤트를 발생시키는 것들을 이벤트로서 다룰 때 주의를 요함.</li>
-<li>디바운스 : 쉽게 말해, 정해진 시간(delay)이 되기 전에 이벤트를 호출하면 직전에 발생한 이벤트를 취소시키고 새로 시간을 재는 것. “취시(취소 시작)” 느낌</li>
-<li>스로틀 : delay 시간 안에 발생한 동일한 이벤트를 하나로 퉁침.</li>
-<li>자세한건 deep dive 책의 디바운스, 스로틀 폴리필을 참고하자.</li>
-<li>실무에서는 디바운스, 스로틀 관련 라이브러리 (ex. Lodash)를 가져다 쓰는 것을 권장.</li>
-<li>디바운스 폴리필 : 클로저 활용.<ul>
-<li>엄밀하게 말하면 모든 함수는 클로저. 그러나 그렇게 부르지 않음. 클로저 : 특수한 함수 –&gt; 외부 함수보다 오래살아남은 중첩함수. 상위 스코프를 기억. 즉, 생명주기가 종료된 외부함수(상위 스코프)의 변수에 접근 가능. 가비지 콜렉터는 누군가가 참조하고 있는 값을 함부로 지우지 않음.</li>
-<li>클로저로 이어지는 선개념 : 렉시컬 스코프. (정적 스코프) 즉, 자신이 정의된 위치에 따라 스코프가 결정.</li>
-<li>“클로저는 함수와 그 함수가 선언된 렉시컬 환경의 조합이다”</li>
-</ul>
-</li>
-</ul>
-<h2 id="함수의-인자로-들어온-값을-객체-프로퍼티로-쓸-수-없다"><a href="#함수의-인자로-들어온-값을-객체-프로퍼티로-쓸-수-없다" class="headerlink" title="함수의 인자로 들어온 값을 객체 프로퍼티로 쓸 수 없다. (?)"></a>함수의 인자로 들어온 값을 객체 프로퍼티로 쓸 수 없다. (?)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line">arr.<span class="title function_">map</span>(<span class="function">(<span class="params">num</span>) =&gt;</span> (&#123; <span class="attr">num</span>: num &#125;));</span><br><span class="line"><span class="comment">// (4) [&#123;…&#125;, &#123;…&#125;, &#123;…&#125;, &#123;…&#125;]</span></span><br><span class="line"><span class="comment">// 0: &#123;num: 1&#125;</span></span><br><span class="line"><span class="comment">// 1: &#123;num: 2&#125;</span></span><br><span class="line"><span class="comment">// 2: &#123;num: 3&#125;</span></span><br><span class="line"><span class="comment">// 3: &#123;num: 4&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>의도한 건 <code>[&#123; 1 : 1 &#125;, &#123; 2 : 2 &#125;, &#123; 3 : 3 &#125;, &#123; 4 : 4 &#125;]</code> 이건데 안되나보다.. 아래와 같이 쓰자.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line">arr.<span class="title function_">map</span>(<span class="function">(<span class="params">num</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> obj = &#123;&#125;;</span><br><span class="line">  obj[num] = num;</span><br><span class="line">  <span class="keyword">return</span> obj;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="/tags/%EB%82%B4%EC%9D%BC%EB%B0%B0%EC%9B%80%EC%B9%B4%EB%93%9C/page/0/">이전</a></div><div class="pagination-next"><a href="/tags/%EB%82%B4%EC%9D%BC%EB%B0%B0%EC%9B%80%EC%B9%B4%EB%93%9C/page/2/">다음</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="/tags/%EB%82%B4%EC%9D%BC%EB%B0%B0%EC%9B%80%EC%B9%B4%EB%93%9C/">1</a></li><li><a class="pagination-link" href="/tags/%EB%82%B4%EC%9D%BC%EB%B0%B0%EC%9B%80%EC%B9%B4%EB%93%9C/page/2/">2</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/tags/%EB%82%B4%EC%9D%BC%EB%B0%B0%EC%9B%80%EC%B9%B4%EB%93%9C/page/5/">5</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/profile.jpg" alt="Bongsee"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Bongsee</p><p class="is-size-6 is-block">Record TIL &amp; Error</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Seoul, Republic of Korea</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">포스트</p><a href="/archives"><p class="title">42</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">카테고리</p><a href="/categories"><p class="title">9</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">태그</p><a href="/tags"><p class="title">20</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/bongsee" target="_blank" rel="noopener">팔로우</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/bongsee"><i class="fab fa-github"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">카테고리</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/TIL/"><span class="level-start"><span class="level-item">TIL</span></span><span class="level-end"><span class="level-item tag">12</span></span></a></li><li><a class="level is-mobile" href="/categories/Weekly-Recap/"><span class="level-start"><span class="level-item">Weekly Recap</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/algorithm/"><span class="level-start"><span class="level-item">algorithm</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/categories/bundler/"><span class="level-start"><span class="level-item">bundler</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/error/"><span class="level-start"><span class="level-item">error</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/html-css/"><span class="level-start"><span class="level-item">html/css</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/javascript/"><span class="level-start"><span class="level-item">javascript</span></span><span class="level-end"><span class="level-item tag">9</span></span></a><ul><li><a class="level is-mobile" href="/categories/javascript/algorithm/"><span class="level-start"><span class="level-item">algorithm</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/wil/"><span class="level-start"><span class="level-item">wil</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">최근 글</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-01T16:03:09.243Z">2023-02-02</time></p><p class="title"><a href="/2023/02/02/til-230131-js/">TIL 230131 javascript</a></p><p class="categories"><a href="/categories/TIL/">TIL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-01-29T09:42:08.384Z">2023-01-29</time></p><p class="title"><a href="/2023/01/29/230129-js-storage/">브라우저 저장소 종류 4가지</a></p><p class="categories"><a href="/categories/TIL/">TIL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-01-28T09:10:07.617Z">2023-01-28</time></p><p class="title"><a href="/2023/01/28/230128-spa-routing/">SPA와 Routing</a></p><p class="categories"><a href="/categories/javascript/">javascript</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-01-25T08:11:37.075Z">2023-01-25</time></p><p class="title"><a href="/2023/01/25/wil-2301-4th/">23년 1월 4주차 주간회고</a></p><p class="categories"><a href="/categories/Weekly-Recap/">Weekly Recap</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-01-15T08:40:42.423Z">2023-01-15</time></p><p class="title"><a href="/2023/01/15/230114-js-error%EC%B2%98%EB%A6%AC/">에러 처리</a></p><p class="categories"><a href="/categories/javascript/">javascript</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">아카이브</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/02/"><span class="level-start"><span class="level-item">2월 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/01/"><span class="level-start"><span class="level-item">1월 2023</span></span><span class="level-end"><span class="level-item tag">22</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/12/"><span class="level-start"><span class="level-item">12월 2022</span></span><span class="level-end"><span class="level-item tag">19</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">태그</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/API/"><span class="tag">API</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CSS/"><span class="tag">CSS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MegabyteSchool/"><span class="tag">MegabyteSchool</span><span class="tag">42</span></a></div><div class="control"><a class="tags has-addons" href="/tags/TIL/"><span class="tag">TIL</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/algorithm/"><span class="tag">algorithm</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/clone/"><span class="tag">clone</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/css/"><span class="tag">css</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/error/"><span class="tag">error</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/etc/"><span class="tag">etc</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/html/"><span class="tag">html</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/javascript/"><span class="tag">javascript</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/markdown/"><span class="tag">markdown</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/parcel/"><span class="tag">parcel</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/scss/"><span class="tag">scss</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%B7%A8%EC%97%85%EB%B6%80%ED%8A%B8%EC%BA%A0%ED%94%84/"><span class="tag">개발자취업부트캠프</span><span class="tag">42</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EA%B5%AD%EB%B9%84%EC%A7%80%EC%9B%90%EA%B5%90%EC%9C%A1/"><span class="tag">국비지원교육</span><span class="tag">42</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%82%B4%EC%9D%BC%EB%B0%B0%EC%9B%80%EC%B9%B4%EB%93%9C/"><span class="tag">내일배움카드</span><span class="tag">42</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/"><span class="tag">메가바이트스쿨</span><span class="tag">42</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%8C%A8%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4/"><span class="tag">패스트캠퍼스</span><span class="tag">42</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">Bonglog</a><p class="is-size-7"><span>&copy; 2023 BS K</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("ko");</script><script>var IcarusThemeSettings = {
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="/tags/%EB%82%B4%EC%9D%BC%EB%B0%B0%EC%9B%80%EC%B9%B4%EB%93%9C/page/0/">이전</a></div><div class="pagination-next"><a href="/tags/%EB%82%B4%EC%9D%BC%EB%B0%B0%EC%9B%80%EC%B9%B4%EB%93%9C/page/2/">다음</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="/tags/%EB%82%B4%EC%9D%BC%EB%B0%B0%EC%9B%80%EC%B9%B4%EB%93%9C/">1</a></li><li><a class="pagination-link" href="/tags/%EB%82%B4%EC%9D%BC%EB%B0%B0%EC%9B%80%EC%B9%B4%EB%93%9C/page/2/">2</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/tags/%EB%82%B4%EC%9D%BC%EB%B0%B0%EC%9B%80%EC%B9%B4%EB%93%9C/page/5/">5</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/profile.jpg" alt="Bongsee"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Bongsee</p><p class="is-size-6 is-block">Record TIL &amp; Error</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Seoul, Republic of Korea</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">포스트</p><a href="/archives"><p class="title">45</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">카테고리</p><a href="/categories"><p class="title">9</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">태그</p><a href="/tags"><p class="title">20</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/bongsee" target="_blank" rel="noopener">팔로우</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/bongsee"><i class="fab fa-github"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">카테고리</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/TIL/"><span class="level-start"><span class="level-item">TIL</span></span><span class="level-end"><span class="level-item tag">15</span></span></a></li><li><a class="level is-mobile" href="/categories/Weekly-Recap/"><span class="level-start"><span class="level-item">Weekly Recap</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/algorithm/"><span class="level-start"><span class="level-item">algorithm</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/categories/bundler/"><span class="level-start"><span class="level-item">bundler</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/error/"><span class="level-start"><span class="level-item">error</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/html-css/"><span class="level-start"><span class="level-item">html/css</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/javascript/"><span class="level-start"><span class="level-item">javascript</span></span><span class="level-end"><span class="level-item tag">9</span></span></a><ul><li><a class="level is-mobile" href="/categories/javascript/algorithm/"><span class="level-start"><span class="level-item">algorithm</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/wil/"><span class="level-start"><span class="level-item">wil</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">최근 글</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-07T10:10:45.259Z">2023-02-07</time></p><p class="title"><a href="/2023/02/07/til-230207-js/">[object Object]</a></p><p class="categories"><a href="/categories/TIL/">TIL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-06T10:19:13.337Z">2023-02-06</time></p><p class="title"><a href="/2023/02/06/til-230206-js/">TIL 230206 javascript</a></p><p class="categories"><a href="/categories/TIL/">TIL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-02T11:35:30.852Z">2023-02-02</time></p><p class="title"><a href="/2023/02/02/til-230202-js/">TIL 230202 javascript</a></p><p class="categories"><a href="/categories/TIL/">TIL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-01T16:03:09.243Z">2023-02-02</time></p><p class="title"><a href="/2023/02/02/til-230131-js/">TIL 230131 javascript</a></p><p class="categories"><a href="/categories/TIL/">TIL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-01-29T09:42:08.384Z">2023-01-29</time></p><p class="title"><a href="/2023/01/29/230129-js-storage/">브라우저 저장소 종류 4가지</a></p><p class="categories"><a href="/categories/TIL/">TIL</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">아카이브</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/02/"><span class="level-start"><span class="level-item">2월 2023</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/01/"><span class="level-start"><span class="level-item">1월 2023</span></span><span class="level-end"><span class="level-item tag">22</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/12/"><span class="level-start"><span class="level-item">12월 2022</span></span><span class="level-end"><span class="level-item tag">19</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">태그</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/API/"><span class="tag">API</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CSS/"><span class="tag">CSS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MegabyteSchool/"><span class="tag">MegabyteSchool</span><span class="tag">45</span></a></div><div class="control"><a class="tags has-addons" href="/tags/TIL/"><span class="tag">TIL</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/algorithm/"><span class="tag">algorithm</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/clone/"><span class="tag">clone</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/css/"><span class="tag">css</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/error/"><span class="tag">error</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/etc/"><span class="tag">etc</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/html/"><span class="tag">html</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/javascript/"><span class="tag">javascript</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/markdown/"><span class="tag">markdown</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/parcel/"><span class="tag">parcel</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/scss/"><span class="tag">scss</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%B7%A8%EC%97%85%EB%B6%80%ED%8A%B8%EC%BA%A0%ED%94%84/"><span class="tag">개발자취업부트캠프</span><span class="tag">45</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EA%B5%AD%EB%B9%84%EC%A7%80%EC%9B%90%EA%B5%90%EC%9C%A1/"><span class="tag">국비지원교육</span><span class="tag">45</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%82%B4%EC%9D%BC%EB%B0%B0%EC%9B%80%EC%B9%B4%EB%93%9C/"><span class="tag">내일배움카드</span><span class="tag">45</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/"><span class="tag">메가바이트스쿨</span><span class="tag">45</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%8C%A8%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4/"><span class="tag">패스트캠퍼스</span><span class="tag">45</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">Bonglog</a><p class="is-size-7"><span>&copy; 2023 BS K</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("ko");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,

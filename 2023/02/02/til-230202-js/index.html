@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="배운게 있다면 나만의 언어로 정리하라"><meta name="keywords" content="HTML, CSS, Javascript, frontend, git, TIL"><meta name="author" content="BS K"><title>TIL 230202 javascript - Bonglog</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#3273dc"><meta name="application-name" content="Bonglog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="msapplication-TileColor" content="#3273dc"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Bonglog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="브라우저 렌더링 과정 HTML 파싱 DOM 트리 생성(DOMContentLoaded 이벤트) CSS 파싱 CSSOM 트리 생성 DOM-CSSOM 결합 Render 트리 생성 레이아웃 계산 Rendering(load 이벤트)  requestAnimationFrame(callback) 브라우저의 리페인트 주기에 맞게 콜백을 실행 브라우저마다, 실행환경마다 각각"><meta property="og:type" content="blog"><meta property="og:title" content="TIL 230202 javascript"><meta property="og:url" content="https://bongsee.github.io/2023/02/02/til-230202-js/"><meta property="og:site_name" content="Bonglog"><meta property="og:description" content="브라우저 렌더링 과정 HTML 파싱 DOM 트리 생성(DOMContentLoaded 이벤트) CSS 파싱 CSSOM 트리 생성 DOM-CSSOM 결합 Render 트리 생성 레이아웃 계산 Rendering(load 이벤트)  requestAnimationFrame(callback) 브라우저의 리페인트 주기에 맞게 콜백을 실행 브라우저마다, 실행환경마다 각각"><meta property="og:locale" content="ko_KR"><meta property="og:image" content="https://bongsee.github.io/img/og_image.png"><meta property="article:published_time" content="2023-02-02T11:35:30.852Z"><meta property="article:modified_time" content="2023-02-06T10:31:10.091Z"><meta property="article:author" content="BS K"><meta property="article:tag" content="패스트캠퍼스"><meta property="article:tag" content="국비지원교육"><meta property="article:tag" content="메가바이트스쿨"><meta property="article:tag" content="MegabyteSchool"><meta property="article:tag" content="개발자취업부트캠프"><meta property="article:tag" content="내일배움카드"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://bongsee.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://bongsee.github.io/2023/02/02/til-230202-js/"},"headline":"기록의 공간","image":["https://bongsee.github.io/img/og_image.png"],"datePublished":"2023-02-02T11:35:30.852Z","dateModified":"2023-02-06T10:31:10.091Z","author":{"@type":"Person","name":"BS K"},"publisher":{"@type":"Organization","name":"Bonglog","logo":{"@type":"ImageObject"}},"description":"브라우저 렌더링 과정 HTML 파싱 DOM 트리 생성(DOMContentLoaded 이벤트) CSS 파싱 CSSOM 트리 생성 DOM-CSSOM 결합 Render 트리 생성 레이아웃 계산 Rendering(load 이벤트)  requestAnimationFrame(callback) 브라우저의 리페인트 주기에 맞게 콜백을 실행 브라우저마다, 실행환경마다 각각"}</script><link rel="canonical" href="https://bongsee.github.io/2023/02/02/til-230202-js/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">Bonglog</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-02-02T11:35:30.852Z" title="2023. 2. 2. 오후 8:35:30">2023-02-02</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-02-06T10:31:10.091Z" title="2023. 2. 6. 오후 7:31:10">2023-02-06</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/TIL/">TIL</a></span><span class="level-item">4분안에 읽기 (약 646 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile">TIL 230202 javascript</h1><div class="content"><h2 id="브라우저-렌더링-과정"><a href="#브라우저-렌더링-과정" class="headerlink" title="브라우저 렌더링 과정"></a>브라우저 렌더링 과정</h2><ol>
+<li>HTML 파싱</li>
+<li>DOM 트리 생성(<code>DOMContentLoaded</code> 이벤트)</li>
+<li>CSS 파싱</li>
+<li>CSSOM 트리 생성</li>
+<li>DOM-CSSOM 결합</li>
+<li>Render 트리 생성</li>
+<li>레이아웃 계산</li>
+<li>Rendering(<code>load</code> 이벤트)</li>
+</ol>
+<h2 id="requestAnimationFrame-callback"><a href="#requestAnimationFrame-callback" class="headerlink" title="requestAnimationFrame(callback)"></a>requestAnimationFrame(callback)</h2><ul>
+<li>브라우저의 리페인트 주기에 맞게 콜백을 실행</li>
+<li>브라우저마다, 실행환경마다 각각 리페인트(렌더링) 주기가 설정되어 있다.</li>
+<li>통상 10ms 내외라고 알려져 있음.</li>
+</ul>
+<h2 id="throttle-x2F-debounce-Lodash"><a href="#throttle-x2F-debounce-Lodash" class="headerlink" title="throttle &#x2F; debounce (Lodash)"></a>throttle &#x2F; debounce (Lodash)</h2><ul>
+<li><code>throttle</code> : 일정 시간 간격으로 함수를 실행 (실행 횟수를 조절)</li>
+<li><code>debounce</code> : 일정 시간 동안 함수가 실행되지 않으면 함수를 실행<ul>
+<li>debounce 예시 ) 추천검색어 노출</li>
+<li>사용자가 입력중인데 모든 keydown 이벤트를 리스닝할 필요는 없는 것임을 이용. UX에 기반하여 적절하게 시간을 두어 직전 이벤트를 취소시키는 것</li>
+</ul>
+</li>
+</ul>
+<h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><ul>
+<li><p><code>Node</code>와 <code>Element</code>를 구분하는 것이 중요 Node라는 개념 안에 Element가 속해있음.</p>
+</li>
+<li><p>왜 구분해야할까 ? 각각이 쓸 수 있는 프로토타입 메서드 혹은 정적 메서드가 다르기 때문임.</p>
+</li>
+<li><p>실상 우리는 Element를 주로 다루기 때문에 메서드도 Element 관련 메서드를 자주 사용하게 될 것.</p>
+</li>
+<li><p>새로 배운 메서드들</p>
+</li>
+<li><p><code>Element.closest(&#39;css selector&#39;)</code></p>
+<ul>
+<li><code>자신을 포함하여</code> 지정한 CSS 선택자와 일치하는 가장 가까운 조상 요소를 반환. 요소를 찾지 못하면, null을 반환.</li>
+</ul>
+</li>
+<li><p><code>Element.children(&#39;css selector&#39;)</code></p>
+<ul>
+<li>요소의 모든 자식 요소를 반환.</li>
+<li>반환값 : <code>HTMLCollection[]</code></li>
+</ul>
+</li>
+<li><p><code>document.createElement()</code></p>
+<ul>
+<li>메모리에만 존재하는 새로운 HTML 요소를 생성해 반환.</li>
+</ul>
+</li>
+<li><p><code>Element.remove()</code></p>
+<ul>
+<li>요소를 제거.</li>
+</ul>
+</li>
+<li><p><code>Element.dataset</code></p>
+<ul>
+<li>자바스크립트의 데이터를 html요소에 저장할 때 활용 (전역 속성) (게시글의 조회수 등등)</li>
+<li>html의 dash-case &#x3D;&gt; js에서 camelCase로 사용</li>
+<li>json 데이터나 객체 데이터 등등을 html에 저장할 때는 html entity를 사용하자.(근데 사실상 js 코드에서 동적으로 부여하는 것이기에 html 파일에 직접 넣는 건 흔하지 않다고 함.)</li>
+<li>예시</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span></span></span><br><span class="line"><span class="tag">  <span class="attr">class</span>=<span class="string">&quot;child&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">data-hello-world</span>=<span class="string">&quot;Hello world!&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">data-object</span>=<span class="string">&#x27;&#123;&quot;a&quot;:1,&quot;b&quot;:2&#125;&#x27;</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br><span class="line">  1</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-hello-world</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-hello-world</span>=<span class="string">&quot;&#123;&quot;</span><span class="attr">a</span>&quot;<span class="attr">:123</span>&#125;&quot;&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> -&gt; html entity를 써야함</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">el.<span class="property">dataset</span>.<span class="property">helloWorld</span>; <span class="comment">// &quot;Hello world&quot;</span></span><br><span class="line">el.<span class="property">dataset</span>.<span class="property">helloWorld</span>; <span class="comment">// &quot;&#123;&quot;a&quot;:123&#125;&quot; -&gt; JSON.parse() 메서드를 활용하여 사용한다.</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>.className</code>(getter)</p>
+<ul>
+<li>여러개 있으면 공백하나로 구분된 문자열이 넘어오므로 사용할 거면 split해서 써야.</li>
+<li>class를 관리하는 용도라면 .classList를 쓰는게 훨씬 편하겠다.</li>
+</ul>
+</li>
+<li><p><code>.classList</code>(getter) –&gt; getter,setter 익숙해지고자 굳이 쓰는..</p>
+<ul>
+<li><code>.add()</code></li>
+<li><code>.remove()</code></li>
+<li><code>.toggle()</code></li>
+<li><code>.contains()</code></li>
+</ul>
+</li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>TIL 230202 javascript</p><p><a href="https://bongsee.github.io/2023/02/02/til-230202-js/">https://bongsee.github.io/2023/02/02/til-230202-js/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>BS K</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2023-02-02</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2023-02-06</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/%ED%8C%A8%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4/">패스트캠퍼스</a><a class="link-muted mr-2" rel="tag" href="/tags/%EA%B5%AD%EB%B9%84%EC%A7%80%EC%9B%90%EA%B5%90%EC%9C%A1/">국비지원교육</a><a class="link-muted mr-2" rel="tag" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/">메가바이트스쿨</a><a class="link-muted mr-2" rel="tag" href="/tags/MegabyteSchool/">MegabyteSchool</a><a class="link-muted mr-2" rel="tag" href="/tags/%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%B7%A8%EC%97%85%EB%B6%80%ED%8A%B8%EC%BA%A0%ED%94%84/">개발자취업부트캠프</a><a class="link-muted mr-2" rel="tag" href="/tags/%EB%82%B4%EC%9D%BC%EB%B0%B0%EC%9B%80%EC%B9%B4%EB%93%9C/">내일배움카드</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2023/02/06/til-230206-js/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">TIL 230206 javascript</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2023/02/02/til-230131-js/"><span class="level-item">TIL 230131 javascript</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">댓글</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'https://bongsee.github.io/2023/02/02/til-230202-js/';
+            this.page.identifier = '2023/02/02/til-230202-js/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'record-blog' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/profile.jpg" alt="Bongsee"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Bongsee</p><p class="is-size-6 is-block">Record TIL &amp; Error</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Seoul, Republic of Korea</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">포스트</p><a href="/archives"><p class="title">45</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">카테고리</p><a href="/categories"><p class="title">9</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">태그</p><a href="/tags"><p class="title">20</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/bongsee" target="_blank" rel="noopener">팔로우</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/bongsee"><i class="fab fa-github"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">카테고리</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/TIL/"><span class="level-start"><span class="level-item">TIL</span></span><span class="level-end"><span class="level-item tag">15</span></span></a></li><li><a class="level is-mobile" href="/categories/Weekly-Recap/"><span class="level-start"><span class="level-item">Weekly Recap</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/algorithm/"><span class="level-start"><span class="level-item">algorithm</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/categories/bundler/"><span class="level-start"><span class="level-item">bundler</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/error/"><span class="level-start"><span class="level-item">error</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/html-css/"><span class="level-start"><span class="level-item">html/css</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/javascript/"><span class="level-start"><span class="level-item">javascript</span></span><span class="level-end"><span class="level-item tag">9</span></span></a><ul><li><a class="level is-mobile" href="/categories/javascript/algorithm/"><span class="level-start"><span class="level-item">algorithm</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/wil/"><span class="level-start"><span class="level-item">wil</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">최근 글</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-07T10:10:45.259Z">2023-02-07</time></p><p class="title"><a href="/2023/02/07/til-230207-js/">[object Object]</a></p><p class="categories"><a href="/categories/TIL/">TIL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-06T10:19:13.337Z">2023-02-06</time></p><p class="title"><a href="/2023/02/06/til-230206-js/">TIL 230206 javascript</a></p><p class="categories"><a href="/categories/TIL/">TIL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-02T11:35:30.852Z">2023-02-02</time></p><p class="title"><a href="/2023/02/02/til-230202-js/">TIL 230202 javascript</a></p><p class="categories"><a href="/categories/TIL/">TIL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-01T16:03:09.243Z">2023-02-02</time></p><p class="title"><a href="/2023/02/02/til-230131-js/">TIL 230131 javascript</a></p><p class="categories"><a href="/categories/TIL/">TIL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-01-29T09:42:08.384Z">2023-01-29</time></p><p class="title"><a href="/2023/01/29/230129-js-storage/">브라우저 저장소 종류 4가지</a></p><p class="categories"><a href="/categories/TIL/">TIL</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">아카이브</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/02/"><span class="level-start"><span class="level-item">2월 2023</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/01/"><span class="level-start"><span class="level-item">1월 2023</span></span><span class="level-end"><span class="level-item tag">22</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/12/"><span class="level-start"><span class="level-item">12월 2022</span></span><span class="level-end"><span class="level-item tag">19</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">태그</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/API/"><span class="tag">API</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CSS/"><span class="tag">CSS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MegabyteSchool/"><span class="tag">MegabyteSchool</span><span class="tag">45</span></a></div><div class="control"><a class="tags has-addons" href="/tags/TIL/"><span class="tag">TIL</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/algorithm/"><span class="tag">algorithm</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/clone/"><span class="tag">clone</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/css/"><span class="tag">css</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/error/"><span class="tag">error</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/etc/"><span class="tag">etc</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/html/"><span class="tag">html</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/javascript/"><span class="tag">javascript</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/markdown/"><span class="tag">markdown</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/parcel/"><span class="tag">parcel</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/scss/"><span class="tag">scss</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%B7%A8%EC%97%85%EB%B6%80%ED%8A%B8%EC%BA%A0%ED%94%84/"><span class="tag">개발자취업부트캠프</span><span class="tag">45</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EA%B5%AD%EB%B9%84%EC%A7%80%EC%9B%90%EA%B5%90%EC%9C%A1/"><span class="tag">국비지원교육</span><span class="tag">45</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%82%B4%EC%9D%BC%EB%B0%B0%EC%9B%80%EC%B9%B4%EB%93%9C/"><span class="tag">내일배움카드</span><span class="tag">45</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/"><span class="tag">메가바이트스쿨</span><span class="tag">45</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%8C%A8%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4/"><span class="tag">패스트캠퍼스</span><span class="tag">45</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">Bonglog</a><p class="is-size-7"><span>&copy; 2023 BS K</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("ko");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="맨 위로" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "이 웹 사이트는 귀하의 경험을 향상시키기 위해 Cookie를 사용합니다.",
+          dismiss: "무시",
+          allow: "허용",
+          deny: "거부",
+          link: "더 알아보기",
+          policy: "Cookie 정책",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><!--!--></body></html>
