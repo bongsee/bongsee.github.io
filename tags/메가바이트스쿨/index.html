@@ -29,7 +29,316 @@
       switchTab();
       window.addEventListener('hashchange', switchTab, false);
   })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">Bonglog</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/tags">태그</a></li><li class="is-active"><a href="#" aria-current="page">메가바이트스쿨</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-02-07T10:10:45.259Z" title="2023. 2. 7. 오후 7:10:45">2023-02-07</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-02-07T13:06:25.643Z" title="2023. 2. 7. 오후 10:06:25">2023-02-07</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/TIL/">TIL</a></span><span class="level-item">10분안에 읽기 (약 1463 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/02/07/til-230207-js/">[object Object]</a></h1><div class="content"><h2 id="이벤트"><a href="#이벤트" class="headerlink" title="이벤트"></a>이벤트</h2><h3 id="이벤트-위임-Delegation"><a href="#이벤트-위임-Delegation" class="headerlink" title="이벤트 위임 (Delegation)"></a>이벤트 위임 (Delegation)</h3><ul>
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">Bonglog</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/tags">태그</a></li><li class="is-active"><a href="#" aria-current="page">메가바이트스쿨</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-03-14T23:00:27.737Z" title="2023. 3. 15. 오전 8:00:27">2023-03-15</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-03-14T23:01:28.315Z" title="2023. 3. 15. 오전 8:01:28">2023-03-15</time>&nbsp;업데이트 됨</span><span class="level-item">14분안에 읽기 (약 2145 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/03/15/230314-md/">웹 접근성</a></h1><div class="content"><h1 id="웹-접근성-애플리케이션과-위젯"><a href="#웹-접근성-애플리케이션과-위젯" class="headerlink" title="웹 접근성 애플리케이션과 위젯"></a>웹 접근성 애플리케이션과 위젯</h1><h2 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h2><ul>
+<li>웹은 빠른 속도로 변화하고 있습니다. 페이지 중심의 정적 사이트들은 점점 더 동적으로 변화하고 있으며, 데스크톱 웹 어플리케이션들이 JS와 AJAX를 중심으로 제작됩니다. 이러한 변화는 사용성과 반응형 향상에는 극적으로 도움을 주었지만, 스크린 리더와 같은 보조 기술(AT)을 사용하는 유저들에겐 접근성 격차로 인한 제약이 발생하는 리스크도 안고 있습니다.</li>
+<li>예전의 HTML4 명세가 나왔을 때는 Slider, Menu bar 등과 같은 클라이언트 사이드 위젯들의 설명이 제공되지 않았습니다. 하여 개발자들은 보통 <div>, <span> 같은 것들을 활용하여 개발했습니다. 이에 따라 데스크톱 위젯들은 충분한 정보를 제공하지 못했습니다.</li>
+<li>동적 콘텐츠는 이유가 어떻든 스크린을 보지 못하는 사람들에게 문제가 되었습니다. 주식 시세 표시 위젯, progress bar 등과 같은 것들을 보조공학기술(AT)로 인식하지 못하는 경우가 많았습니다. ARIA는 이러한 간극을 줄이는데 그 의미가 있습니다.</li>
+</ul>
+<h2 id="ARIA-Accessible-Rich-Internet-Applications"><a href="#ARIA-Accessible-Rich-Internet-Applications" class="headerlink" title="ARIA(Accessible Rich Internet Applications)"></a>ARIA(Accessible Rich Internet Applications)</h2><ul>
+<li>ARIA는 W3C의 Web Accessibility Initiative에서 제작합니다.</li>
+<li>스크린 리더와 같은 보조기기에서 필요한 정보들을 추가하는 방법을 제공합니다.</li>
+<li>ARIA는 마크업에서 특별한 속성을 추가하여 개발자들이 위젯의 디테일한 정보를 제공할 때 사용합니다.</li>
+<li>특히, 동적 웹 어플리케이션에서 찾을 수 있는 데스크톱 스타일 컨트롤과 표준 HTML 태그 사이에 있는 간극을 채우기 위해, ARIA는 친숙한 UI 위젯의 동작 상태(state)와 역할(role)에 대한 설명을 제공합니다.</li>
+</ul>
+<h3 id="ARIA-roles-states-properties"><a href="#ARIA-roles-states-properties" class="headerlink" title="ARIA - roles, states, properties"></a>ARIA - roles, states, properties</h3><ul>
+<li><p>ARIA는 다른 타입의 속성 세개 roles, states, properties를 분할하여 정의합니다.</p>
+</li>
+<li><p>roles</p>
+<ul>
+<li>Slider, Menu bar, dialog와 같은 HTML4에서 사용하지 못하는 위젯을 설명합니다.</li>
+</ul>
+</li>
+<li><p>properties</p>
+<ul>
+<li>드래그가 가능하다는 것이나, 요소가 필요하다는 것이나, 팝업이 뜨는 것과 같은 위젯의 특징에 대해 설명합니다.</li>
+</ul>
+</li>
+<li><p>state</p>
+<ul>
+<li>요소의 현재 상태에 대해 설명합니다. 보조기기에서 요소의 접근이 불가하거나, 숨겨져 있는 상태라는 것 등을 명시합니다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="State-changes"><a href="#State-changes" class="headerlink" title="State changes"></a>State changes</h3><ul>
+<li><p><code>aria-checked</code>, <code>aria-disabled</code>, <code>aria-grabbed</code></p>
+<ul>
+<li><p><code>aria-*</code> 속성을 사용하여 UI 위젯 요소의 상태를 표현하고, CSS attribute Selector를 활용하여 state 변경에 따른 시각적 변화를 구현해야합니다.</p>
+<ul>
+<li>&#96;&#96;&#96;css<br>li[aria-checked&#x3D;”true”] {<br>  font-weight: bold;<br>  background-image: url(“images&#x2F;dot.png”);<br>  background-repeat: no-repeat;<br>  background-position: 5px 10px;<br>}<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- aria-checked 속성을 업데이트하는JavaScript는 아래와 같이 작성합니다. 스크립트는 aria-checked 속성만 업데이트한다는 점에 유의합니다. 사용자 정의 클래스 이름을 추가하거나 제거할 필요도 없습니다.</span><br><span class="line"></span><br><span class="line">  - ```js</span><br><span class="line">    const processMenuChoice = function (item) &#123;</span><br><span class="line">      // &#x27;check&#x27; the selected item</span><br><span class="line">      item.setAttribute(&quot;aria-checked&quot;, &quot;true&quot;)</span><br><span class="line">      // &#x27;un-check&#x27; the other menu items</span><br><span class="line">      const sib = item.parentNode.firstChild</span><br><span class="line">      for (; sib; sib = sib.nextSibling) &#123;</span><br><span class="line">        if ((sib.nodeType === 1) &amp; (sib !== item)) &#123;</span><br><span class="line">          sib.setAttribute(&quot;aria-checked&quot;, &quot;false&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Visibility-Changes"><a href="#Visibility-Changes" class="headerlink" title="Visibility Changes"></a>Visibility Changes</h3><ul>
+<li><p><code>aria-hidden</code></p>
+<ul>
+<li><p><code>aria-*</code> 속성을 사용하여 UI 위젯 요소의 상태를 표현하고, CSS attribute Selector를 활용하여 state 변경에 따른 시각적 변화를 구현해야합니다.</p>
+<ul>
+<li>&#96;&#96;&#96;css<br>div.tooltip[aria-hidden&#x3D;”true”] {<br>  display: none;<br>}<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- aria-hidden 속성을 업데이트하는 JavaScript는 아래와 같이 작성합니다. 스크립트는 aria-hidden 속성만 업데이트합니다. 사용자 정의 클래스 이름을 추가하거나 제거할 필요도 없습니다.</span><br><span class="line"></span><br><span class="line">  - ```js</span><br><span class="line">    const showTip = function (el) &#123;</span><br><span class="line">      el.setAttribute(&quot;aria-hidden&quot;, &quot;false&quot;)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Role-Changes"><a href="#Role-Changes" class="headerlink" title="Role Changes"></a>Role Changes</h3><ul>
+<li><p>ARIA를 통해 개발자는 부정확하거나 시맨틱을 제공하지 않는 요소에 대한 시맨틱 역할을 선언할 수 있습니다.</p>
+<ul>
+<li>예를 들어, 순서가 없는 목록을 사용하여 메뉴를 만들 때 <ul>에는 <code>menubar</code> 역할을 부여하고 각 <li>에는 <code>menuitem </code> 역할을 부여해야 합니다.</li>
+</ul>
+</li>
+<li><p>요소의 역할은 변경되지 않아야 합니다. 대신 원래 요소를 제거하고 새 역할을 가진 요소로 교체합니다.</p>
+</li>
+</ul>
+<h3 id="aria-속성-사용하기"><a href="#aria-속성-사용하기" class="headerlink" title="aria 속성 사용하기"></a>aria 속성 사용하기</h3><ul>
+<li><p>ARIA 속성은 W3C에서 정의한 규격이 있으며, 이 규격에 따라 속성의 이름과 값이 정해져 있습니다. 예를 들어, <code>aria-label</code> 속성은 W3C에서 정의한 규격에 따라 해당 요소의 라벨을 지정하는 데 사용되며, <code>aria-live</code> 속성은 해당 요소의 상태를 실시간으로 알리는 역할을 합니다. 따라서, ARIA 속성을 사용할 때는 해당 속성의 규격을 확인하고, 그에 맞게 적절한 속성 이름과 값을 사용해야 합니다.</p>
+</li>
+<li><p>다양한 <code>aria-*</code> 속성을 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes">mdn</a>에서 확인해볼 수 있습니다.</p>
+</li>
+<li><pre><code class="html">&lt;ul id=&quot;fontMenu&quot; class=&quot;menu&quot; role=&quot;menu&quot; aria-hidden=&quot;true&quot;&gt;
+  &lt;li
+    id=&quot;sans-serif&quot;
+    class=&quot;menu-item&quot;
+    role=&quot;menuitemradio&quot;
+    tabindex=&quot;-1&quot;
+    aria-controls=&quot;st1&quot;
+    aria-checked=&quot;true&quot;
+  &gt;
+    Sans-serif
+  &lt;/li&gt;
+  &lt;li
+    id=&quot;serif&quot;
+    class=&quot;menu-item&quot;
+    role=&quot;menuitemradio&quot;
+    tabindex=&quot;-1&quot;
+    aria-controls=&quot;st1&quot;
+    aria-checked=&quot;false&quot;
+  &gt;
+    Serif
+  &lt;/li&gt;
+  ...
+&lt;/ul&gt;
+</code></pre>
+</li>
+</ul>
+<h3 id="role-속성-사용하기"><a href="#role-속성-사용하기" class="headerlink" title="role 속성 사용하기"></a>role 속성 사용하기</h3><ul>
+<li><p>role 속성은 WAI-ARIA(웹 접근성 증진을 위한 인터넷 애플리케이션) 사양에서 정의된 역할(role)을 나타내는 속성입니다. WAI-ARIA 사양은 웹 콘텐츠의 접근성을 개선하기 위해 만들어진 것으로, 이 중 역할(role)은 웹 페이지의 요소가 어떤 역할을 수행하는지 설명하는 역할을 합니다.</p>
+</li>
+<li><p>role 속성을 사용할 때는 WAI-ARIA 사양에서 정의된 역할을 사용하는 것이 좋습니다. 예를 들어 “button”이나 “checkbox”와 같은 역할을 가지는 요소에는 해당 역할을 나타내는 “role” 속성을 사용하는 것이 적합합니다.</p>
+</li>
+<li><p>주의사항</p>
+<ul>
+<li>올바르지 못한 ARIA를 사용할 바엔 ARIA를 사용하지 않는 편이 좋습니다.</li>
+<li>ARIA를 사용하기 전에 태그의 역할과 의미에 맞게 작성합니다.</li>
+<li>태그의 기본 의미를 중복해서 선언할 필요는 없습니다.</li>
+<li>페이지에서 사용하는 태그의 역할이 잘못된 ARIA를 선언하면 안됩니다.</li>
+</ul>
+</li>
+<li><p>html 각 태그별로 **암묵적으로 가지고 있는 role(역할)**이 있고, 각 태그별로 <strong>적용할 수 있는 역할</strong>도 있습니다.</p>
+<ul>
+<li><table>
+<thead>
+<tr>
+<th><strong>HTML 태그</strong></th>
+<th><strong>암묵적 기본 역할 (role&#x3D;””)</strong></th>
+<th><strong>적용 가능한 역할 (role&#x3D;””)</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href=""></td>
+<td>role&#x3D;”link”</td>
+<td>button, checkbox, menuitem, menuitemcheckbox, menuitemradio, option, radio, switch, tab</td>
+</tr>
+<tr>
+<td><a> (href 속성 없이)</td>
+<td>x</td>
+<td>어떤 role이든 적용 가능</td>
+</tr>
+<tr>
+<td><article></td>
+<td>role&#x3D;”article”</td>
+<td>application, document, feed, main, none, presentation, region</td>
+</tr>
+<tr>
+<td><aside></td>
+<td>role&#x3D;”complementary”</td>
+<td>feed, none, note, presentation, region, search</td>
+</tr>
+<tr>
+<td><header></td>
+<td>article, aside, main, nav, section 태그의 자손 요소이거나 <strong>role</strong>&#x3D;article, complementary, main, navigation, region을 사용한 태그의 자손일 경우엔 암묵적 역할이 따로 없고 **해당 요소들의 자손요소가 아닐 경우엔role&#x3D;”banner”**이다.</td>
+<td>group, none, presentation</td>
+</tr>
+<tr>
+<td><footer></td>
+<td>article, aside, main, nav, section 태그의 자손 요소이거나 <strong>role</strong>&#x3D;article, complementary, main, navigation, region을 사용한 태그의 자손일 경우엔 암묵적 역할이 따로 없고 <strong>해당 요소돌의 자손요소가 아닐 경우엔 role&#x3D;”contentinfo”이다.</strong></td>
+<td>group, none, presentation</td>
+</tr>
+<tr>
+<td><section></td>
+<td>accessible name을 가지고 있다면 <strong>role&#x3D;”region”</strong> 그렇지 않다면 역할이 따로 없다.</td>
+<td>alert, alertdialog, application, banner, complementary, contentinfo, dialog, document, feed, log, main, marquee, navigation, none, note, presentation, search, status, tabpanel</td>
+</tr>
+<tr>
+<td><button></td>
+<td>role&#x3D;”button”</td>
+<td>checkbox, link, menuitem, menuitemcheckbox, menuitemradio, option, radio, switch, tab</td>
+</tr>
+<tr>
+<td><div></td>
+<td>x</td>
+<td>어떤 role이든 적용 가능</td>
+</tr>
+<tr>
+<td><dl></td>
+<td>x</td>
+<td>group, list, presentation, none</td>
+</tr>
+<tr>
+<td><dt></td>
+<td>role&#x3D;”term”</td>
+<td>listitem</td>
+</tr>
+<tr>
+<td><dd></td>
+<td>role&#x3D;”definition”</td>
+<td>x</td>
+</tr>
+<tr>
+<td><fieldset></td>
+<td>role&#x3D;”group”</td>
+<td>none, presentation, radiogroup</td>
+</tr>
+<tr>
+<td><form></td>
+<td>accessible name을 가지고 있다면 <strong>role&#x3D;”form”</strong> 그렇지 않다면 역할이 따로 없다.</td>
+<td>search, none, presentation</td>
+</tr>
+<tr>
+<td><h1> ~ <h6></td>
+<td>role&#x3D;”heading”</td>
+<td>none, presentation, tab</td>
+</tr>
+<tr>
+<td><img alt="텍스트"></td>
+<td>role&#x3D;”img”</td>
+<td>button, checkbox, link, menuitem, menuitemcheckbox, menuitemradio, option, progressbar, scrollbar, separator, slider, switch, tab, treeitem</td>
+</tr>
+<tr>
+<td><img alt=""></td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td><img> (alt 속성 없이)</td>
+<td>role&#x3D;”img”</td>
+<td>x</td>
+</tr>
+<tr>
+<td><ul></td>
+<td>role&#x3D;”list”</td>
+<td>directory, group, listbox, menu, menubar, none, presentation, radiogroup, tablist, toolbar, tree</td>
+</tr>
+<tr>
+<td><ol></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><li></td>
+<td>role&#x3D;”listitem”</td>
+<td>menuitem, menuitemcheckbox, menuitemradio,option, none, presentation, radio, separator, tab, treeitem</td>
+</tr>
+<tr>
+<td><nav></td>
+<td>role&#x3D;”navigation”</td>
+<td>menu, menubar, tablist</td>
+</tr>
+<tr>
+<td><svg></td>
+<td>role&#x3D;”graphics-document”</td>
+<td>어떤 role이든 적용 가능</td>
+</tr>
+<tr>
+<td><input type="button"></td>
+<td>role&#x3D;”button”</td>
+<td>link, menuitem, menuitemcheckbox, menuitemradio, option, radio, switch, tab</td>
+</tr>
+<tr>
+<td><input type="checkbox"></td>
+<td>role&#x3D;”checkbox”</td>
+<td>button(사용할 경우 aria-pressed 함께 사용), menuitemcheckbox, option, switch</td>
+</tr>
+<tr>
+<td><input type="radio"></td>
+<td>role&#x3D;”radio”</td>
+<td>menuitemradio</td>
+</tr>
+<tr>
+<td><input type="text"></td>
+<td>role&#x3D;”textbox”</td>
+<td>combobox, searchbox, spinbutton</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li><p>필수 속성 및 지원이 가능한 속성 참고 <a target="_blank" rel="noopener" href="https://www.w3.org/TR/html-aria/#case-sensitivity">www.w3.org/TR/html-aria/#case-sensitivity</a></p>
+</li>
+</ul>
+<h3 id="읽어볼만한-article"><a href="#읽어볼만한-article" class="headerlink" title="읽어볼만한 article"></a>읽어볼만한 article</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://nuli.navercorp.com/community/article">https://nuli.navercorp.com/community/article</a></li>
+</ul>
+<hr>
+<h3 id="참고-문헌"><a href="#참고-문헌" class="headerlink" title="참고 문헌"></a>참고 문헌</h3><ul>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/ko/docs/Web/Accessibility/An_overview_of_accessible_web_applications_and_widgets">https://developer.mozilla.org/ko/docs/Web/Accessibility/An_overview_of_accessible_web_applications_and_widgets</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://abcdqbbq.tistory.com/76">https://abcdqbbq.tistory.com/76</a></p>
+</li>
+</ul>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-02-09T10:13:02.412Z" title="2023. 2. 9. 오후 7:13:02">2023-02-09</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-02-09T11:37:40.825Z" title="2023. 2. 9. 오후 8:37:40">2023-02-09</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/TIL/">TIL</a></span><span class="level-item">2분안에 읽기 (약 368 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/02/09/til-230209-js/">TIL 230209 javascript</a></h1><div class="content"><h2 id="Web-APIs"><a href="#Web-APIs" class="headerlink" title="Web APIs"></a>Web APIs</h2><h3 id="History"><a href="#History" class="headerlink" title="History"></a>History</h3><ul>
+<li><p>브라우저 히스토리(세션 기록) 정보를 반환하거나 제어합니다.</p>
+</li>
+<li><p>속성</p>
+<ul>
+<li><code>.length</code> : 등록된 히스토리 개수</li>
+<li><code>.scrollRestoration</code> : 스크롤 위치 복원 여부 - ‘auto’ &#x2F; ‘manual’<ul>
+<li><code>auto</code> : 스크롤 위치를 기억</li>
+<li><code>manual</code> : 스크롤 위치를 반영하지 않음.</li>
+</ul>
+</li>
+<li><code>.state</code> : 현재 히스토리에 등록된 데이터(상태)</li>
+</ul>
+</li>
+<li><p>메소드</p>
+<ul>
+<li><p>모든 브라우저(Safari 제외)는 .pushState()와 .replaceState()의 ‘제목’ 옵션을 무시. -&gt; 추후에 활용될 가능성이 있으므로 빈 문자열을 전달하는 것을 권장.</p>
+</li>
+<li><p>.pushState()와 .replaceState() 호출은 <code>popstate</code> 이벤트가 발생하지 않음!!</p>
+</li>
+<li><p><code>.back()</code> : 뒤로 가기</p>
+</li>
+<li><p><code>.forward()</code> : 앞으로 가기</p>
+</li>
+<li><p><code>.go(위치)</code> : 현재 페이지 기준 특정 히스토리 ‘위치’로 이동 - <code>.go(-2)</code></p>
+</li>
+<li><p><code>.pushState(상태, 제목, 주소)</code> : 히스토리에 상태 및 주소를 추가</p>
+<ul>
+<li>상태에 이동할 페이지에 전달할 데이터를 입력</li>
+<li>명시한 주소로 페이지를 이동.(&#x3D;&#x3D;&#x3D; <code>location.assign(path)</code> 동작)</li>
+<li>페이지를 이동한 후 state 매개변수에 전달한 데이터를 활용할 수 있다.(<code>History.state</code>)</li>
+</ul>
+</li>
+<li><p><code>.replaceState(상태, 제목, 주소)</code> : 현재 히스토리의 상태 및 주소를 교체</p>
+<ul>
+<li>현재 위치한 페이지를 방문한 내역을 남기지 않고 이동할 때 활용. 언제..사용..?</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h2 id="예제-해시-링크를-활용한-페이지-내-이동-서버-요청-X-해시값과-동일한-id를-가진-요소로-스크롤-이동"><a href="#예제-해시-링크를-활용한-페이지-내-이동-서버-요청-X-해시값과-동일한-id를-가진-요소로-스크롤-이동" class="headerlink" title="예제- 해시 링크를 활용한 페이지 내 이동 (서버 요청 X) 해시값과 동일한 id를 가진 요소로 스크롤 이동"></a>예제<br>- 해시 링크를 활용한 페이지 내 이동 (서버 요청 X) 해시값과 동일한 id를 가진 요소로 스크롤 이동</h2></li>
+</ul>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-02-07T10:10:45.259Z" title="2023. 2. 7. 오후 7:10:45">2023-02-07</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-02-09T10:13:24.075Z" title="2023. 2. 9. 오후 7:13:24">2023-02-09</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/TIL/">TIL</a></span><span class="level-item">10분안에 읽기 (약 1463 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/02/07/til-230207-js/">TIL 230207 javascript</a></h1><div class="content"><h2 id="이벤트"><a href="#이벤트" class="headerlink" title="이벤트"></a>이벤트</h2><h3 id="이벤트-위임-Delegation"><a href="#이벤트-위임-Delegation" class="headerlink" title="이벤트 위임 (Delegation)"></a>이벤트 위임 (Delegation)</h3><ul>
 <li>비슷한 패턴의 여러 요소에서 이벤트를 핸들링해야 하는 경우, 단일 조상 요소에서 제어하는 이벤트 위임 패턴을 사용할 수 있음.</li>
 <li>대부분의 경우 이벤트 위임을 통한 성능 개선은 개수가 엄청 많을 때 !</li>
 <li></li>
@@ -683,221 +992,7 @@
 </ul>
 </li>
 </ul>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-01-12T16:08:52.581Z" title="2023. 1. 13. 오전 1:08:52">2023-01-13</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-01-18T06:01:40.761Z" title="2023. 1. 18. 오후 3:01:40">2023-01-18</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/javascript/">javascript</a></span><span class="level-item">11분안에 읽기 (약 1702 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/01/13/230113-js-promise/">비동기 pattern (Callback, Promise Async/Await)</a></h1><div class="content"><h2 id="Callback-Pattern"><a href="#Callback-Pattern" class="headerlink" title="Callback Pattern"></a>Callback Pattern</h2><ol>
-<li><p>비동기 처리 결과의 후속처리를 위한 노력 - <code>Callback Function</code></p>
-<ul>
-<li>비동기 처리 결과를 외부로 반환하거나, 상위 스코프의 변수에 할당해도 기대한대로 동작하지 않는다.</li>
-<li>비동기 함수는 비동기 처리를 <code>기다리지 않고 즉시 종료</code>되기 때문.</li>
-<li>비동기 처리 결과를 위한 후속처리는 비동기 함수 내부에서 수행해야한다.</li>
-<li>따라서 비동기 처리 결과에 대한 후속 처리를 수행하는 callback 함수를 인자로 전달한다.</li>
-<li>이와 같은 Callback pattern은 통상 <code>Callback Hell - 중첩, 복잡도 상승</code>라고 부르는 가독성 문제를 일으킨다.</li>
-</ul>
-</li>
-<li><p><code>Error 처리의 한계</code></p>
-<ul>
-<li>Callbakc Pattern의 가장 큰 단점은 <code>에러 처리가 곤란</code>하다는 점이다.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;Error가 발생했습니다&quot;</span>);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&quot;catch :&quot;</span>, err);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>위의 예제에서 try문 안의 setTimeout 함수는 설정된 1초가 지나면 콜백함수를 호출하고, 콜백함수는 에러를 발생시킨다.</li>
-<li>하지만 콜백함수가 발생시킨 error는 catch문에서 잡아내지 못한다.</li>
-<li>setTimeout함수의 콜백함수가 실행될 때 setTimeout함수는 이미 콜 스택에서 제거된 이후이다. (<code>콜 스택</code>과 <code>이벤트 루프</code> 참고)</li>
-<li>그 말인 즉슨, setTimeout 함수의 콜백함수를 호출한 것(호출자-caller)이 setTimeout 함수가 아니라는 것을 의미한다.</li>
-<li>에러는 호출자(caller) 방향으로 전파된다. (즉, 콜 스택의 아래 방향으로 전파됨)</li>
-<li>따라서 setTimeout 함수의 콜백함수가 던진 에러는 catch문에서 잡을 수가 없는 것이다.</li>
-</ul>
-</li>
-<li><p>위와 같은 콜백 헬, 에러 처리의 한계를 극복하기 위해 Promise Pattern이 등장하게 된다.</p>
-</li>
-</ol>
-<h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><ol>
-<li><p>프로미스의 생성</p>
-<ul>
-<li>new Promise 생성자 함수 구문으로 Promise 인스턴스를 생성한다.</li>
-<li>Promise 생성자 함수의 인자로 비동기 처리를 수행할 콜백 함수를 제공한다.</li>
-<li>콜백 함수는 다시 resolve 함수와 reject 함수를 인자로 받는다.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// asynchronous code</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="comment">/* successful */</span>) &#123;</span><br><span class="line">    <span class="title function_">resolve</span>(<span class="string">&#x27;result&#x27;</span>)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="comment">/* failure */</span>) &#123;</span><br><span class="line">    <span class="title function_">reject</span>(<span class="string">&#x27;error&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>resolve, reject</p>
-</li>
-</ol>
-<ul>
-<li><p>Promise는 세 가지 state를 가진다.</p>
-</li>
-<li><table>
-<thead>
-<tr>
-<th>state</th>
-<th>의미</th>
-<th>상태 변경 조건</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>pending</td>
-<td>비동기 처리가 아직 수행되지 않은 상태</td>
-<td>프로미스가 생성된 직후 기본 상태</td>
-</tr>
-<tr>
-<td>fulfilled</td>
-<td>비동기 처리가 수행된 상태(성공)</td>
-<td>resolve 함수 호출</td>
-</tr>
-<tr>
-<td>rejected</td>
-<td>비동기 처리가 수행된 상태(실패)</td>
-<td>reject 함수 호출</td>
-</tr>
-</tbody></table>
-</li>
-<li><p>후속 처리를 위한 작업을 위해 resolve 함수의 인자로 비동기 처리 결과를 넘겨주고, reject 함수의 인자로 에러 객체를 넘겨주어 체이닝을 통해 후속처리를 진행한다.</p>
-</li>
-<li><p>resolve, reject 함수가 필요한 이유를 요약하면 다음과 같다.</p>
-<ol>
-<li>pending 상태의 프로미스를 settled(fulfilled or rejected) 상태로 변경하는 역할 수행</li>
-<li>비동기 처리 결과를 후속 처리 메서드에 전달하는 역할 (프로미스 체이닝)</li>
-</ol>
-</li>
-</ul>
-<ol start="3">
-<li><p>Promise 후속처리 메서드</p>
-<ul>
-<li><p>then</p>
-<ul>
-<li>첫 번째 인자 : 프로미스가 fulfilled 상태가 되었을 때 실행시킬 콜백 함수. 콜백 함수는 다시 첫 번째 인자로 프로미스가 resolve한 값을 받는다.</li>
-<li>두 번째 인자 : 프로미스가 rejected 상태가 되었을 때 실행시킬 콜백 함수. 콜백 함수는 다시 첫 번째 인자로 프로미스가 reject한 값을 받는다.</li>
-</ul>
-</li>
-<li><p>catch</p>
-<ul>
-<li>then의 두번째 인자로 넘겨준 callback함수가 에러 처리를 수행할 수 있지만, catch 메서드의 콜백함수로 error를 처리하도록 하자.</li>
-</ul>
-</li>
-<li><p>finally</p>
-<ul>
-<li>Promise의 처리 결과와 상관없이 한 번 수행될 로직을 짠다.</li>
-</ul>
-</li>
-<li><p>Promise 후속처리 메서드는 Promise 체이닝을 통한 후속처리를 위해 항상 프로미스를 반환한다.</p>
-</li>
-<li><p>만약 후속처리 메서드의 콜백함수가 명시적으로 프로미스가 아닌 값으로 반환을 해도 그 값을 암묵적으로 resolve 또는 reject하여 프로미스를 생성해 반환한다.</p>
-</li>
-</ul>
-</li>
-<li><p>Promise 정적 메서드</p>
-<ol>
-<li><p>Promise.resolve &#x2F; Promise.reject</p>
-<ul>
-<li>이미 존재하는 값을 래핑하여 프로미스를 생성하기 위해 사용한다.</li>
-</ul>
-</li>
-<li><p>Promise.all</p>
-<ul>
-<li>여러 비동기 처리를 묶어 병렬 처리할 때 사용.</li>
-<li>모든 비동기 처리가 fulfilled 될 때 까지 기다리며, 전부 fulfilled 상태가 되면 각각의 resolve값들을 배열에 저장하고 해당 배열을 resolve하여 새로운 Promise를 반환한다.</li>
-<li>비동기 처리 중 하나라도 reject가 되면 나머지 비동기 처리를 기다리지 않고 즉시 종료한다.</li>
-</ul>
-</li>
-<li><p>Promise.race</p>
-<ul>
-<li>Promise.all 처럼 모든 비동기 처리가 fulfilled 되기를 기다리는 것이 아니라, 가장 먼저 fulfilled 된 프로미스가 resolve한 값을 resolve하여 새로운 Promise를 반환한다.</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>마이크로태스크큐</p>
-</li>
-</ol>
-<ul>
-<li><p>프로미스의 비동기 함수는 태스크 큐가 아닌 별도의 큐가 관리를 하는데, 이를 마이크로태스크 큐라고 한다.</p>
-</li>
-<li><p>마이크로태스크 큐는 태스크 큐보다 우선순위가 높다.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span>), <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="title class_">Promise</span>.<span class="title function_">resolve</span>()</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">2</span>))</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">3</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2, 3, 1</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="Async-x2F-Await"><a href="#Async-x2F-Await" class="headerlink" title="Async&#x2F;Await"></a>Async&#x2F;Await</h2><ol>
-<li><p>async&#x2F;await 는 Promise를 기반으로 동작한다.</p>
-<ul>
-<li>Promise 후속처리 메서드 역시 콜백을 전달하는 callback pattern을 사용했지만,</li>
-<li>async&#x2F;await 문법을 통해 후속 처리 메서드 없이 마치 동기적으로 돌아가는 것처럼 구현할 수 있게 되었다.</li>
-</ul>
-</li>
-<li><p>async 함수</p>
-<ul>
-<li>await 키워드는 반드시 async 함수 내에서 사용해야한다.</li>
-<li>async 함수는 언제나 프로미스를 반환한다.</li>
-<li>async 함수 내에서 await 키워드를 만나면 이후의 코드는 마이크로태스크큐로 넘어간다.</li>
-</ul>
-</li>
-<li><p>await 키워드</p>
-<ul>
-<li>프로미스가 settled 상태가 될 때까지 대기하다가 settled 상태가 되면 프로미스가 resolve한 값을 반환한다. (프로미스를 반환하는 것은 아님.)<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">const</span> res = <span class="keyword">await</span> promise;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(res); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure></li>
-<li>await는 반드시 Promise 앞에서 사용해야한다.</li>
-</ul>
-</li>
-<li><p>에러 처리</p>
-<ul>
-<li>try ~ catch 문을 사용.</li>
-<li>async 함수 내에서 catch문으로 에러 처리를 하지 않으면 async함수는 발생한 에러를 reject하는 프로미스를 반환한다.<ul>
-<li>이를 이용하여 async 함수의 후속 처리로 catch 메서드를 이어 붙일 수 있다.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="최신-문법-Update"><a href="#최신-문법-Update" class="headerlink" title="최신 문법 Update"></a>최신 문법 Update</h2><ul>
-<li>전역 환경에서는 async 함수로 래핑하지 않고 await 키워드 단독으로 사용할 수 있게 되었다.</li>
-</ul>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-01-12T11:19:05.712Z" title="2023. 1. 12. 오후 8:19:05">2023-01-12</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2023-01-12T14:57:59.145Z" title="2023. 1. 12. 오후 11:57:59">2023-01-12</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/TIL/">TIL</a></span><span class="level-item">4분안에 읽기 (약 588 단어)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/01/12/til-230112-js/">TIL 230112 javascript</a></h1><div class="content"><h1 id="Module-Asynchronous"><a href="#Module-Asynchronous" class="headerlink" title="Module, Asynchronous"></a>Module, Asynchronous</h1><h2 id="Module-ES6-Module"><a href="#Module-ES6-Module" class="headerlink" title="Module(ES6 Module)"></a>Module(ES6 Module)</h2><p><img src="https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1632299087/tlog/js-module-de_raqjum.png" alt="https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1632299087/tlog/js-module-de_raqjum.png"></p>
-<h3 id="모듈-시스템이-필요한-이유"><a href="#모듈-시스템이-필요한-이유" class="headerlink" title="모듈 시스템이 필요한 이유"></a>모듈 시스템이 필요한 이유</h3><ul>
-<li>강사님의 비유 : PC 분해&#x2F;조립 (유지&#x2F;보수의 관점)</li>
-<li>그럼 어떤 기준으로 Module을 나누나 ? : 기능 단위</li>
-<li>index.html에 main source가 되는 하나의 js파일을 진입점(entry point)으로 하위의 여러 js파일 간 의존성 구조가 형성된다.</li>
-</ul>
-<h3 id="내보내기-export"><a href="#내보내기-export" class="headerlink" title="내보내기 (export)"></a>내보내기 (export)</h3><ul>
-<li>내보내기의 두 가지 종류<ul>
-<li><code>기본 내보내기 (default)</code><ul>
-<li>모듈 당 <code>1</code>번</li>
-<li>내보낼 때 이름을 붙여도 되고, 안 붙여도 됨.</li>
-</ul>
-</li>
-<li><code>이름 내보내기</code><ul>
-<li>모듈 당 <code>n</code>번</li>
-<li>이름을 붙여야 함. 즉, data 자체를 내보낼 수 없음. 식별자에 담고 식별자를 내보내야 한다.</li>
-<li>내보내질 아이들은 기본적으로 하나의 객체에 모두 담겨 나간다. 내보내지는 아이가 하나여도.(그래서 추후에 import할 때도 중괄호로 받아야함. 마치 객체 구조 분해 할당하는 것 처럼)</li>
-</ul>
-</li>
-<li>내보낼 때 <code>as</code> 키워드이름을 바꿀 수 있음.</li>
-</ul>
-</li>
-</ul>
-<h3 id="가져오기-import"><a href="#가져오기-import" class="headerlink" title="가져오기 (import)"></a>가져오기 (import)</h3><ul>
-<li><p>기본 내보내기의 데이터 받기</p>
-<ul>
-<li>변수에 담긴 담는데 아무렇게 작명해서 받아도 ok.</li>
-</ul>
-</li>
-<li><p>이름 내보내기의 데이터 받기</p>
-<ul>
-<li>내보내질 때의 식별자 대로 받아야함.</li>
-<li>그대로 받기는 받고, 받은 모듈 내에서 사용할 이름은 <code>as</code>키워드로 바꿀 수 있음.</li>
-</ul>
-</li>
-<li><p><code>import * as !식별자 from &#39;./module.js&#39;</code></p>
-<ul>
-<li>!식별자는 데이터들을 한데 모은 객체로 이어 받음. 이름 내보내기에 의한 데이터들은 해당 이름이 프로퍼티가 됨. default 내보내기에 의한 데이터는 !식별자 객체의 default 프로퍼티의 값으로 들어온다.</li>
-</ul>
-</li>
-<li><p>동적 모듈 가져오기</p>
-<ul>
-<li>기본적으로 import문은 모듈의 최상단에 위치해야한다.</li>
-<li>코드의 임의의 위치에서 가져오고 싶을 땐 ? <code>import 함수</code></li>
-<li>import 함수는 시간이 얼마나 걸릴지 모르는 작업이며, import 함수의 반환값은 <code>Promise instance</code>이다.</li>
-<li>그 말은 await 키워드를 활용할 수 있다는 말.</li>
-</ul>
-</li>
-<li><p>가져오자마자 내보내기</p>
-<ul>
-<li>추후 Update 예정</li>
-</ul>
-</li>
-</ul>
-</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/page/0/">이전</a></div><div class="pagination-next"><a href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/page/2/">다음</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/">1</a></li><li><a class="pagination-link" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/page/2/">2</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/page/5/">5</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/profile.jpg" alt="Bongsee"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Bongsee</p><p class="is-size-6 is-block">Record TIL &amp; Error</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Seoul, Republic of Korea</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">포스트</p><a href="/archives"><p class="title">45</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">카테고리</p><a href="/categories"><p class="title">9</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">태그</p><a href="/tags"><p class="title">20</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/bongsee" target="_blank" rel="noopener">팔로우</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/bongsee"><i class="fab fa-github"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">카테고리</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/TIL/"><span class="level-start"><span class="level-item">TIL</span></span><span class="level-end"><span class="level-item tag">15</span></span></a></li><li><a class="level is-mobile" href="/categories/Weekly-Recap/"><span class="level-start"><span class="level-item">Weekly Recap</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/algorithm/"><span class="level-start"><span class="level-item">algorithm</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/categories/bundler/"><span class="level-start"><span class="level-item">bundler</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/error/"><span class="level-start"><span class="level-item">error</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/html-css/"><span class="level-start"><span class="level-item">html/css</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/javascript/"><span class="level-start"><span class="level-item">javascript</span></span><span class="level-end"><span class="level-item tag">9</span></span></a><ul><li><a class="level is-mobile" href="/categories/javascript/algorithm/"><span class="level-start"><span class="level-item">algorithm</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/wil/"><span class="level-start"><span class="level-item">wil</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">최근 글</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-07T10:10:45.259Z">2023-02-07</time></p><p class="title"><a href="/2023/02/07/til-230207-js/">[object Object]</a></p><p class="categories"><a href="/categories/TIL/">TIL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-06T10:19:13.337Z">2023-02-06</time></p><p class="title"><a href="/2023/02/06/til-230206-js/">TIL 230206 javascript</a></p><p class="categories"><a href="/categories/TIL/">TIL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-02T11:35:30.852Z">2023-02-02</time></p><p class="title"><a href="/2023/02/02/til-230202-js/">TIL 230202 javascript</a></p><p class="categories"><a href="/categories/TIL/">TIL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-01T16:03:09.243Z">2023-02-02</time></p><p class="title"><a href="/2023/02/02/til-230131-js/">TIL 230131 javascript</a></p><p class="categories"><a href="/categories/TIL/">TIL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-01-29T09:42:08.384Z">2023-01-29</time></p><p class="title"><a href="/2023/01/29/230129-js-storage/">브라우저 저장소 종류 4가지</a></p><p class="categories"><a href="/categories/TIL/">TIL</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">아카이브</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/02/"><span class="level-start"><span class="level-item">2월 2023</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/01/"><span class="level-start"><span class="level-item">1월 2023</span></span><span class="level-end"><span class="level-item tag">22</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/12/"><span class="level-start"><span class="level-item">12월 2022</span></span><span class="level-end"><span class="level-item tag">19</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">태그</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/API/"><span class="tag">API</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CSS/"><span class="tag">CSS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MegabyteSchool/"><span class="tag">MegabyteSchool</span><span class="tag">45</span></a></div><div class="control"><a class="tags has-addons" href="/tags/TIL/"><span class="tag">TIL</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/algorithm/"><span class="tag">algorithm</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/clone/"><span class="tag">clone</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/css/"><span class="tag">css</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/error/"><span class="tag">error</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/etc/"><span class="tag">etc</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/html/"><span class="tag">html</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/javascript/"><span class="tag">javascript</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/markdown/"><span class="tag">markdown</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/parcel/"><span class="tag">parcel</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/scss/"><span class="tag">scss</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%B7%A8%EC%97%85%EB%B6%80%ED%8A%B8%EC%BA%A0%ED%94%84/"><span class="tag">개발자취업부트캠프</span><span class="tag">45</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EA%B5%AD%EB%B9%84%EC%A7%80%EC%9B%90%EA%B5%90%EC%9C%A1/"><span class="tag">국비지원교육</span><span class="tag">45</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%82%B4%EC%9D%BC%EB%B0%B0%EC%9B%80%EC%B9%B4%EB%93%9C/"><span class="tag">내일배움카드</span><span class="tag">45</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/"><span class="tag">메가바이트스쿨</span><span class="tag">45</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%8C%A8%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4/"><span class="tag">패스트캠퍼스</span><span class="tag">45</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">Bonglog</a><p class="is-size-7"><span>&copy; 2023 BS K</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("ko");</script><script>var IcarusThemeSettings = {
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/page/0/">이전</a></div><div class="pagination-next"><a href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/page/2/">다음</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/">1</a></li><li><a class="pagination-link" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/page/2/">2</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/page/5/">5</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/profile.jpg" alt="Bongsee"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Bongsee</p><p class="is-size-6 is-block">Record TIL &amp; Error</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Seoul, Republic of Korea</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">포스트</p><a href="/archives"><p class="title">47</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">카테고리</p><a href="/categories"><p class="title">9</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">태그</p><a href="/tags"><p class="title">20</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/bongsee" target="_blank" rel="noopener">팔로우</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/bongsee"><i class="fab fa-github"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">카테고리</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/TIL/"><span class="level-start"><span class="level-item">TIL</span></span><span class="level-end"><span class="level-item tag">16</span></span></a></li><li><a class="level is-mobile" href="/categories/Weekly-Recap/"><span class="level-start"><span class="level-item">Weekly Recap</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/algorithm/"><span class="level-start"><span class="level-item">algorithm</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/categories/bundler/"><span class="level-start"><span class="level-item">bundler</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/error/"><span class="level-start"><span class="level-item">error</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/html-css/"><span class="level-start"><span class="level-item">html/css</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/javascript/"><span class="level-start"><span class="level-item">javascript</span></span><span class="level-end"><span class="level-item tag">9</span></span></a><ul><li><a class="level is-mobile" href="/categories/javascript/algorithm/"><span class="level-start"><span class="level-item">algorithm</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/categories/wil/"><span class="level-start"><span class="level-item">wil</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">최근 글</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-03-14T23:00:27.737Z">2023-03-15</time></p><p class="title"><a href="/2023/03/15/230314-md/">웹 접근성</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-09T10:13:02.412Z">2023-02-09</time></p><p class="title"><a href="/2023/02/09/til-230209-js/">TIL 230209 javascript</a></p><p class="categories"><a href="/categories/TIL/">TIL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-07T10:10:45.259Z">2023-02-07</time></p><p class="title"><a href="/2023/02/07/til-230207-js/">TIL 230207 javascript</a></p><p class="categories"><a href="/categories/TIL/">TIL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-06T10:19:13.337Z">2023-02-06</time></p><p class="title"><a href="/2023/02/06/til-230206-js/">TIL 230206 javascript</a></p><p class="categories"><a href="/categories/TIL/">TIL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-02-02T11:35:30.852Z">2023-02-02</time></p><p class="title"><a href="/2023/02/02/til-230202-js/">TIL 230202 javascript</a></p><p class="categories"><a href="/categories/TIL/">TIL</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">아카이브</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/03/"><span class="level-start"><span class="level-item">3월 2023</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/02/"><span class="level-start"><span class="level-item">2월 2023</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/01/"><span class="level-start"><span class="level-item">1월 2023</span></span><span class="level-end"><span class="level-item tag">22</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/12/"><span class="level-start"><span class="level-item">12월 2022</span></span><span class="level-end"><span class="level-item tag">19</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">태그</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/API/"><span class="tag">API</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CSS/"><span class="tag">CSS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MegabyteSchool/"><span class="tag">MegabyteSchool</span><span class="tag">47</span></a></div><div class="control"><a class="tags has-addons" href="/tags/TIL/"><span class="tag">TIL</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/algorithm/"><span class="tag">algorithm</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/clone/"><span class="tag">clone</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/css/"><span class="tag">css</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/error/"><span class="tag">error</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/etc/"><span class="tag">etc</span><span class="tag">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/html/"><span class="tag">html</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/javascript/"><span class="tag">javascript</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/markdown/"><span class="tag">markdown</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/parcel/"><span class="tag">parcel</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/scss/"><span class="tag">scss</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%B7%A8%EC%97%85%EB%B6%80%ED%8A%B8%EC%BA%A0%ED%94%84/"><span class="tag">개발자취업부트캠프</span><span class="tag">47</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EA%B5%AD%EB%B9%84%EC%A7%80%EC%9B%90%EA%B5%90%EC%9C%A1/"><span class="tag">국비지원교육</span><span class="tag">47</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%82%B4%EC%9D%BC%EB%B0%B0%EC%9B%80%EC%B9%B4%EB%93%9C/"><span class="tag">내일배움카드</span><span class="tag">47</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%A9%94%EA%B0%80%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%EC%BF%A8/"><span class="tag">메가바이트스쿨</span><span class="tag">47</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%8C%A8%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4/"><span class="tag">패스트캠퍼스</span><span class="tag">47</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">Bonglog</a><p class="is-size-7"><span>&copy; 2023 BS K</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("ko");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,

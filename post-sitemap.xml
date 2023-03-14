@@ -9,8 +9,24 @@
 
 
     <url>
+        <loc>https://bongsee.github.io/2023/03/15/230314-md/</loc>
+        <lastmod>2023-03-14T23:01:28.315Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://bongsee.github.io/2023/02/09/til-230209-js/</loc>
+        <lastmod>2023-02-09T11:37:40.825Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://bongsee.github.io/2023/02/07/til-230207-js/</loc>
-        <lastmod>2023-02-07T13:06:25.643Z</lastmod>
+        <lastmod>2023-02-09T10:13:24.075Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
